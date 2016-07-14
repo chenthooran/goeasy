@@ -1,9 +1,82 @@
+<div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px); padding-bottom: 18px; position: relative; z-index: 0; left: 0px; top: 0px;">
+    <div class="panel-controls dropdown">
+        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span><div class="ripple-container"></div></button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="index.html">Action</a></li>
+            <li><a href="index.html">Another action</a></li>
+            <li><a href="index.html">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="index.html">Separated link</a></li>
+        </ul>
+    </div>
+    <div class="panel-heading">
+        <h2 style="font-size: 16px;">RECENT TIMELINE</h2>
+    </div>
+    <div class="panel-body no-padding table-responsive">
 
-<div class="box" style="height:620px;">
+        <div class="list-group media-list scroll-content" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter" tabindex="0" style="right: -19px;">
+            <div class="list-group-item ripple-effect">
+                <div class="row-action-primary">
+                    <div class="" style="padding-top 7px;">
+                        <time datetime="2016-06-29" class="icon">
+                            <!-- <em>Wednesday</em> -->
+                            <strong>{{timeline.dateMonth}}</strong>
+                            <span>{{timeline.dateDay}}</span>
+                        </time>
+                    </div>
+                </div>
+                <div class="row-content">
+                    <div class="least-content">
+                        <span *ngIf="timeline.contributedBy.length > 0" class="date" style="padding-right:10px;color:#bdbdbd;">contributors</span>
+
+                        <span *ngFor="let image of timeline.contributedBy">
+                            <img class="img-circle" src="{{image.imageUrl}}" width="16" alt="{{image.userName}}" title="{{image.userName}}">
+                        </span>
+                    </div>
+                    <div class="least-contents">15m</div>
+                    <h4 class="list-group-item-heading" *ngFor="let tag of timeline.tags; let last = last" style="float:left">
+                        <span style="float: left" (click)="select(timeline)">{{tag.name}}</span><span *ngIf="!last" (click)="select(timeline)">&nbsp; +  &nbsp;</span>
+                    </h4>
+                    <h4 class="list-group-item-heading" style="float: left" *ngIf="timeline.noOfEntries">
+                        <span style="float: left" (click)="select(timeline)">&nbsp; ({{timeline.noOfEntries}})</span>
+                    </h4>
+                    <p class="list-group-item-text">{{timeline.recentActivity}}</p>
+
+                    <div class="like-info">
+                        <div (click)="watch(timeline); $event.stopPropagation()">
+                            <a *ngIf="!timeline.isWatched" class="btn btn-xs btn-info btn-label ml-md">
+                                <i class="material-icons" style="font-size: 13px;">favorite</i>
+                                Watch
+                                <div class="ripple-effect"></div>
+                            </a>
+                            <a *ngIf="timeline.isWatched" class="btn btn-xs btn-info btn-label ml-md" title="Watched">
+                                <i class="material-icons" style="font-size: 13px;color:blue !important;">favorite</i>
+                                Unwatch
+                                <div class="ripple-effect"></div>
+                            </a>
+                        </div>
+                        <a class="btn btn-xs btn-info btn-label ml-md" (click)="parentModal.open(); setCurrentTimeline(timeline)">
+                            <i class="material-icons" style="font-size: 13px;">share</i>
+                            Share
+
+                        </a>
+                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                            <i class="material-icons" style="font-size: 13px;">delete_sweep</i>
+                            Clean
+
+                        </a>
+                    </div>
+                </div>
+                <div class="ripple-container"></div>
+            </div>
+
+            <div class="list-group-separator"></div>
+            </div>
+        </div>
+</div>
+<!--<div class="box" style="height:620px;">
     <div class="box-header" style="padding-bottom:0.5rem;">
-        <!--<div class="col-md-6">-->
         <h3 class="pull-left">{{title}}</h3>
-        <!--</div>-->
         <div class="pull-right" (click)="watchFilter(isWatchedFilter); $event.stopPropagation()">
             <span *ngIf="!isWatchedFilter" class="" title="" style="display:inline-block; cursor:pointer;">
                 <a class="btn-like"><i class="fa fa-heart mright-5"></i> View Watching</a>
@@ -11,14 +84,6 @@
             <span *ngIf="isWatchedFilter" class="" title="Watched" style="display:inline-block; cursor:pointer;">
                 <a class="btn-like" style="background-color:#26a69a !important; color:#fff;"><i class="fa fa-heart mright-5" style="color:#fff;"></i> View All</a>
             </span>
-            <!--<span *ngIf="!isWatchedFilter" class="fa-stack fa-lg" title="">
-                <i class="fa fa-heart fa-stack-2x" style="color:grey;cursor:pointer"></i>
-                <i class="fa fa-stack-2x" style="color:white"></i>
-            </span>
-            <span *ngIf="isWatchedFilter" class="fa-stack fa-lg" title="Watched">
-                <i class="fa fa-heart fa-stack-2x" style="color:cornflowerblue;cursor:pointer"></i>
-                <i class="fa fa-stack-2x" style="color:white"></i>
-            </span>-->
         </div>
     </div>
 
@@ -31,7 +96,7 @@
         <div class="box-body recent-timeline-item" id="collapseExample1" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter">
             <div class="timeline-description" id="collapseExample1">
 
-                <!-- timestamp -->
+
                 <div class="recent-timeline-timestamp">
                     <span class="recent-timeline-date">
                         {{timeline.dateDay}}
@@ -40,7 +105,7 @@
                         {{timeline.dateMonth}}
                     </span>
                 </div>
-                <!-- tags line -->
+
                 <div class="recent-timeline-note">
                     <div class="recent-timeline-tags">
                         <div>
@@ -65,47 +130,17 @@
                         {{timeline.recentActivity}}
                     </div>
                 </div>
-                <!-- watch -->
-                <!--<div class="row">
-                    <div class="col-md-11 col-md-offset-1">
-                        {{timeline.recentActivity}} test text
-                    </div>
-                </div>-->
 
-
-<!--                <div class="share-with-block">-->
-<!--                    <div *ngIf="timeline.sharedWith.length > 0" class="pull-left">SHARED WITH</div>-->
-<!---->
-<!--                    <div class="pull-left" style="clear:both;">-->
-<!--                        <css-carousel [images]="timeline.sharedWith"></css-carousel>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="share-with-block">
                     <div *ngIf="timeline.contributedBy.length > 0" class="pull-left">CONTRIBUTED BY</div>
                     <div class="pull-left" style="clear: both">
                         <css-carousel [images]="timeline.contributedBy"></css-carousel>
                     </div>
                 </div>
-                <!--<div style="padding:10px 0px 10px 0px">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <css-carousel></css-carousel>
-                            <input type="button" value='Share' (click)="parentModal.open(); setCurrentTimeline(timeline)" class="btn btn-primary" style="margin-left:5px" />
-                        </div>
-
-                    </div>
-                </div>-->
-
-
             </div>
         </div>
     </div>
-
-
-</div>
-
-
-
+</div>-->
 <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" #parentModal>
     <modal-header [show-close]="true">
         <p>SHARE</p>
@@ -133,5 +168,7 @@
     </modal-footer>
 
 </modal>
+
+
 
 

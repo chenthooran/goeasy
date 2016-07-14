@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
 <html>
 <head>
@@ -6,119 +6,116 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0">
     <title>YAYI Collaboration</title>
 
+    <link rel="shortcut icon" href="assets/img/logo-icon-dark.png">
+    <link type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/quill/dist/quill.snow.css" />
+    <link href="css2/styles.css" type="text/css" rel="stylesheet">
 
-    <!-- UI > Vendor CSS -->
-    <link href="vendors/bower_components/animate.css/animate.min.css?hash=c23d250ffdc15f0a257065e42fd71204" rel="stylesheet">
-    <link href="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css?hash=4e83a02f084b2187a537cfd0c97569f3" rel="stylesheet">
-    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css?hash=93e451e370fad84ad9c2e812b3f46911" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css?hash=3eac435b4de7300746618d195bf9dcb5"/>
-    <link rel="stylesheet" type="text/css" href="app/resources/icons/css/font-awesome.min.css?hash=e36f454f2fa028a34cfb16d46ddccf47?hash=78d720dd411e4d87042e7ab240488563" />
-    <link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.min.css?hash=216805fe794dd720fa5e94dfeeeac617"/>
-    <link rel="stylesheet" type="text/css" href="node_modules/quill/dist/quill.snow.css?hash=b6ee0f6890ec149b90008769239ac5e7" />
-
-    <!-- UI > CSS -->
-    <link href="css/app.min.1.css?hash=84d9de80d42b7b1bce07e4ccb7da0843" rel="stylesheet">
-    <link href="css/app.min.2.css?hash=d61e2ec0434ed1d6d963404e1f972f3a" rel="stylesheet">
-
-    <!-- added by madhawee -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
-    <link href="css/easy-meeting-css.css?hash=080b78ca61a26e71da3f9cf00bfb4c76" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="js/materialize.min.js?hash=b23f54daff7ea55847c3cc2ac57832db"></script>
-    <script src="http://js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Custom style added by madhawee -->
-    <!-- load custom styles and JS -->
-    <!--<link href="css/custom-css.css" rel="stylesheet" />-->
-    <link href="css/font-awesome.min.css" rel="stylesheet"/>
-
-    <link rel="stylesheet" href="css/style.css?hash=bc9f14442795804a7d46d9f06ec2ae79"> <!-- Resource style -->
-    <script src="js/modernizr.js?hash=464b1d002d9c4159031c6987c4d2f5c6"></script> <!-- Modernizr -->
-    <!-- Custom style added by madhawee -->
-
-
+    <script src="js2/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
+    <script src="js2/jqueryui-1.10.3.min.js"></script> 							<!-- Load jQueryUI -->
+    <script src="js/modernizr.js"></script>
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js?hash=c471b13d3e391d316561624ccb96f1c2"></script>
-    <script src="node_modules/zone.js/dist/zone.js?hash=5aa8b391d4a694eca606b088e1b0c354"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js?hash=700fda87eac62a021585f7f23277c8e0"></script>
-    <script src="node_modules/systemjs/dist/system.src.js?hash=8800e74b6a5b9eb6522a5610c1e4ab53"></script>
-    <script src="node_modules/primeui/primeui-ng-all.min.js?hash=14106aac3ab45fd5cb9f6bbb98d4beb3"></script>
-    <script src="node_modules/quill/dist/quill.js?hash=7d1ec87e7a804717f72cb7d616f1e319"></script>
-
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
+    <script src="node_modules/quill/dist/quill.js"></script>
     <script type="text/javascript">
 
-	var ip_country = '';
-	var findLocation = function() {
-		 var startPos;
-		 var geoOptions = {
-			timeout: 10 * 1000
-		 }
+        var ip_country = '';
+        var findLocation = function () {
+            var startPos;
+            var geoOptions = {
+                timeout: 10 * 1000
+            }
 
-		  var geoSuccess = function(position) {
-			startPos = position;
-			var geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json';
-			var api_key = 'AIzaSyBIu3y0OTkfrNC70ndgP6toq_9OyNOXFUU';
-				$.get(
-					geocode_url, 
-					{latlng : startPos.coords.latitude + "," +  startPos.coords.longitude, key : api_key},
-					function(data) {
-					   //console.log(JSON.stringify(data));		
-					   ip_country = data.results[0].formatted_address.split(",").pop(); //replace(/,/g , ' ');
-					   console.log('ip_country : ' + ip_country)
+            var geoSuccess = function (position) {
+                startPos = position;
+                var geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json';
+                var api_key = 'AIzaSyBIu3y0OTkfrNC70ndgP6toq_9OyNOXFUU';
+                $.get(
+					geocode_url,
+					{ latlng: startPos.coords.latitude + "," + startPos.coords.longitude, key: api_key },
+					function (data) {
+					    //console.log(JSON.stringify(data));
+					    ip_country = data.results[0].formatted_address.split(",").pop(); //replace(/,/g , ' ');
 					}
 				);
-		  };
-		  
-		  var geoError = function(error) {
-			console.log('Error occurred. Error code: ' + error.code);
-			// error.code can be:
-			//   0: unknown error
-			//   1: permission denied
-			//   2: position unavailable (error response from location provider)
-			//   3: timed out
-		  };
+            };
 
-	  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-	};
-	findLocation();
+            var geoError = function (error) {
+                console.log('Error occurred. Error code: ' + error.code);
+                // error.code can be:
+                //   0: unknown error
+                //   1: permission denied
+                //   2: position unavailable (error response from location provider)
+                //   3: timed out
+            };
+
+            navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+        };
+        findLocation();
 
     </script>
 
     <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js?hash=8c9d037e6823290399c12e8be43452a7"></script>
+    <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+        System.import('app').catch(function (err) { console.error(err); });
     </script>
+
 </head>
+<body class="animated-content infobar-overlay sidebar-collapsed">
+    <my-app></my-app>
+    <!-- Load site level scripts -->
+    <script src="js2/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
+    <script src="js2/enquire.min.js"></script> 									<!-- Load Enquire -->
+    <script src="js2/velocity.min.js"></script>					<!-- Load Velocity for Animated Content -->
+    <script src="js2/velocity.ui.min.js"></script>
+    <script src="js2/wijets.js"></script>     						<!-- Wijet -->
+    <script src="js2/jquery.sparklines.min.js"></script> 			 <!-- Sparkline -->
+    <script src="js2/prettify.js"></script> 				<!-- Code Prettifier  -->
+    <script src="js2/bootstrap-switch.js"></script> 		<!-- Swith/Toggle Button -->
+    <script src="js2/jquery.nanoscroller.min.js"></script> <!-- nano scroller -->
+    <script src="js2/jquery.dropdown.js"></script> <!-- Fancy Dropdowns -->
+    <script src="js2/material.min.js"></script> <!-- Bootstrap Material -->
+    <script src="js2/ripples.min.js"></script> <!-- Bootstrap Material -->
+    <script src="js2/application.js"></script>
+    <script src="js2/demo.js"></script>
+    <script src="js2/demo-switcher.js"></script>
 
-<!-- 3. Display the application -->
-    <body>
+    <script src="js2/custom.min.js"></script>
+    <script src="js2/jquery.magnific-popup.min.js"></script>
+    <script src="js2/flik-timeline-10.min.js"></script>
+    <script src="js2/jquery.bxslider.min.js"></script>
+    <script>
+			$('.flik-thumbnails-slider').magnificPopup({
+				delegate: 'a',
+				type: 'image',
+				image: {
+					titleSrc: 'title'
+				},
+				gallery: {
+					enabled: true,
+					preload: [0, 1],
+					navigateByImgClick: true
+				}
+			});
+			$('.flik-timeline').flikScrollEffect();
 
-        <my-app></my-app>
-    
-        <!-- UI > Javascript Libraries -->
-        <script src="vendors/bower_components/jquery/dist/jquery.min.js?hash=1b2f96bea6550060dc4bb0a5d7059618"></script>
-        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js?hash=892ad437f2661083ed3529d0823c341b"></script>
+			$(document).on('click', '.show-title', function () {
+				$('.flik-slider-container .flik-slider').bxSlider();
 
-        <script src="vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js?hash=04066c1a38d13bc91b94a58a0736a612"></script>
-        <script src="vendors/bower_components/Waves/dist/waves.min.js?hash=0e9246ba53c8849d0357836ddb2af37b"></script>
-        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js?hash=377cabae6122acaecccfd061429c6c40"></script>
-        <script src="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js?hash=c68a69e9141c38bc7f011f0d65d4ba5c"></script>
-        <script src="vendors/bower_components/autosize/dist/autosize.min.js?hash=504adac705d288fee0cadd5501f31f26"></script>
-
-        <script src="js/functions.js?hash=6e48e22b858ea59310edbcf1a4db1f0b"></script>
-        <script src="js/demo.js?hash=302e59ac16f32bf61881d258abc7e60a"></script>
-    </body>
+			});
+//flikScrollEffect($('.flik-timeline'));
+    </script>
+    <!-- End loading site level scripts -->
+</body>
 </html>

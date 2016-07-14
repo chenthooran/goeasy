@@ -34,8 +34,6 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                         selector: 'css-carousel',
                         //Template for the tag
                         templateUrl: './app/carousel/carousel.html',
-                        //Styles for the tag
-                        styleUrls: ['./css/img.css'],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CSSCarouselComponent);

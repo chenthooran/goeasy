@@ -10,7 +10,7 @@ import {Image} from './image.interface';
     //Template for the tag
     templateUrl: './app/carousel/carousel.html',
     //Styles for the tag
-    styleUrls: ['./css/img.css'],
+    //styleUrls: ['./css/img.css'],
 })
 //Carousel Component itself
 export class CSSCarouselComponent {

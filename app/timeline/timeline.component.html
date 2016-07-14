@@ -1,45 +1,4 @@
-﻿
-
-<!-- Timeline -->
- <!--<timelineinfo close-others="true">
-    <timeline-group [heading]="timeline.dateFormat" *ngFor="#timeline of filteredTimelines;  #i = index" [isOpen]="i === 0" [availableCountText]="timeline.availableThreadsCountText">
-
-        <div class="col-md-12 " *ngFor="#Item of timeline.items">
-            <div class="col-md-12">
-                <div class="col-md-1">
-                    <div alt="" class="timeline-icon">
-                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                    </div>
-                    <div class="timeline-timestamp">
-                        <div class="font-14" *ngIf="timeline.dateFormat != 'NOW'">
-                            {{Item.date }}
-                        </div>
-                        <div class="timeline-time" *ngIf="timeline.dateFormat == 'NOW'">{{Item.time}}</div>
-                    </div>
-                </div>
-                <div class="col-md-11 no-padding" style="margin-top:20px;">
-                    <timelinedetail close-others="true">
-                        <div class="pull-right" style="margin-top: 20px;padding-right: 16px;color:#ddd;">
-                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                        </div>
-
-                        <div alt="" class="timeline-img" style="margin-right: 10px; margin-top: 10px; float: right;">
-                            <img class="circle responsive-img" src={{Item.userImageUrl}}>
-                        </div>
-
-                        <timeline-detail-group [heading]="Item.title" [headerDescription]="Item.plainDescriptionText">
-
-                            <div [innerHTML]="Item.description"></div>
-                        </timeline-detail-group>
-                    </timelinedetail>
-                </div>
-            </div>
-        </div>
-    </timeline-group>
-</timelineinfo>--> 
-
-
-<section id="main-content">
+﻿<section id="main-content">
     <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" #parentModal>
         <modal-header [show-close]="true">
             <p>SHARE</p>
@@ -67,9 +26,6 @@
         </modal-footer>
 
     </modal>
-    <!--<div class="app-header-secondary">
-
-    </div>-->
 
     <!-- Timeline Heading and Add Note -->
     <h1>
@@ -82,7 +38,7 @@
     <div class="fluid-autocomplete">
         <prime-app [isAllowedNewInput]="false" [inputValues]="timeLineRequest.data" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
     </div>
-    
+
     <timelineinfo close-others="true">
         <div class="search-results"
              infinite-scroll
@@ -91,76 +47,608 @@
              (scrolled)="onScroll()"
              [scrollWindow]="true">
         </div>
-		
-<!--        <div id="popularTags1" *ngFor="let group of popularTags">-->
-<!--            <p>{{ group.count }}</p>-->
-<!--            <p>{{ group.displayName }}</p>-->
-<!--            <div id="popularTags2" *ngFor="let tag of group.tags">-->
-<!--                <p>{{ tag.name }}</p>-->
-<!--                <p>{{ tag.createdBy }}</p>			-->
-<!--                <p>{{ tag.createdDate }}</p>	-->
-<!--            </div>-->
-<!--        </div>-->
-        <div class="tag-suggestions-container">
-            <span class="title">Trending</span>
-            <div class="common-tag" *ngFor="let group of popularTags"><a style="padding-right: 5px;" (click)="selectTrend(group.data)">{{group.displayName}}</a></div>
+        <div id="wrapper">
+            <div id="layout-static">
+                <div class="static-content-wrapper">
+                    <div class="static-content">
+                        <div class="page-content">
+                            <div class="container-fluid">
+                                <div data-widget-group="group1" class="ui-sortable">
+                                    <div class="row" style="margin-top: 11px;">
+                                        <div class="col-md-12 pl-n pr-n">
+
+                                        </div>
+
+                                        <!--Timeline STARTS-->
+                                        <div class="col-md-9" style="padding-left: 13px;">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab-8-2">
+
+                                                    <!-- BEGIN TIMELINE -->
+                                                    <div class="panel panel-white" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                                                        <div class="panel-controls dropdown">
+                                                            <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li><a href="index.html">Action</a></li>
+                                                                <li><a href="index.html">Another action</a></li>
+                                                                <li><a href="index.html">Something else here</a></li>
+                                                                <li class="divider"></li>
+                                                                <li><a href="index.html">Separated link</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="panel-heading">
+                                                            <h2 style="font-size: 16px;">Timeline</h2>
+                                                        </div>
+                                                        <div class="panel-body" style="padding-top: 0;">
+
+                                                            <!-- START TIMELINE -->
+                                                            <div class="col-md-12" style="padding-top:16px;">
+                                                                <div class="panel-group panel-default" id="accordionA">
+                                                                    <div class="panel panel-default">
+                                                                        <a data-toggle="collapse" data-parent="#accordionA" href="ui-tabs.html#collapseOne">
+                                                                            <div class="panel-heading">
+                                                                                <h2 style="padding-left: 8%;color: #2d3e4f;font-weight: 500;">Today</h2>
+                                                                                <h2 style="padding-left: 37%;color: #2d3e4f;font-weight: 500;">1 Note Available </h2>
+                                                                            </div>
+                                                                        </a>
+                                                                        <div id="collapseOne" class="collapse in">
+                                                                            <div class="panel-body">
+                                                                                <!-- END TIMELINE CONTENT -->
+                                                                                <div class="flik-content">
+                                                                                    <!-- BEGIN TIMELINE 8-->
+                                                                                    <section class="flik-container">
+                                                                                        <!-- BEGIN TIMELINE CONTENT -->
+                                                                                        <ul class="flik-timeline flik-timeline-10 flik-accordion" data-scroll-effect="bounce-effect">
+                                                                                            <li class="active">
+                                                                                                <div class="relative">
+                                                                                                    <label class="show-title">Facebook is a social networking service</label>
+                                                                                                    <span class="date">
+                                                                                                        <div class="timediv" style="
+                                                                                                             padding-top 0px;
+                                                                                                             padding-left 59px;
+                                                                                                             "><time datetime="2016-06-29" class="icon">
+                                                                                                            <!-- <em>Wednesday</em> -->
+                                                                                                            <strong>JUNE</strong>
+                                                                                                            <span>29</span>
+                                                                                                            </time>
+                                                                                                        </div>
+                                                                                                    </span>
+                                                                                                    <span class='circle'></span>
+                                                                                                </div>
+                                                                                                <div class='flik-timeline-content'>
+                                                                                                    <div class="content-title">
+                                                                                                        Facebook is a social networking service
+                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                            <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
+                                                                                                            Watching
+                                                                                                        </a>
+                                                                                                        <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                                                                                    </div>
+                                                                                                    <div class="content-main">
+                                                                                                        Facebook is a social networking service launched in February 4, 2004.
+                                                                                                        It was founded by Mark Zuckerberg with his college roommates and fellow Harvard University student Eduardo Saverin
+                                                                                                        The website's membership was initially limited by the founders to Harvard students,
+                                                                                                        but was expanded to other colleges in the Boston area, the Ivy League,
+                                                                                                        and gradually most universities in Canada and the United States,
+                                                                                                        corporations, and by September 2006, to everyone of age 13 and older with a valid email address.
+
+                                                                                                        <ul class="contacts tag" style="display: flex;padding-top: 10px;padding-bottom: 10px;">
+                                                                                                            <a class="btn" style=" background:rgb(232, 234, 246); color #607d8b;" href="#">HR<div class="ripple-container"></div></a>
+                                                                                                            <a class="btn" style="color:white;" href="#">
+                                                                                                                Project Management
+                                                                                                            </a>
+                                                                                                            <a class="btn" style="color:white;" href="#">Security</a>
+                                                                                                        </ul>
+                                                                                                        <hr class="style-six">
+                                                                                                        <div class="like-info">
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">thumb_up</i>
+                                                                                                                Like
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">share</i>
+                                                                                                                Share
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">alarm</i>
+                                                                                                                Reminder
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">edit</i>
+                                                                                                                Edit
+                                                                                                            </a>
+                                                                                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                                                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                                                                                    <h4 class="panel-title">
+                                                                                                                        <button class="btn btn-xs btn-primary btn-raised" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right">Comment  <div class="ripple-container"></div></button>
+                                                                                                                    </h4>
+                                                                                                                </div>
+                                                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                                                                                    <div class="panel-body"><input class="form-control" type="text" placeholder="Wish to make a reply..."></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="relative">
+                                                                                                    <label class="show-title">Facebook launches News Feed.</label>
+                                                                                                    <span class="date">
+                                                                                                        <div class="timediv" style="
+                                                                                                             padding-top 0px;
+                                                                                                             padding-left 59px;
+                                                                                                             "><time datetime="2016-06-29" class="icon">
+                                                                                                            <!-- <em>Wednesday</em> -->
+                                                                                                            <strong>JUNE</strong>
+                                                                                                            <span>29</span>
+                                                                                                            </time>
+                                                                                                        </div>
+                                                                                                    </span>
+                                                                                                    <span class='circle'></span>
+                                                                                                </div>
+                                                                                                <div class='flik-timeline-content'>
+                                                                                                    <div class="content-title">
+                                                                                                        Facebook launches News Feed.
+                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                            <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
+                                                                                                            Watching
+                                                                                                        </a>
+                                                                                                        <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="">
+
+                                                                                                    </div>
+                                                                                                    <div class="content-main">
+                                                                                                        Facebook launches News Feed. The original news feed is an algorithmically generated and constantly refreshing summary of updates about the activities of one's friends. The concept is relatively new at the time, with <a href="https://twitter.com/?lang=en" title="Twitter">Twitter</a> having launched only a few months in advance.
+                                                                                                        <ul class="contacts tag" style="display: flex;padding-top: 10px;padding-bottom: 10px;">
+                                                                                                            <a class="btn" style=" background:rgb(232, 234, 246); color #607d8b;" href="#">HR<div class="ripple-container"></div></a>
+                                                                                                            <a class="btn" style="color:white;" href="#">
+                                                                                                                Project Management
+                                                                                                            </a>
+                                                                                                            <a class="btn" style="color:white;" href="#">Security</a>
+                                                                                                        </ul>
+                                                                                                        <hr class="style-six">
+                                                                                                        <div class="like-info">
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">thumb_up</i>
+                                                                                                                Like
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">share</i>
+                                                                                                                Share
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">alarm</i>
+                                                                                                                Reminder
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">edit</i>
+                                                                                                                Edit
+                                                                                                                <!-- 	<p class="m-n like-amount" style="font-size: 13px;"><a href="extras-profile.html">9 others</a> like this</p> -->
+                                                                                                            </a>
+                                                                                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                                                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                                                                                    <h4 class="panel-title">
+                                                                                                                        <button class="btn btn-xs btn-primary btn-raised" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right">Comment  <div class="ripple-container"></div></button>
+                                                                                                                    </h4>
+                                                                                                                </div>
+                                                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                                                                                    <div class="panel-body"><input class="form-control" type="text" placeholder="Wish to make a reply..."></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="relative">
+                                                                                                    <label class="show-title">Facebook launches News Feed.</label>
+                                                                                                    <span class="date">
+                                                                                                        <div class="timediv" style="
+                                                                                                             padding-top 0px;
+                                                                                                             padding-left 59px;
+                                                                                                             "><time datetime="2016-06-29" class="icon">
+                                                                                                            <!-- <em>Wednesday</em> -->
+                                                                                                            <strong>JUNE</strong>
+                                                                                                            <span>29</span>
+                                                                                                            </time>
+                                                                                                        </div>
+                                                                                                    </span>
+                                                                                                    <span class='circle'></span>
+                                                                                                </div>
+                                                                                                <div class='flik-timeline-content'>
+                                                                                                    <div class="content-title">
+                                                                                                        Facebook launches News Feed.
+                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                            <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
+                                                                                                            Watching
+                                                                                                        </a>
+                                                                                                        <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="">
+
+                                                                                                    </div>
+                                                                                                    <div class="content-main">
+                                                                                                        Facebook launches News Feed. The original news feed is an algorithmically generated and constantly refreshing summary of updates about the activities of one's friends. The concept is relatively new at the time, with <a href="https://twitter.com/?lang=en" title="Twitter">Twitter</a> having launched only a few months in advance.
+                                                                                                        <ul class="contacts tag" style="display: flex;padding-top: 10px;padding-bottom: 10px;">
+                                                                                                            <a class="btn" style=" background:rgb(232, 234, 246); color #607d8b;" href="#">HR<div class="ripple-container"></div></a>
+                                                                                                            <a class="btn" style="color:white;" href="#">
+                                                                                                                Project Management
+                                                                                                            </a>
+                                                                                                            <a class="btn" style="color:white;" href="#">Security</a>
+                                                                                                        </ul>
+                                                                                                        <hr class="style-six">
+                                                                                                        <div class="like-info">
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">thumb_up</i>
+                                                                                                                Like
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">share</i>
+                                                                                                                Share
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">alarm</i>
+                                                                                                                Reminder
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">edit</i>
+                                                                                                                Edit
+                                                                                                                <!-- 	<p class="m-n like-amount" style="font-size: 13px;"><a href="extras-profile.html">9 others</a> like this</p> -->
+                                                                                                            </a>
+                                                                                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                                                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                                                                                    <h4 class="panel-title">
+                                                                                                                        <button class="btn btn-xs btn-primary btn-raised" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right">Comment  <div class="ripple-container"></div></button>
+                                                                                                                    </h4>
+                                                                                                                </div>
+                                                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                                                                                    <div class="panel-body"><input class="form-control" type="text" placeholder="Wish to make a reply..."></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="relative">
+                                                                                                    <label class="show-title">Facebook launches News Feed.</label>
+                                                                                                    <span class="date">
+                                                                                                        <div class="timediv" style="
+                                                                                                             padding-top 0px;
+                                                                                                             padding-left 59px;
+                                                                                                             "><time datetime="2016-06-29" class="icon">
+                                                                                                            <!-- <em>Wednesday</em> -->
+                                                                                                            <strong>JUNE</strong>
+                                                                                                            <span>29</span>
+                                                                                                            </time>
+                                                                                                        </div>
+                                                                                                    </span>
+                                                                                                    <span class='circle'></span>
+                                                                                                </div>
+                                                                                                <div class='flik-timeline-content'>
+                                                                                                    <div class="content-title">
+                                                                                                        Facebook launches News Feed.
+                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                            <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
+                                                                                                            Watching
+                                                                                                        </a>
+                                                                                                        <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="">
+
+                                                                                                    </div>
+                                                                                                    <div class="content-main">
+                                                                                                        Facebook launches News Feed. The original news feed is an algorithmically generated and constantly refreshing summary of updates about the activities of one's friends. The concept is relatively new at the time, with <a href="https://twitter.com/?lang=en" title="Twitter">Twitter</a> having launched only a few months in advance.
+                                                                                                        <ul class="contacts tag" style="display: flex;padding-top: 10px;padding-bottom: 10px;">
+                                                                                                            <a class="btn" style=" background:rgb(232, 234, 246); color #607d8b;" href="#">HR<div class="ripple-container"></div></a>
+                                                                                                            <a class="btn" style="color:white;" href="#">
+                                                                                                                Project Management
+                                                                                                            </a>
+                                                                                                            <a class="btn" style="color:white;" href="#">Security</a>
+                                                                                                        </ul>
+                                                                                                        <hr class="style-six">
+                                                                                                        <div class="like-info">
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">thumb_up</i>
+                                                                                                                Like
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">share</i>
+                                                                                                                Share
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">alarm</i>
+                                                                                                                Reminder
+                                                                                                            </a>
+                                                                                                            <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                                <i class="material-icons" style="font-size: 13px;">edit</i>
+                                                                                                                Edit
+                                                                                                                <!-- 	<p class="m-n like-amount" style="font-size: 13px;"><a href="extras-profile.html">9 others</a> like this</p> -->
+                                                                                                            </a>
+                                                                                                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                                                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                                                                                    <h4 class="panel-title">
+                                                                                                                        <button class="btn btn-xs btn-primary btn-raised" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right">Comment  <div class="ripple-container"></div></button>
+                                                                                                                    </h4>
+                                                                                                                </div>
+                                                                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                                                                                    <div class="panel-body"><input class="form-control" type="text" placeholder="Wish to make a reply..."></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </section>
+                                                                                    <!-- END TIMELINE 8-->
+                                                                                </div>
+                                                                                <!-- END TIMELINE-->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="panel panel-default">
+                                                                        <a data-toggle="collapse" data-parent="#accordionA" href="ui-tabs.html#collapseThree"><div class="panel-heading"><h2>Accordion Panel Group #3</h2></div></a>
+                                                                        <div id="collapseThree" class="collapse">
+                                                                            <div class="panel-body">
+                                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--    END TIMELINE	 -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- col-sm-9 -->
+                                        <!-- END TIMELINE-->
+                                        <!-- Trending STARTS -->
+                                        <div class="col-md-3" style="padding-left: 0;">
+                                            <div class="panel panel-white" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                                                <div class="panel-controls dropdown">
+                                                    <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="index.html">Action</a></li>
+                                                        <li><a href="index.html">Another action</a></li>
+                                                        <li><a href="index.html">Something else here</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="index.html">Separated link</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="panel-heading">
+                                                    <h2 style="font-size: 16px;">TRENDING</h2>
+                                                </div>
+                                                <div class="panel-body" style="padding-top: 0;">
+                                                    <div class="widget">
+                                                        <div class="widget-body">
+                                                            <ul class="media-list contacts tags" *ngFor="let group of popularTags">
+                                                                <li class="med" style="DISPLAY: inline-block;">
+                                                                    <div class="media-body">
+                                                                        <a class="btn" style="margin-top: 11px;color:white;" (click)="selectTrend(group.data)">{{group.displayName}}<div class="ripple-container"></div></a>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-		
-        <timeline-group [heading]="timeline.dateFormat" *ngFor="let timeline of timeLinesList;  let i = index; let last = last" [isOpen]="i === i" [availableCountText]="timeline.availableThreadsCountText">
+        <!-- Trending ENDS -->
+        <!--TimeLine Previous Version Code STARTS-->
+        <!--TimeLine Previous Version Code ENDS-->
 
-            <section id="cd-timeline" class="cd-container">
-             <div class="cd-timeline-block" *ngFor="let Item of timeline.items">
-                    <div class="cd-timeline-img cd-location">
-                        <!--<img src="img/cd-icon-location.svg" alt="Location">-->
-                        <i class="fa fa-file-text" aria-hidden="true"></i>
-                    </div> <!-- cd-timeline-img -->
-                 <div class="cd-timeline-content">
-                     <timelinedetail close-others="true">
-                         <div style="float:right; width:120px;">
-                             <div alt="" class="timeline-img pull-right">
-                                 <img class="circle responsive-img" src={{Item.userImageUrl}}>
-                             </div>
-                             <div class="pull-left">
-                                 <button type="button" id="btn-edit-note" class="share-note-icon mtop-14" style="width:38px;height:27px" title="Edit" (click)="toggleOpenEditNote($event, Item)">
-                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                 </button>
-                             </div>
-                             <div class="pull-left">
-								 <button type="button" id="btn-share-note" (click)="parentModal.open(); setCurrentNote(Item);" class="share-note-icon mtop-14" style="width:38px;height:27px" title="Share">
-                                 <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-								 </button>	
-                             </div>
-                         </div>
-                         <timeline-detail-group [heading]="Item.title" [headerDescription]="Item.plainDescriptionText">
-                             <div [innerHTML]="Item.description"></div>
-                         </timeline-detail-group>
-                     </timelinedetail>
-                     <div class="timeline-common-tag-container">
-                         <span class="common-tag" *ngFor="let tag of Item.tags; let last = last">{{tag.name}}<span *ngIf="!last"></span></span>
-                     </div>
-                     <div class="attachment-list-container"> <!--Attachments-->
-                         <div class="attachment-list-item" *ngFor="let attachment of Item.attachments">
-                             <span class="glyphicon glyphicon-paperclip"></span>
-                             <a href="{{fileApiUrl}}?exRef={{attachment.contentFileRef}}"
-                                download="{{attachment.fileName}}">{{attachment.fileName}}</a>
-                         </div>
-                     </div>
-                     <edit-note class="panel-collapse" [hidden]="!isEditNoteOpen || Item.id != selectedId" [title]="Item.title" [description]="Item.description" [id]="Item.id"></edit-note>
-                     <div class="timeline-item-datetime-container">
-                         <span class="cd-date lbl-timeline-date" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
-                         <span class="cd-date lbl-timeline-month" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateMonth}}</span>
-                         <span class="cd-date lbl-timeline-date" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
-                         <span class="cd-date lbl-timeline-month" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeAMPM}}</span>
-                     </div>
-                 </div> <!-- cd-timeline-content -->
-                </div> <!-- cd-timeline-block -->
-                <div *ngIf="last && isLoading && !loadingLabelHide" class="cd-timeline-block"><div class="cd-timeline-content"><timelinedetail close-others="true" style="color:#0277bd;">Loading..</timelinedetail></div></div>
-            </section> <!-- cd-timeline --> 
-        </timeline-group>
         <div *ngIf="showlabel" class="no-records-container">No Records are found for the given Tag Combination</div>
+
+
+
     </timelineinfo>
+
+    <div class="infobar-wrapper scroll-pane">
+        <div class="infobar scroll-content">
+
+            <ul class="nav nav-tabs material-nav-tabs stretch-tabs icon-tabs">
+                <li>
+                    <a href="extras-profile.html#tab-7-1" data-toggle="tab">
+                        <i class="material-icons">settings</i>
+                    </a>
+                </li>
+                <li class="active ">
+                    <a href="extras-profile.html#tab-7-2" data-toggle="tab">
+                        <span class="step size-64">
+                            <i class="material-icons">textsms</i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane" id="tab-7-1">
+                    <table class="table table-settings">
+                        <tbdody>
+                            <tr>
+                                <td>
+                                    <h5>Alerts</h5>
+                                    <p>Sets alerts to get notified when changes occur to get new alerming items</p>
+                                </td>
+                                <td><span class="togglebutton toggle-info"><label><input type="checkbox"> </label></span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Notifications</h5>
+                                    <p>You will receive notification email for any notifications if you set notification</p>
+                                </td>
+                                <td><span class="togglebutton toggle-primary"><label><input type="checkbox" class="toggle" checked=""> </label></span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Messages</h5>
+                                    <p>You will receive notification on email after setting messages notifications</p>
+                                </td>
+                                <td>
+                                    <span class="togglebutton toggle-danger"><label><input type="checkbox"> </label></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Warnings</h5>
+                                    <p>You will get warnning only some specific setttings or alert system</p>
+                                </td>
+                                <td>
+                                    <span class="togglebutton toggle-warning"><label><input type="checkbox" checked=""> </label></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Sidebar</h5>
+                                    <p>You can hide/show use with sidebar collapsw settings</p>
+                                </td>
+                                <td><span class="togglebutton toggle-success"><label><input type="checkbox" checked=""> </label></span></td>
+                            </tr>
+                        </tbdody>
+                    </table>
+                </div>
+                <div class="tab-pane active" id="tab-7-2">
+                    <div class="widget">
+                        <div class="widget-heading">Recent Activities</div>
+                        <div class="widget-body">
+                            <ul class="timeline">
+                                <li class="timeline-purple">
+                                    <div class="timeline-icon"><i class="material-icons">add</i></div>
+                                    <div class="timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="author">Jana Pena is now Follwing you</span>
+                                            <span class="date">2 min ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-primary">
+                                    <div class="timeline-icon"><i class="material-icons">textsms</i></div>
+                                    <div class="timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="author">Percy liaye Like your picture</span>
+                                            <span class="date">6 min ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-green">
+                                    <div class="timeline-icon"><i class="material-icons">done</i></div>
+                                    <div class="timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="author">Leon miles make your presentation for new project</span>
+                                            <span class="date">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-danger">
+                                    <div class="timeline-icon"><i class="material-icons">favorite</i></div>
+                                    <div class="timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="author">Lake wile like your comment</span>
+                                            <span class="date">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-sky">
+                                    <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
+                                    <div class="timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="author">The Mountain Ambience paid your payment</span>
+                                            <span class="date">9 hours ago</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-heading">Contacts</div>
+                        <div class="widget-body">
+                            <ul class="media-list contacts">
+                                <li class="media notification-message">
+                                    <div class="media-left">
+                                        <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="text-gray">Jon Owens</span>
+                                        <span class="contact-status text-success">Online</span>
+                                    </div>
+                                </li>
+                                <li class="media notification-message">
+                                    <div class="media-left">
+                                        <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="text-gray">Nina Huges</span>
+                                        <span class="contact-status text-muted">Offline</span>
+                                    </div>
+                                </li>
+                                <li class="media notification-message">
+                                    <div class="media-left">
+                                        <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="text-gray">Austin Lee</span>
+                                        <span class="contact-status text-danger">Busy</span>
+                                    </div>
+                                </li>
+                                <li class="media notification-message">
+                                    <div class="media-left">
+                                        <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="text-gray">Grady Hines</span>
+                                        <span class="contact-status text-warning">Away</span>
+                                    </div>
+                                </li>
+                                <li class="media notification-message">
+                                    <div class="media-left">
+                                        <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="text-gray">Adrian Barton</span>
+                                        <span class="contact-status text-success">Online</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Das FAB -->
+    <button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="Click for Settings"><i style='font-size:35px' class="material-icons">add</i></button>
+    <!-- Switcher -->
+    <div class="demo-options">
+        <div class="demo-body">
+
+        </div>
+        <div class="demo-body">
+            <div class="option-title">Brand</div>
+            <ul id="demo-header-color" class="demo-color-list">
+                <li><span data-addclass="navbar-brand-default" class="brand-switcher demo-default"></span></li>
+                <li><span data-addclass="navbar-brand-primary" class="brand-switcher demo-primary"></span></li>
+                <li><span data-addclass="navbar-brand-success" class="brand-switcher demo-success"></span></li>
+                <li><span data-addclass="navbar-brand-danger" class="brand-switcher demo-danger"></span></li>
+                <li><span data-addclass="navbar-brand-warning" class="brand-switcher demo-warning"></span></li>
+                <li><span data-addclass="navbar-brand-info" class="brand-switcher demo-info"></span></li>
+                <li><span data-addclass="navbar-brand-inverse" class="brand-switcher demo-inverse"></span></li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /Switcher -->
 </section>
-<input type="hidden" value="2" id="application-view-id"/>
-
-
+<input type="hidden" value="2" id="application-view-id" />
 

@@ -1,0 +1,166 @@
+﻿
+
+<!-- Timeline -->
+ <!--<timelineinfo close-others="true">
+    <timeline-group [heading]="timeline.dateFormat" *ngFor="#timeline of filteredTimelines;  #i = index" [isOpen]="i === 0" [availableCountText]="timeline.availableThreadsCountText">
+
+        <div class="col-md-12 " *ngFor="#Item of timeline.items">
+            <div class="col-md-12">
+                <div class="col-md-1">
+                    <div alt="" class="timeline-icon">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </div>
+                    <div class="timeline-timestamp">
+                        <div class="font-14" *ngIf="timeline.dateFormat != 'NOW'">
+                            {{Item.date }}
+                        </div>
+                        <div class="timeline-time" *ngIf="timeline.dateFormat == 'NOW'">{{Item.time}}</div>
+                    </div>
+                </div>
+                <div class="col-md-11 no-padding" style="margin-top:20px;">
+                    <timelinedetail close-others="true">
+                        <div class="pull-right" style="margin-top: 20px;padding-right: 16px;color:#ddd;">
+                            <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                        </div>
+
+                        <div alt="" class="timeline-img" style="margin-right: 10px; margin-top: 10px; float: right;">
+                            <img class="circle responsive-img" src={{Item.userImageUrl}}>
+                        </div>
+
+                        <timeline-detail-group [heading]="Item.title" [headerDescription]="Item.plainDescriptionText">
+
+                            <div [innerHTML]="Item.description"></div>
+                        </timeline-detail-group>
+                    </timelinedetail>
+                </div>
+            </div>
+        </div>
+    </timeline-group>
+</timelineinfo>--> 
+
+
+<section id="main-content">
+    <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" #parentModal>
+        <modal-header [show-close]="true">
+            <p>SHARE</p>
+        </modal-header>
+        <modal-body>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label for="user-app" class="col-sm-pull-4 control-label">Whom would you like to share with ?</label>
+                    </div>
+
+                    <div class="col-sm-10">
+                        <user-app [isAllowedNewInput]="false" (usersAdded)='onSelectedUsersChanged($event)' (usersRemoved)="onSelectedUsersChanged($event)">Loading...</user-app>
+                    </div>
+                </div>
+            </form>
+        </modal-body>
+        <modal-footer>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="parentModal.dismiss()">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="parentModal.close();shareNote()">Share</button>
+                </div>
+            </div>
+        </modal-footer>
+
+    </modal>
+    <!--<div class="app-header-secondary">
+
+    </div>-->
+
+    <!-- Timeline Heading and Add Note -->
+    <h1>
+        {{title}}
+        <button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" id="chat-trigger" data-trigger="#chat">
+            <i class="material-icons">playlist_add</i> <span>add note</span>
+        </button>
+    </h1>
+    <!-- Tag search -->
+    <div class="fluid-autocomplete">
+        <prime-app [isAllowedNewInput]="false" [inputValues]="timeLineRequest.data" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
+    </div>
+    
+    <timelineinfo close-others="true">
+        <div class="search-results"
+             infinite-scroll
+             [infiniteScrollDistance]="2"
+             [infiniteScrollThrottle]="500"
+             (scrolled)="onScroll()"
+             [scrollWindow]="true">
+        </div>
+		
+<!--        <div id="popularTags1" *ngFor="let group of popularTags">-->
+<!--            <p>{{ group.count }}</p>-->
+<!--            <p>{{ group.displayName }}</p>-->
+<!--            <div id="popularTags2" *ngFor="let tag of group.tags">-->
+<!--                <p>{{ tag.name }}</p>-->
+<!--                <p>{{ tag.createdBy }}</p>			-->
+<!--                <p>{{ tag.createdDate }}</p>	-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="tag-suggestions-container">
+            <span class="title">Trending</span>
+            <div class="common-tag" *ngFor="let group of popularTags"><a style="padding-right: 5px;" (click)="selectTrend(group.data)">{{group.displayName}}</a></div>
+        </div>
+		
+        <timeline-group [heading]="timeline.dateFormat" *ngFor="let timeline of timeLinesList;  let i = index; let last = last" [isOpen]="i === i" [availableCountText]="timeline.availableThreadsCountText">
+
+            <section id="cd-timeline" class="cd-container">
+             <div class="cd-timeline-block" *ngFor="let Item of timeline.items">
+                    <div class="cd-timeline-img cd-location">
+                        <!--<img src="img/cd-icon-location.svg" alt="Location">-->
+                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                    </div> <!-- cd-timeline-img -->
+                 <div class="cd-timeline-content">
+                     <timelinedetail close-others="true">
+                         <div style="float:right; width:120px;">
+                             <div alt="" class="timeline-img pull-right">
+                                 <img class="circle responsive-img" src={{Item.userImageUrl}}>
+                             </div>
+                             <div class="pull-left">
+                                 <button type="button" id="btn-edit-note" class="share-note-icon mtop-14" style="width:38px;height:27px" title="Edit" (click)="toggleOpenEditNote($event, Item)">
+                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                 </button>
+                             </div>
+                             <div class="pull-left">
+								 <button type="button" id="btn-share-note" (click)="parentModal.open(); setCurrentNote(Item);" class="share-note-icon mtop-14" style="width:38px;height:27px" title="Share">
+                                 <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+								 </button>	
+                             </div>
+                         </div>
+                         <timeline-detail-group [heading]="Item.title" [headerDescription]="Item.plainDescriptionText">
+                             <div [innerHTML]="Item.description"></div>
+                         </timeline-detail-group>
+                     </timelinedetail>
+                     <div class="timeline-common-tag-container">
+                         <span class="common-tag" *ngFor="let tag of Item.tags; let last = last">{{tag.name}}<span *ngIf="!last"></span></span>
+                     </div>
+                     <div class="attachment-list-container"> <!--Attachments-->
+                         <div class="attachment-list-item" *ngFor="let attachment of Item.attachments">
+                             <span class="glyphicon glyphicon-paperclip"></span>
+                             <a href="{{fileApiUrl}}?exRef={{attachment.contentFileRef}}"
+                                download="{{attachment.fileName}}">{{attachment.fileName}}</a>
+                         </div>
+                     </div>
+                     <edit-note class="panel-collapse" [hidden]="!isEditNoteOpen || Item.id != selectedId" [title]="Item.title" [description]="Item.description" [id]="Item.id"></edit-note>
+                     <div class="timeline-item-datetime-container">
+                         <span class="cd-date lbl-timeline-date" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
+                         <span class="cd-date lbl-timeline-month" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateMonth}}</span>
+                         <span class="cd-date lbl-timeline-date" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
+                         <span class="cd-date lbl-timeline-month" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeAMPM}}</span>
+                     </div>
+                 </div> <!-- cd-timeline-content -->
+                </div> <!-- cd-timeline-block -->
+                <div *ngIf="last && isLoading && !loadingLabelHide" class="cd-timeline-block"><div class="cd-timeline-content"><timelinedetail close-others="true" style="color:#0277bd;">Loading..</timelinedetail></div></div>
+            </section> <!-- cd-timeline --> 
+        </timeline-group>
+        <div *ngIf="showlabel" class="no-records-container">No Records are found for the given Tag Combination</div>
+    </timelineinfo>
+</section>
+<input type="hidden" value="2" id="application-view-id"/>
+
+
+

@@ -39,9 +39,7 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                     this.tagsService = tagsService;
                     this.tagRequest = {
                         id: 0,
-                        name: '',
-                        createdBy: '',
-                        createdDate: ''
+                        name: ''
                     };
                     this.isCollapsed = false;
                     this.title = "Tags";
@@ -52,7 +50,8 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                     this.getTags();
                 };
                 TagsComponent.prototype.onClick = function (tag) {
-                    this._router.navigate(['tag', { id: tag.id }]);
+                    this._router.navigate(['/newtag', tag.id]);
+                    //this._router.navigate(['/tag', tag.id]);
                 };
                 TagsComponent.prototype.filterTag = function (query, tags) {
                     var filtered = [];
@@ -84,6 +83,10 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                     }, function (err) { return console.log("error: " + err); }, function () {
                         //this._router.navigate(['timeline']);
                     });
+                };
+                TagsComponent.prototype.onTagCreate = function () {
+                    console.log('onTagCreate');
+                    this._router.navigate(['/newtag', '']);
                 };
                 TagsComponent = __decorate([
                     core_1.Component({

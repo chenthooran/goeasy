@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../recenttimeline/recenttimeline.component', '../thinkhelpful/thinkhelpful.component', '../whatisgoingon/whatisgoingon.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '../recenttimeline/recenttimeline.component', '../thinkhelpful/thinkhelpful.component', '../whatisgoingon/whatisgoingon.component', '../services/token.service', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '../recenttimeline/recenttimeline.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, recenttimeline_component_1, thinkhelpful_component_1, whatisgoingon_component_1;
+    var core_1, recenttimeline_component_1, thinkhelpful_component_1, whatisgoingon_component_1, token_service_1, router_1;
     var Dashboard;
     return {
         setters:[
@@ -25,11 +25,25 @@ System.register(['@angular/core', '../recenttimeline/recenttimeline.component', 
             },
             function (whatisgoingon_component_1_1) {
                 whatisgoingon_component_1 = whatisgoingon_component_1_1;
+            },
+            function (token_service_1_1) {
+                token_service_1 = token_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             Dashboard = (function () {
-                function Dashboard() {
+                function Dashboard(_router, _tokenService) {
+                    this._router = _router;
+                    this._tokenService = _tokenService;
+                    this.isAuthorized = this._tokenService.getTokenFromCookie() != "";
                 }
+                Dashboard.prototype.ngOnInit = function () {
+                    if (!this.isAuthorized) {
+                        this._router.navigate(['/login']);
+                    }
+                };
                 Dashboard = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
@@ -37,7 +51,7 @@ System.register(['@angular/core', '../recenttimeline/recenttimeline.component', 
                         providers: [],
                         directives: [recenttimeline_component_1.RecentTimeLineComponent, thinkhelpful_component_1.ThinkHelpful, whatisgoingon_component_1.WhatIsGoingOnComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, token_service_1.TokenService])
                 ], Dashboard);
                 return Dashboard;
             }());

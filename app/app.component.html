@@ -1,338 +1,453 @@
 ﻿<loading></loading>
-<header id="header" *ngIf="isAuthorized">
-    <!-- logo and hanbergur menu icon -->
-    <ul class="header-inner col-md-3">
-        <li id="menu-trigger" data-trigger="#sidebar" *ngIf="isAuthorized">
-            <div class="line-wrap">
-                <div class="line top"></div>
-                <div class="line center"></div>
-                <div class="line bottom"></div>
+
+<header id="topnav" class="navbar navbar-fixed-top navbar-blue" role="banner">
+    <!-- <div id="page-progress-loader" class="show"></div> -->
+    <div class="logo-area">
+        <a class="navbar-brand navbar-brand-inverse" href="index.html">
+            <img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
+            <img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
+            <img class="img-white" alt="Paper" src="assets/img/logo-white.png" style="
+                 ">
+            <img class="img-dark" alt="Paper" src="assets/img/logo-dark.png">
+        </a>
+
+        <span id="trigger-search" class="toolbar-trigger toolbar-icon-bg ov-h">
+            <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                <span class="icon-bg">
+                    <i class="material-icons">search</i>
+                </span>
+                <div class="ripple-container"></div>
+            </a>
+        </span>
+        <div id="search-box">
+            <div class="form-group is-empty"><input class="form-control" type="text" placeholder="Search..." id="search-input"><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span><span class="material-input"></span></div>
+        </div>
+    </div><!-- logo-area -->
+
+    <ul class="nav navbar-nav toolbar pull-right">
+        <li class="toolbar-icon-bg appear-on-search ov-h" id="trigger-search-close">
+            <a class="toggle-fullscreen">
+                <span class="icon-bg">
+                    <i class="material-icons">close</i>
+                </span>
+            </a>
+        </li>
+
+        <li class="active">
+            <a class="withripple" href="index.html">
+                <span class="icon">
+                    <i class="material-icons">home</i>
+                </span><span class="badge badge-teal">2</span><div class="ripple-container"></div>
+            </a>
+        </li>
+        <li class="open">
+            <a class="withripple" href="timeline3.html"><span class="icon"><i class="material-icons">access_time</i></span><div class="ripple-container"></div></a>
+        </li>
+        <li><a class="withripple" href="addnote.html"><span class="icon"><i class="material-icons">create</i></span><div class="ripple-container"></div></a></li>
+
+        <li class="dropdown toolbar-icon-bg" style="
+					/* margin-bottom: -42px; */
+        ">
+        <a href="index.html#" class="hasnotifications dropdown-toggle" data-toggle="dropdown" style=" padding 13px 8px;
+           " aria-expanded="false">
+            <span class="icon-bg">
+                <i class="material-icons">notifications</i>
+            </span>
+            <span class="badge badge-info"></span>
+            <div class="ripple-container"></div>
+        </a>
+        <div class="dropdown-menu animated notifications">
+            <div class="topnav-dropdown-header">
+                <span>3 new notifications</span>
             </div>
-        </li>
-
-        <li class="logo hidden-xs">
-            <a href="index.html">Yay! Collaboration</a>
-        </li>
-    </ul>
-
-    <!-- Top Search Content -->
-    <div class="top-serch form-group col-md-8" *ngIf="isAuthorized">
-        <div class="input-group">
-            <!--<span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1" aria-hidden="true"></span>-->
-            <span class="input-group-addon " id="basic-addon1" aria-hidden="true">
-                <i class="material-icons" style="font-size: 30px; color: #fff;">search</i></span>
-                <input class="form-control ng-pristine ng-valid ng-touched main-search-input" placeholder="enter your keywords, date, people or anything to search ..." type="text">
-</div>
-    </div>
-    <!-- user profile -->
-    <div class="col-md-1" *ngIf="isAuthorized">
-        <ul class="header-inner">
-                <li class="pull-right">
-                    <ul class="top-menu">
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="tm-settings" href=""></a>
-                            <ul class="dropdown-menu dm-icon pull-right">
-                                <li class="hidden-xs">
-                                    <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
-                                </li>
-                                <li>
-                                    <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-            </ul>
-        <!--<user-profile></user-profile>-->
-    </div>
-
-
-    <!-- Top Search Content -->
-    <div id="top-search-wrap" *ngIf="isAuthorized">
-        <input type="text">
-        <i id="top-search-close">&times;</i>
-    </div>
-</header>
-<!-- main action bar -->
-<div class="main-action-bar" *ngIf="isAuthorized">
-    <ul class="header-inner">
-        <li class="pull-right">
-            <ul class="top-menu">
-                <!--<li id="toggle-width">
-                    <div class="toggle-switch">
-                        <input id="tw-switch" type="checkbox" hidden="hidden">
-                        <label for="tw-switch" class="ts-helper"></label>
-                    </div>
-                </li>-->
-                <notifications></notifications>
-                <!--<li class="dropdown">
-                  
-                    <a data-toggle="dropdown" class="tm-notification" href=""><i class="tmn-counts">9</i></a>
-                    <div class="dropdown-menu dropdown-menu-lg pull-right">
-                        <div class="listview" id="notifications">
-                            <div class="lv-header">
-                                Notification
-
-                                <ul class="actions">
-                                    <li class="dropdown">
-                                        <a href="" data-clear="notification">
-                                            <i class="zmdi zmdi-check-all"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+            <div class="scroll-pane has-scrollbar">
+                <ul class="media-list scroll-content" tabindex="0" style="right: -19px;">
+                    <li class="media notification-success">
+                        <a href="index.html#">
+                            <div class="media-left">
+                                <span class="notification-icon"><i class="material-icons">lock</i></span>
                             </div>
-                            <div class="lv-body">
-                                <a class="lv-item" href="">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">David Belle</div>
-                                            <small class="lv-small">Cum sociis natoque penatibus et magnis dis parturient montes</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="lv-item" href="">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" src="img/profile-pics/2.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">Jonathan Morris</div>
-                                            <small class="lv-small">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="lv-item" href="">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" src="img/profile-pics/3.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">Fredric Mitchell Jr.</div>
-                                            <small class="lv-small">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="lv-item" href="">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">Glenn Jecobs</div>
-                                            <small class="lv-small">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="lv-item" href="">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" src="img/profile-pics/4.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">Bill Phillips</div>
-                                            <small class="lv-small">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="media-body">
+                                <h4 class="notification-heading">Privacy settings have been changed.</h4>
+                                <span class="notification-time">8 mins ago</span>
                             </div>
-
-                            <a class="lv-footer" href="">View Previous</a>
-                        </div>
-
-                    </div>
-                </li>-->
-                <!--<li class="dropdown hidden-xs">
-                    <a data-toggle="dropdown" class="tm-task" href=""><i class="tmn-counts">2</i></a>
-                    <div class="dropdown-menu pull-right dropdown-menu-lg">
-                        <div class="listview">
-                            <div class="lv-header">
-                                Tasks
-                            </div>
-                            <div class="lv-body">
-                                <div class="lv-item">
-                                    <div class="lv-title m-b-5">HTML5 Validation Report</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-                                            <span class="sr-only">95% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lv-item">
-                                    <div class="lv-title m-b-5">Google Chrome Extension</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lv-item">
-                                    <div class="lv-title m-b-5">Social Intranet Projects</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lv-item">
-                                    <div class="lv-title m-b-5">Bootstrap Admin Template</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lv-item">
-                                    <div class="lv-title m-b-5">Youtube Client App</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a class="lv-footer" href="">View All</a>
-                        </div>
-                    </div>
-                </li>-->
-                <!--<li class="dropdown">
-                    <a data-toggle="dropdown" class="tm-settings" href=""></a>
-                    <ul class="dropdown-menu dm-icon pull-right">
-                        <li class="hidden-xs">
-                            <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
-                        </li>
-                        <li>
-                            <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
-                        </li>
-                        <li>
-                            <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
-                        </li>
-                        <li>
-                            <a href=""><i class="zmdi zmdi-settings"></i> Other Settings</a>
-                        </li>
-                    </ul>
-                </li>-->
-                
-            </ul>
-        </li>
-    </ul>
-</div>
-<section id="main">
-    <aside id="sidebar" *ngIf="isAuthorized" style="z-index: 9">
-
-        <user-profile></user-profile>
-        <!--<div class="sidebar-inner c-overflow">
-            <div class="profile-menu">
-                <a href="">
-                    <div class="profile-pic">
-                        <img src="img/profile-pics/1.jpg" alt="">
-                    </div>
-
-                    <div class="profile-info">
-                        User Name
-
-                        <i class="zmdi zmdi-arrow-drop-down"></i>
-                    </div>
-                </a>
-
-                <ul class="main-menu">
-                    <li>
-                        <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+                        </a>
                     </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+                    <li class="media notification-info">
+                        <a href="index.html#">
+                            <div class="media-left">
+                                <span class="notification-icon"><i class="material-icons">shopping_cart</i></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="notification-heading">A new order has been placed.</h4>
+                                <span class="notification-time">24 mins ago</span>
+                            </div>
+                        </a>
                     </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                    <li class="media notification-teal">
+                        <a href="index.html#">
+                            <div class="media-left">
+                                <span class="notification-icon"><i class="material-icons">perm_contact_calendar</i></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="notification-heading">New event started!</h4>
+                                <span class="notification-time">16 hours ago</span>
+                            </div>
+                        </a>
                     </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+                    <li class="media notification-indigo">
+                        <a href="index.html#">
+                            <div class="media-left">
+                                <span class="notification-icon"><i class="material-icons">settings</i></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="notification-heading">New app settings updated.</h4>
+                                <span class="notification-time">2 days ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="media notification-danger">
+                        <a href="index.html#">
+                            <div class="media-left">
+                                <span class="notification-icon"><i class="material-icons">comment</i></span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="notification-heading">Jessi commented your post.</h4>
+                                <span class="notification-time">4 days ago</span>
+                            </div>
+                        </a>
                     </li>
                 </ul>
+                <div class="scroll-track">
+                    <div class="scroll-thumb" style="height: 244px; transform: translate(0px, 0px);"></div>
+                </div>
             </div>
+            <div class="topnav-dropdown-footer">
+                <a href="index.html#">See all notifications</a>
+            </div>
+        </div>
+        </li>
+        <li>
+            <div class="widget" id="widget-profileinfo">
+                <div class="widget-body">
+                    <div class="userinfo ">
+                        <div class="avatar pull-left">
+                            <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle">
+                        </div>
+                        <div class="info" style="
+                             margin-top 0px;
+                             margin-left 57px;
+                             ">
+                            <span class="username" style="
+                                  display inline-block;
+                                  margin-top 8px;
+                                  ">Sandru Paro</span>
 
-            <ul class="main-menu">
-                <li><a href="index.html"><i class="zmdi zmdi-home"></i> Time Line</a></li>
-                <li><a href="typography.html"><i class="zmdi zmdi zmdi-format-underlined"></i> Notes</a></li>
-            </ul>
-        </div>-->
-    </aside>
-
-    <aside id="chat" *ngIf="isAuthorized">
-      <add-note [showCloseButton]="true"></add-note>
-    </aside>
+                        </div>
+                        <div class="acct-dropdown clearfix dropdown" style="display inline-block;">
+                            <span class="pull-left" style="margin-top -1px; margin-left 8px;display inline-block;"><span class=" online-status online"></span>Online  <i class="material-icons" style="margin-left:49px;">arrow_drop_down</i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
 
 
-    <section id="content">
-        <div class="container">
-            <div>
-                <header>
-                    <!--<div *ngIf="isAuthorized">
-                        <a [routerLink]="['AddNote']"> Add Note  </a>
-                        <a [routerLink]="['TimeLine']">  TimeLine  </a>
-                        <a [routerLink]="['Tags']">  Tags  </a>
-                    </div>-->
-                </header>
-                <main>
-                    <section>
-                        <div>
+    </ul><!-- navbar-area -->
+</header>
+
+<div id="wrapper">
+    <div id="layout-static">
+        <div class="static-sidebar-wrapper sidebar-bluegray" style="
+		/* height: 17px; */
+        ">
+        <div class="static-sidebar">
+            <div class="sidebar">
+                <div class="widget stay-on-collapse" id="widget-sidebar">
+                    <nav role="navigation" class="widget-body">
+                        <ul class="acc-menu">
+                            <li class="nav-separator">
+                                <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">
+                                    <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                                        <span class="icon-bg">
+                                            <i class="material-icons">menu</i>
+                                        </span>
+                                    </a>
+                                </span>
+                            </li>
+
+                            <li>
+                                <a class="withripple" href="javascript:;" style="
+                                   padding 12px 8px;
+                                   "><span class="icon"><i class="material-icons">local_offer</i></span><span>Tags</span><div class="ripple-container"></div></a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="static-content-wrapper">
+        <div class="static-content">
+            <div class="page-content">
+                <div>
+                    <div class="static-content">
+                        <div class="page-content">
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="layout-static-leftbar.html#">Dashboard</a></li>
+                            </ol>
+                            <div class="page-heading">
+                                <!-- <h1>Static Leftbar</h1> -->
+                            </div>
+
+
+
+                        <!--loads the body-->
                             <router-outlet></router-outlet>
-                        </div>                       
-                    </section>
-                </main>
 
-                <!-- floating fixed button -->
-                <div class="fixed-action-btn " style="bottom: 45px; right: 24px;" *ngIf="isAuthorized">
-                    <a class="btn-floating btn-large red">
-                        <i class="material-icons">add</i>
-                        <!--<span class="glyphicon glyphicon-option-vertical large" aria-hidden="true"></span>-->
-                    </a>
-                    <ul>
-                        <!--<li><button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button></li>-->
-                        <li><a class="btn-floating red tags" [routerLink]="['/tags']" title="Tags" data-toggle="tooltip" data-placement="left" ><i class="material-icons">subtitles</i></a></li>
-                        <li><a class="btn-floating yellow darken-1" [routerLink]="['/timeline']" title="TimeLine"><i class="material-icons">access_time</i></a></li>
-                        <li><a class="btn-floating green" [routerLink]="['/addnote']" title="Add Note"><i class="material-icons">playlist_add</i></a></li>
-                        <li><a class="btn-floating blue" [routerLink]="['/dashboard']" title="Dashboard"><i class="material-icons">dvr</i></a></li>
+
+                            <!--ends loads the body-->
+
+
+
+
+
+
+
+
+                </div> <!-- #page-content -->
+            </div>
+            <footer role="contentinfo">
+                <div class="clearfix">
+                    <ul class="list-unstyled list-inline pull-left">
+                        <li><h6 style="margin: 0;">© 2016 Exilesoft</h6></li>
                     </ul>
                 </div>
-                <!-- --------------------- -->
+            </footer>
+        </div>
+        <div class="container-fluid">
+
+            <div data-widget-group="group1" class="ui-sortable">
+
+
+            </div>
+
+        </div> <!-- .container-fluid -->
+    </div> <!-- #page-content -->
+</div>
+<footer role="contentinfo">
+    <div class="clearfix">
+        <ul class="list-unstyled list-inline pull-left">
+            <li><h6 style="margin: 0;">© 2016 Exilesoft</h6></li>
+        </ul>
+    </div>
+</footer>
+<div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div></div>
+
+
+<div class="infobar-wrapper scroll-pane has-scrollbar">
+    <div class="infobar scroll-content" tabindex="0" style="right: -19px;">
+
+        <ul class="nav nav-tabs material-nav-tabs stretch-tabs icon-tabs">
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li class="dropdown pull-right tabdrop hide"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+            <li>
+                <a href="index.html#tab-7-1" data-toggle="tab">
+                    <i class="material-icons">settings</i>
+                </a>
+            </li>
+            <li class="active ">
+                <a href="index.html#tab-7-2" data-toggle="tab">
+                    <span class="step size-64">
+                        <i class="material-icons">textsms</i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane" id="tab-7-1">
+                <tbdody>
+                </tbdody><table class="table table-settings">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h5>Alerts</h5>
+                                <p>Sets alerts to get notified when changes occur to get new alerming items</p>
+                            </td>
+                            <td><span class="togglebutton toggle-info"><label><input type="checkbox"><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span> </label></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Notifications</h5>
+                                <p>You will receive notification email for any notifications if you set notification</p>
+                            </td>
+                            <td><span class="togglebutton toggle-primary"><label><input type="checkbox" class="toggle" checked=""><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span> </label></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Messages</h5>
+                                <p>You will receive notification on email after setting messages notifications</p>
+                            </td>
+                            <td>
+                                <span class="togglebutton toggle-danger"><label><input type="checkbox"><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span> </label></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Warnings</h5>
+                                <p>You will get warnning only some specific setttings or alert system</p>
+                            </td>
+                            <td>
+                                <span class="togglebutton toggle-warning"><label><input type="checkbox" checked=""><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span> </label></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Sidebar</h5>
+                                <p>You can hide/show use with sidebar collapsw settings</p>
+                            </td>
+                            <td><span class="togglebutton toggle-success"><label><input type="checkbox" checked=""><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span><span class="toggle"></span> </label></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane active" id="tab-7-2">
+                <div class="widget">
+                    <div class="widget-heading">Recent Activities</div>
+                    <div class="widget-body">
+                        <ul class="timeline">
+                            <li class="timeline-purple">
+                                <div class="timeline-icon"><i class="material-icons">add</i></div>
+                                <div class="timeline-body">
+                                    <div class="timeline-header">
+                                        <span class="author">Jana Pena is now Follwing you</span>
+                                        <span class="date">2 min ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-primary">
+                                <div class="timeline-icon"><i class="material-icons">textsms</i></div>
+                                <div class="timeline-body">
+                                    <div class="timeline-header">
+                                        <span class="author">Percy liaye Like your picture</span>
+                                        <span class="date">6 min ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-green">
+                                <div class="timeline-icon"><i class="material-icons">done</i></div>
+                                <div class="timeline-body">
+                                    <div class="timeline-header">
+                                        <span class="author">Leon miles make your presentation for new project</span>
+                                        <span class="date">2 hours ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-danger">
+                                <div class="timeline-icon"><i class="material-icons">favorite</i></div>
+                                <div class="timeline-body">
+                                    <div class="timeline-header">
+                                        <span class="author">Lake wile like your comment</span>
+                                        <span class="date">5 hours ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-sky">
+                                <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
+                                <div class="timeline-body">
+                                    <div class="timeline-header">
+                                        <span class="author">The Mountain Ambience paid your payment</span>
+                                        <span class="date">9 hours ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="widget-heading">Contacts</div>
+                    <div class="widget-body">
+                        <ul class="media-list contacts">
+                            <li class="media notification-message">
+                                <div class="media-left">
+                                    <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-gray">Jon Owens</span>
+                                    <span class="contact-status text-success">Online</span>
+                                </div>
+                            </li>
+                            <li class="media notification-message">
+                                <div class="media-left">
+                                    <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-gray">Nina Huges</span>
+                                    <span class="contact-status text-muted">Offline</span>
+                                </div>
+                            </li>
+                            <li class="media notification-message">
+                                <div class="media-left">
+                                    <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-gray">Austin Lee</span>
+                                    <span class="contact-status text-danger">Busy</span>
+                                </div>
+                            </li>
+                            <li class="media notification-message">
+                                <div class="media-left">
+                                    <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-gray">Grady Hines</span>
+                                    <span class="contact-status text-warning">Away</span>
+                                </div>
+                            </li>
+                            <li class="media notification-message">
+                                <div class="media-left">
+                                    <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="text-gray">Adrian Barton</span>
+                                    <span class="contact-status text-success">Online</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>
-    </section>
-</section>
+    </div>
+    <div class="scroll-track" style="display: none;"><div class="scroll-thumb" style="height: 1010px; transform: translate(0px, 0px);"></div></div>
+</div>
+
+<!-- Das FAB -->
+<button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click for Settings">
+    <i class="material-icons" style="font-size 38px;">add</i><div class="ripple-container"></div>
+</button>
 
 
 
-<footer id="footer">
-    <div style="float:left; margin-left:20px; bottom:20px; position:fixed;"><user-feedback></user-feedback></div>
-
-    <div style="right:20px; bottom:20px; position:fixed;">Copyright &copy; 2016 YAYI Collaboration</div>
-    
-
-    <ul class="f-menu" style="display: none">
-        <li><a href="">Home</a></li>
-        <li><a href="">Dashboard</a></li>
-        <li><a href="">Reports</a></li>
-        <li><a href="">Support</a></li>
-        <li><a href="">Contact</a></li>
-    </ul>
-</footer>
 
 <!--<script>
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        //$('[data-toggle="tooltip"]').tooltip()
+        $.material.init();
     })
 </script>-->
