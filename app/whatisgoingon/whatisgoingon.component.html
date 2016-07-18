@@ -1,7 +1,8 @@
 ﻿<div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
     <div class="panel-controls dropdown">
         <button class="btn btn-icon-rounded refresh-panel"><span class="material-icons inverted">refresh</span><div class="ripple-container"></div></button>
-        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="material-icons inverted">more_vert</span><div class="ripple-container"></div></button>
+        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="material-icons inverted">more_vert</span><div class="ripple-container"></div></button>
         <ul class="dropdown-menu" role="menu">
             <li><a href="index.html">Action</a></li>
             <li><a href="index.html">Another action</a></li>
@@ -15,7 +16,7 @@
             Recent Activities
         </h2>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="height: 308px;overflow-y: scroll;">
         <div class="widget">
             <div class="widget-body">
                 <ul class="timeline" *ngFor="let activity of whatisgoingonTimelines; let i=index">
@@ -25,14 +26,15 @@
                         <div class="timeline-body">
                             <div class="timeline-header">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href=#i{{i}} aria-expanded="false" style="padding-left: 0">
-                                    <span class="author">{{activity.title}}</span>
+                                    <span *ngIf="activity.title.length > 39" class="author">{{activity.title | slice:0:39}}...</span>
+                                    <span *ngIf="activity.title.length <= 39" class="author">{{activity.title}}</span>
                                 </a>
                                 <span class="date" *ngIf="activity.dateFormat != 'TODAY'">{{activity.date}}</span>
                                 <span class="date" *ngIf="activity.dateFormat == 'TODAY'">{{activity.time}}</span>
                                 <span>
-                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:4; let last = last; let j = index">
+                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:3; let last = last; let j = index">
                                         <a class="btn" style="color:white;" (click)="select(activity)">{{tag.name}}</a>
-                                        <span *ngIf="last && j==3">...</span>
+                                        <span *ngIf="last && j==2">...</span>
                                     </ul>
                                 </span>
                             </div>

@@ -10,11 +10,17 @@
         </ul>
     </div>
     <div class="panel-heading">
-        <h2 style="font-size: 16px;">RECENT TIMELINE</h2>
+        <h2>RECENT TIMELINE</h2>
+                        <button class="btn btn-sm btn-info btn-label ml-md" style="padding-left: 12px;padding-right: 12px;margin-left: 72%;">
+                          <i class="material-icons" style="font-size: 13px;">favorite</i> View Watching
+                            <div class="ripple-container"></div>
+                            </button>
+        
     </div>
-    <div class="panel-body no-padding table-responsive">
+    <div class="panel-body no-padding table-responsive" style= "height: 595px;overflow-y: scroll;">
 
-        <div class="list-group media-list scroll-content" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter" tabindex="0" style="right: -19px;">
+        <div class="list-group media-list scroll-content" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter"
+            tabindex="0" style="right: -19px;">
             <div class="list-group-item ripple-effect">
                 <div class="row-action-primary">
                     <div class="" style="padding-top 7px;">
@@ -25,54 +31,65 @@
                         </time>
                     </div>
                 </div>
+
+
+
                 <div class="row-content">
                     <div class="least-content">
                         <span *ngIf="timeline.contributedBy.length > 0" class="date" style="padding-right:10px;color:#bdbdbd;">contributors</span>
-
                         <span *ngFor="let image of timeline.contributedBy">
-                            <img class="img-circle" src="{{image.imageUrl}}" width="16" alt="{{image.userName}}" title="{{image.userName}}">
-                        </span>
+                        <img class="img-circle" src="{{image.imageUrl}}" width="16" alt="{{image.userName}}" title="{{image.userName}}" >
+                    </span>
                     </div>
-                    <div class="least-contents">15m</div>
-                    <h4 class="list-group-item-heading" *ngFor="let tag of timeline.tags; let last = last" style="float:left">
-                        <span style="float: left" (click)="select(timeline)">{{tag.name}}</span><span *ngIf="!last" (click)="select(timeline)">&nbsp; +  &nbsp;</span>
-                    </h4>
-                    <h4 class="list-group-item-heading" style="float: left" *ngIf="timeline.noOfEntries">
-                        <span style="float: left" (click)="select(timeline)">&nbsp; ({{timeline.noOfEntries}})</span>
-                    </h4>
-                    <p class="list-group-item-text">{{timeline.recentActivity}}</p>
 
-                    <div class="like-info">
+                    <div class="least-contents">15m</div>
+                    
+                    <h4 class="list-group-item-heading" style="float: left;" *ngFor="let tag of timeline.tags; let last = last">
+                        <span (click)="select(timeline)">{{tag.name}}</span>
+                        <span *ngIf="!last" (click)="select(timeline)">&nbsp; +  &nbsp;</span>
+                    </h4>
+
+                    <div class="pcontent">
+                        <p class="list-group-item-text" *ngIf="timeline.noOfEntries" (click)="select(timeline)">
+                        <span>{{timeline.noOfEntries}}</span>
+                        </p>
+
+                     
+
+
+                    </div>
+                    
+                    
+
+                   
+                </div>
+
+                <div class="like-info">
                         <div (click)="watch(timeline); $event.stopPropagation()">
                             <a *ngIf="!timeline.isWatched" class="btn btn-xs btn-info btn-label ml-md">
-                                <i class="material-icons" style="font-size: 13px;">favorite</i>
-                                Watch
+                                <i class="material-icons" style="font-size: 13px;">favorite</i> Watch
                                 <div class="ripple-effect"></div>
                             </a>
                             <a *ngIf="timeline.isWatched" class="btn btn-xs btn-info btn-label ml-md" title="Watched">
-                                <i class="material-icons" style="font-size: 13px;color:blue !important;">favorite</i>
-                                Unwatch
+                                <i class="material-icons" style="font-size: 13px;color:blue !important;">favorite</i> Unwatch
                                 <div class="ripple-effect"></div>
                             </a>
                         </div>
                         <a class="btn btn-xs btn-info btn-label ml-md" (click)="parentModal.open(); setCurrentTimeline(timeline)">
-                            <i class="material-icons" style="font-size: 13px;">share</i>
-                            Share
+                            <i class="material-icons" style="font-size: 13px;">share</i> Share
 
                         </a>
                         <a class="btn btn-xs btn-info btn-label ml-md" href="#">
-                            <i class="material-icons" style="font-size: 13px;">delete_sweep</i>
-                            Clean
+                            <i class="material-icons" style="font-size: 13px;">delete_sweep</i> Clean
 
                         </a>
                     </div>
-                </div>
                 <div class="ripple-container"></div>
             </div>
 
             <div class="list-group-separator"></div>
-            </div>
         </div>
+    </div>
 </div>
 <!--<div class="box" style="height:620px;">
     <div class="box-header" style="padding-bottom:0.5rem;">
@@ -168,7 +185,3 @@
     </modal-footer>
 
 </modal>
-
-
-
-

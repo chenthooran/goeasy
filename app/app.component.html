@@ -1,6 +1,6 @@
 ﻿<loading></loading>
 
-<header id="topnav" class="navbar navbar-fixed-top navbar-blue" role="banner">
+<header id="topnav" class="navbar navbar-fixed-top navbar-blue" role="banner" *ngIf="isAuthorized">
     <!-- <div id="page-progress-loader" class="show"></div> -->
     <div class="logo-area">
         <a class="navbar-brand navbar-brand-inverse" href="index.html">
@@ -56,97 +56,29 @@
             <span class="badge badge-info"></span>
             <div class="ripple-container"></div>
         </a>
-        <div class="dropdown-menu animated notifications">
-            <div class="topnav-dropdown-header">
-                <span>3 new notifications</span>
-            </div>
-            <div class="scroll-pane has-scrollbar">
-                <ul class="media-list scroll-content" tabindex="0" style="right: -19px;">
-                    <li class="media notification-success">
-                        <a href="index.html#">
-                            <div class="media-left">
-                                <span class="notification-icon"><i class="material-icons">lock</i></span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">Privacy settings have been changed.</h4>
-                                <span class="notification-time">8 mins ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media notification-info">
-                        <a href="index.html#">
-                            <div class="media-left">
-                                <span class="notification-icon"><i class="material-icons">shopping_cart</i></span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">A new order has been placed.</h4>
-                                <span class="notification-time">24 mins ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media notification-teal">
-                        <a href="index.html#">
-                            <div class="media-left">
-                                <span class="notification-icon"><i class="material-icons">perm_contact_calendar</i></span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">New event started!</h4>
-                                <span class="notification-time">16 hours ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media notification-indigo">
-                        <a href="index.html#">
-                            <div class="media-left">
-                                <span class="notification-icon"><i class="material-icons">settings</i></span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">New app settings updated.</h4>
-                                <span class="notification-time">2 days ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="media notification-danger">
-                        <a href="index.html#">
-                            <div class="media-left">
-                                <span class="notification-icon"><i class="material-icons">comment</i></span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">Jessi commented your post.</h4>
-                                <span class="notification-time">4 days ago</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="scroll-track">
-                    <div class="scroll-thumb" style="height: 244px; transform: translate(0px, 0px);"></div>
-                </div>
-            </div>
-            <div class="topnav-dropdown-footer">
-                <a href="index.html#">See all notifications</a>
-            </div>
-        </div>
+        <notifications></notifications>
+      
         </li>
         <li>
             <div class="widget" id="widget-profileinfo">
-                <div class="widget-body">
-                    <div class="userinfo ">
+  <div class="widget-body">
+                    <div class="userinfo panel-controls dropdown" style="padding-top:6px">
                         <div class="avatar pull-left">
-                            <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle">
+                            <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle" style="margin-top:-6px">
                         </div>
-                        <div class="info" style="
-                             margin-top 0px;
-                             margin-left 57px;
-                             ">
-                            <span class="username" style="
-                                  display inline-block;
-                                  margin-top 8px;
-                                  ">Sandru Paro</span>
-
-                        </div>
-                        <div class="acct-dropdown clearfix dropdown" style="display inline-block;">
-                            <span class="pull-left" style="margin-top -1px; margin-left 8px;display inline-block;"><span class=" online-status online"></span>Online  <i class="material-icons" style="margin-left:49px;">arrow_drop_down</i></span>
-                        </div>
+                        <!--<div>-->
+                        <span class="username" style="font-size: 13px;">Sandru Paro</span>
+                        <!--<span class="useremail">online</span>-->
+                        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="material-icons inverted" style="color: #e1e7f1">arrow_drop_down</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="index.html">settings</a></li>
+                            <li><a href="index.html">profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="index.html">logout</a></li>
+                        </ul>
+                    <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -158,9 +90,7 @@
 
 <div id="wrapper">
     <div id="layout-static">
-        <div class="static-sidebar-wrapper sidebar-bluegray" style="
-		/* height: 17px; */
-        ">
+        <div class="static-sidebar-wrapper sidebar-bluegray" style="/* height: 17px; */" *ngIf="isAuthorized">
         <div class="static-sidebar">
             <div class="sidebar">
                 <div class="widget stay-on-collapse" id="widget-sidebar">
@@ -194,7 +124,7 @@
                 <div>
                     <div class="static-content">
                         <div class="page-content">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb" *ngIf="isAuthorized">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="layout-static-leftbar.html#">Dashboard</a></li>
                             </ol>
@@ -438,10 +368,30 @@
 </div>
 
 <!-- Das FAB -->
-<button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click for Settings">
+<!--<button *ngIf="isAuthorized" class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click for Settings">
     <i class="material-icons" style="font-size 38px;">add</i><div class="ripple-container"></div>
-</button>
-
+</button>-->
+<button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="Click for Settings">
+    <i class="material-icons">settings</i>
+    </button>
+<!-- Switcher -->
+    <div class="demo-options">
+        <div class="demo-body">
+            <div class="tabular">
+                <div class="tabular-row">
+                    <div class="tabular-cell">Fixed Header</div>
+                    <div class="tabular-cell demo-switches text-right">
+                        <div class="togglebutton checkbox-primary">
+                            <label>
+                                <input type="checkbox" name="demo-fixedheader" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- /Switcher -->
 
 
 
