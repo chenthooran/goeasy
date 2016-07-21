@@ -74,8 +74,9 @@ System.register(['@angular/core', '@angular/router', '@angular/common', './servi
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_router, _tokenService) {
+                function AppComponent(_router, _location, _tokenService) {
                     this._router = _router;
+                    this._location = _location;
                     this._tokenService = _tokenService;
                     this.isAuthorized = this._tokenService.getTokenFromCookie() != "";
                 }
@@ -87,6 +88,10 @@ System.register(['@angular/core', '@angular/router', '@angular/common', './servi
                     else {
                         this._router.navigate(['/login']);
                     }
+                };
+                AppComponent.prototype.isActiveRoute = function (route) {
+                    return this._location.path().indexOf(route) > -1;
+                    //return this._router.serializeUrl(this._router.urlTree) == this._router.serializeUrl((this._router.createUrlTree([route])));
                 };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -139,7 +144,7 @@ System.register(['@angular/core', '@angular/router', '@angular/common', './servi
                             component: dashboard_component_1.Dashboard
                         }
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Router, token_service_1.TokenService])
+                    __metadata('design:paramtypes', [router_1.Router, common_1.Location, token_service_1.TokenService])
                 ], AppComponent);
                 return AppComponent;
             }());

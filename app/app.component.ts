@@ -1,7 +1,7 @@
 ﻿import {Component, OnInit, Inject} from '@angular/core';
 import {provide} from '@angular/core';
 
-import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS , Router} from '@angular/router';
+import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router, RouteSegment} from '@angular/router';
 
 import {PlatformLocation,Location,LocationStrategy,HashLocationStrategy,PathLocationStrategy,APP_BASE_HREF} from '@angular/common';
 import {BrowserPlatformLocation} from '@angular/platform-browser';
@@ -81,53 +81,6 @@ import {LoadingComponent} from './loader/loading.component';
     ]
 )
 
-//@RouteConfig(
-//    [
-//        {
-//            path: '/login',
-//            name: 'Login',
-//            component: LoginComponent,
-//            useAsDefault: true
-//        },
-//        //{
-//        //    path: 'signup',
-//        //    name: 'Signup',
-//        //    component: AuthService
-//        //},
-//        {
-//            path: '/addnote',
-//            name: 'AddNote',
-//            component: AddNoteComponent
-//        },
-//        {
-//            path: '/timeline',
-//            name: 'TimeLine',
-//            component: TimeLineComponent
-//        },
-//        {
-//            path: '/tags',
-//            name: 'Tags',
-//            component: TagsComponent
-//        },
-//        {
-//            path: '/tag/:id',
-//            name: 'TagDetail',
-//            component: TagDetailComponent
-//        },
-//        {
-//            path: '/recenttimeline',
-//            name: 'RecentTimeline',
-//            component: RecentTimeLineComponent
-//        },
-//        {
-//            path: '/dashboard',
-//            name: 'Dashboard',
-//            component: Dashboard
-//        }
-
-//    ]
-//)
-
 export class AppComponent implements OnInit {
 
     isAuthorized: boolean = this._tokenService.getTokenFromCookie() != "";
@@ -141,6 +94,11 @@ export class AppComponent implements OnInit {
         }
     }
 
-    constructor(private _router: Router, private _tokenService: TokenService) {
+    constructor(private _router: Router, private _location: Location, private _tokenService: TokenService) {
     }
+
+    isActiveRoute(route: string) {
+        return this._location.path().indexOf(route) > -1;
+        //return this._router.serializeUrl(this._router.urlTree) == this._router.serializeUrl((this._router.createUrlTree([route])));
+    } 
 }

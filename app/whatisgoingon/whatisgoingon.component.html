@@ -16,7 +16,11 @@
             Recent Activities
         </h2>
     </div>
-    <div class="panel-body" style="height: 308px;overflow-y: scroll;">
+    <div class="panel-body" style="height: 308px;overflow-y: scroll;" infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="500"
+     (scrolled)="onScroll()"
+     [scrollWindow]="true">
         <div class="widget">
             <div class="widget-body">
                 <ul class="timeline" *ngFor="let activity of whatisgoingonTimelines; let i=index">
@@ -32,9 +36,9 @@
                                 <span class="date" *ngIf="activity.dateFormat != 'TODAY'">{{activity.date}}</span>
                                 <span class="date" *ngIf="activity.dateFormat == 'TODAY'">{{activity.time}}</span>
                                 <span>
-                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:3; let last = last; let j = index">
+                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:2; let last = last; let j = index">
                                         <a class="btn" style="color:white;" (click)="select(activity)">{{tag.name}}</a>
-                                        <span *ngIf="last && j==2">...</span>
+                                        <span *ngIf="last && j==1">...</span>
                                     </ul>
                                 </span>
                             </div>

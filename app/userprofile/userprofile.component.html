@@ -1,29 +1,27 @@
-﻿<!--<ul class="header-inner">
-    <li class="pull-right">
-        <ul class="top-menu">
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="tm-settings" href=""></a>
-                <ul class="dropdown-menu dm-icon pull-right">
-                    <li class="hidden-xs">
-                        <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
-                    </li>
-                    <li>
-                        <a data-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
-                    </li>
-                    <li>
-                        <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
-                    </li>
-                    <li>
-                        <a (click)="logout()"><i class="zmdi zmdi-settings"></i> Logout</a>
-                    </li>
-                </ul>
-            </li>
+﻿<div class="widget" id="widget-profileinfo">
+    <div class="widget-body">
+        <div class="userinfo panel-controls dropdown" style="padding-top:6px">
+            <div class="avatar pull-left">
+                <img src={{imageURL}} class="img-responsive img-circle" style="margin-top: -6px;width: 49px;">
+            </div>
+            <!--<div>-->
+            <span class="username" style="font-size: 13px;">{{userProfileData.name}}</span>
+            <!--<span class="useremail">online</span>-->
+            <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons inverted" style="color: #e1e7f1">arrow_drop_down</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="index.html">settings</a></li>
+                <li><a href="index.html">profile</a></li>
+                <li class="divider"></li>
+                <li><a style="cursor: pointer" (click)="logout()">logout</a></li>
+            </ul>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
 
-        </ul>
-    </li>
-</ul>-->
-
-<div class="sidebar-inner c-overflow">
+<!--<div class="sidebar-inner c-overflow">
     <div class="profile-menu">
         <a href="">
             <div class="profile-pic">
@@ -52,9 +50,4 @@
             </li>
         </ul>
     </div>
-
-    <!--<ul class="main-menu">
-        <li><a href="index.html"><i class="zmdi zmdi-home"></i> Time Line</a></li>
-        <li><a href="typography.html"><i class="zmdi zmdi zmdi-format-underlined"></i> Notes</a></li>
-    </ul>-->
-</div>
+</div>-->

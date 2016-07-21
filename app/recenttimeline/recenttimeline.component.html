@@ -1,25 +1,28 @@
 <div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px); padding-bottom: 18px; position: relative; z-index: 0; left: 0px; top: 0px;">
-    <div class="panel-controls dropdown">
-        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span><div class="ripple-container"></div></button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="index.html">Action</a></li>
-            <li><a href="index.html">Another action</a></li>
-            <li><a href="index.html">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="index.html">Separated link</a></li>
-        </ul>
-    </div>
+
     <div class="panel-heading">
         <h2>RECENT TIMELINE</h2>
-                        <button class="btn btn-sm btn-info btn-label ml-md" style="padding-left: 12px;padding-right: 12px;margin-left: 72%;">
-                          <i class="material-icons" style="font-size: 13px;">favorite</i> View Watching
-                            <div class="ripple-container"></div>
-                            </button>
+
+        <button class="btn btn-sm btn-info btn-label ml-md" style="padding-left: 12px;padding-right: 12px;margin-left: 72%;float: right;padding-top: 7px;font-size: 10px;margin-top: 12px;" (click)="watchFilter(isWatchedFilter)">
+            <span *ngIf="!isWatchedFilter" class="" title="" style="display:inline-block; cursor:pointer;">
+                <i class="material-icons" style="font-size: 13px;">favorite</i> View Watching
+            </span>
+            <span *ngIf="isWatchedFilter" class="" title="Watched" style="display:inline-block; cursor:pointer;">
+                <i class="material-icons" style="font-size: 13px;">favorite</i> View All
+            </span>          
+            <div class="ripple-container"></div>
+        </button>
+
+        
         
     </div>
-    <div class="panel-body no-padding table-responsive" style= "height: 595px;overflow-y: scroll;">
+    <div class="panel-body no-padding table-responsive" style= "height: 595px;overflow-y: scroll;"  infinite-scroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="500"
+     (scrolled)="onScroll()"
+     [scrollWindow]="true">
 
-        <div class="list-group media-list scroll-content" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter"
+        <div class="list-group media-list" *ngFor="let timeline of recentTimelines | recentTimelineWatchFilter:isWatchedFilter"
             tabindex="0" style="right: -19px;">
             <div class="list-group-item ripple-effect">
                 <div class="row-action-primary">
@@ -35,14 +38,14 @@
 
 
                 <div class="row-content">
-                    <div class="least-content">
+                    <div class="least-contents">
                         <span *ngIf="timeline.contributedBy.length > 0" class="date" style="padding-right:10px;color:#bdbdbd;">contributors</span>
                         <span *ngFor="let image of timeline.contributedBy">
                         <img class="img-circle" src="{{image.imageUrl}}" width="16" alt="{{image.userName}}" title="{{image.userName}}" >
                     </span>
                     </div>
 
-                    <div class="least-contents">15m</div>
+                    <!--<div class="least-contents">15m</div>-->
                     
                     <h4 class="list-group-item-heading" style="float: left;" *ngFor="let tag of timeline.tags; let last = last">
                         <span (click)="select(timeline)">{{tag.name}}</span>

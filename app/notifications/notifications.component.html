@@ -1,58 +1,60 @@
-﻿
+﻿<span *ngIf="notificationCount > 0" class="badge badge-teal">{{notificationCount}}</span>
+<!--<div class="ripple-container"></div>-->
 
-  <div class="dropdown-menu animated notifications" *ngIf="notificationCount > 0" style="margin-top: -15px;">
-            <div class="topnav-dropdown-header">
-                <span>3 new notifications</span>
-                <span>
-                    <li style="float: right;">
-                        <button class="btn btn-xs btn-danger btn-raised btn-label" (click)="dismissAllClicked()" style="background-color: #e51c23;">
-                            <i class="fa fa-times"></i>  CLEAR ALL
-                            <div class="ripple-container"></div>
-                            </button>
-                    </li></span>
-            </div>
-            <div class="scroll-pane has-scrollbar" *ngFor="let Item of filteredNotificaitons">
-                <ul class="media-list scroll-content" tabindex="0" style="right: -19px;">
-                    <li class="media notification-success">
-                        <a>
-                            <div class="media-left">
-                                <img class="circle responsive-img" src={{Item.userImageUrl}}>
-                                <!--<span class="notification-icon"><i class="material-icons">lock</i></span>-->
-                            </div>
-                            <div class="media-body">
-                                <h4 class="notification-heading">{{Item.title}}</h4>
 
-                                <span *ngFor="let tag of Item.tags">
-                                    <ul class="contacts tag" style="display: flex;">
-                                        <a class="btn" style="color:white;" (click)="select(Item)">{{tag.name}}
+<div class="dropdown-menu animated notifications" *ngIf="notificationCount > 0">
+    <div class="topnav-dropdown-header">
+        <span>{{notificationCount}} new notifications</span>
+        <span>
+            <li style="float: right;">
+                <button class="btn btn-xs btn-danger btn-raised btn-label" (click)="dismissAllClicked()" style="background-color: #e51c23;">
+                    <i class="fa fa-times"></i>  CLEAR ALL
+                    <div class="ripple-container"></div>
+                </button>
+            </li>
+        </span>
+    </div>
+    <div class="scroll-pane has-scrollbar" *ngFor="let Item of filteredNotificaitons">
+        <ul class="media-list scroll-content" tabindex="0" style="right: -19px;">
+            <li class="media notification-success">
+                <a>
+                    <div class="media-left">
+                        <img class="circle responsive-img" src={{Item.userImageUrl}}>
+                        <!--<span class="notification-icon"><i class="material-icons">lock</i></span>-->
+                    </div>
+                    <div class="media-body">
+                        <h4 class="notification-heading">{{Item.title}}</h4>
 
-                                        </a>
-                                        <!--<span *ngIf="last && j==2">...</span>-->
-                                    </ul>
-                                </span>
+                        <span *ngFor="let tag of Item.tags">
+                            <ul class="contacts tag" style="display: flex;">
+                                <a class="btn" style="color:white;" (click)="select(Item)">
+                                    {{tag.name}}
 
-                                <!--<span *ngFor="let tag of Item.tags" class="common-tag" style="line-height:4">{{tag.name}}</span>-->
+                                </a>
+                                <!--<span *ngIf="last && j==2">...</span>-->
+                            </ul>
+                        </span>
 
-                                <!--<span class="notification-time"  *ngIf="Item.dateFormat != 'TODAY'">{{Item.date}}</small>
-                                <span class="notification-time"  *ngIf="Item.dateFormat == 'TODAY'">{{Item.time}}</small>-->
-                                <!--<span class="notification-time">8 mins ago</span>-->
-                            <li style="float: right;">
-                                <button class="btn btn-xs btn-danger" (click)="dismissClicked(Item)">
-                                    <i class="fa fa-times"></i>  REMOVE<div class="ripple-container"></div>
-                                </button>
-                                <button class="btn btn-xs btn-primary" (click)="snoozeClicked(Item)">
-                                    <i class="fa fa-clock-o"></i> SNOOZE<div class="ripple-container"></div>
-                                </button>
-                            </li>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="scroll-track">
-                    <div class="scroll-thumb" style="height: 244px; transform: translate(0px, 0px);"></div>
-                </div>
-            </div>
-            <div class="topnav-dropdown-footer">
-                <a href="index.html#">See all notifications</a>
-            </div>
-        </div>
+                        <!--<span *ngFor="let tag of Item.tags" class="common-tag" style="line-height:4">{{tag.name}}</span>-->
+                        <!--<span class="notification-time"  *ngIf="Item.dateFormat != 'TODAY'">{{Item.date}}</small>
+                        <span class="notification-time"  *ngIf="Item.dateFormat == 'TODAY'">{{Item.time}}</small>-->
+                        <!--<span class="notification-time">8 mins ago</span>-->
+            <li style="float: right;">
+                <button class="btn btn-xs btn-danger" (click)="dismissClicked(Item)">
+                    <i class="fa fa-times"></i>  REMOVE<div class="ripple-container"></div>
+                </button>
+                <button class="btn btn-xs btn-primary" (click)="snoozeClicked(Item)">
+                    <i class="fa fa-clock-o"></i> SNOOZE<div class="ripple-container"></div>
+                </button>
+            </li>
+    </div>
+    </a>
+    </li>
+    </ul>
+    <div class="scroll-track">
+        <div class="scroll-thumb" style="height: 244px; transform: translate(0px, 0px);"></div>
+    </div>
+</div>
+<div class="topnav-dropdown-footer">
+    <a href="index.html#">See all notifications</a>
+</div>

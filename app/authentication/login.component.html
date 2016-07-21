@@ -1,11 +1,11 @@
-﻿<body class="focused-form animated-content">
-<div class="container" id="login-form" *ngIf="showLoginHtml">
+﻿<body class="focused-form animated-content" style="background: #30559f !important;">
+<div class="container" id="login-form" *ngIf="showLoginHtml" >
 	<a href="index.html" class="login-logo"><img src="img/profile-pics/logo.png"></a>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Login Form</h2>
+					<div class="panel-heading" style="background-color: #e3e9f1;padding: 10px;">
+						<h2 style="letter-spacing: 2px;font-size: 17px;padding-left: 40%">Login</h2>
 					</div>
 					<div class="panel-body">
 						
@@ -16,7 +16,8 @@
 										<span class="input-group-addon">
 											<i class="ti ti-user"></i>
 										</span>
-										<input type="text" [(ngModel)]="userDetails.username" class="form-control" placeholder="Type your email" (keyup.enter)="login()" data-parsley-minlength="6" placeholder="At least 6 characters" required>
+										<input type="text" style="text-align:Center;" [(ngModel)]="userDetails.username" class="form-control" 
+										placeholder="Type your email" (keyup.enter)="login()" data-parsley-minlength="6" placeholder="Type your username" required>
 									</div>
 		                        </div>
 							</div>
@@ -27,7 +28,8 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" [(ngModel)]="userDetails.password" class="form-control" id="exampleInputPassword1" placeholder="Type your password" (keyup.enter)="login()"> 
+										<input type="password" style="text-align:Center;" [(ngModel)]="userDetails.password" class="form-control" id="exampleInputPassword1" 
+										placeholder="Type your password" (keyup.enter)="login()"> 
 									      <div class="fg-line">
                     <span style="color:red">{{errorMsg}}</span>
                 </div>
@@ -37,7 +39,7 @@
 
 							<div class="form-group mb-n">
 								<div class="col-xs-12">
-									<a href="extras-forgotpassword.html" class="pull-left">Forgot password?</a>
+									<a href="#" class="pull-left">Forgot password?</a>
 									<div class="checkbox-inline icheck pull-right p-n">
 										<div class="checkbox">
 											<label for=""><input id="remember-me" type="checkbox" class="filled-in" [(ngModel)]="userDetails.rememberMe" value=""/> Remeber me</label>
@@ -47,10 +49,10 @@
 							</div>
 						</form>
 					</div>
-					<div class="panel-footer">
+					<div class="panel-footer" style="background-color: #e3e9f1;">
 						<div class="clearfix">
-							<a href="extras-registration.html" class="btn btn-default pull-left">Register</a>
-							<a type="button" value='Login' (click)="login()" class="btn btn-primary btn-raised pull-right" autofocus >Login</a>
+							<!--<a href="extras-registration.html" class="btn btn-default pull-left">Register</a>-->
+							<a type="button" value='Login' (click)="login()" class="btn btn-primary btn-raised pull-right" autofocus  style="padding-left: 42%;text-align: center;padding-right: 42%;">Login</a>
 						</div>
 					</div>
 				</div>

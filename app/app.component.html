@@ -34,54 +34,34 @@
         </li>
 
         <li class="active">
-            <a class="withripple" href="index.html">
+            <a class="withripple" [routerLink]="['/dashboard']">
                 <span class="icon">
                     <i class="material-icons">home</i>
-                </span><span class="badge badge-teal">2</span><div class="ripple-container"></div>
+                </span>
+                <!--<span class="badge badge-teal">2</span>
+                <div class="ripple-container"></div>-->
             </a>
         </li>
         <li class="open">
-            <a class="withripple" href="timeline3.html"><span class="icon"><i class="material-icons">access_time</i></span><div class="ripple-container"></div></a>
+            <a class="withripple" [routerLink]="['/timeline']"><span class="icon"><i class="material-icons">access_time</i></span><div class="ripple-container"></div></a>
         </li>
-        <li><a class="withripple" href="addnote.html"><span class="icon"><i class="material-icons">create</i></span><div class="ripple-container"></div></a></li>
+        <li><a class="withripple" [routerLink]="['/addnote']"><span class="icon"><i class="material-icons">create</i></span><div class="ripple-container"></div></a></li>
 
-        <li class="dropdown toolbar-icon-bg" style="
-					/* margin-bottom: -42px; */
-        ">
-        <a href="index.html#" class="hasnotifications dropdown-toggle" data-toggle="dropdown" style=" padding 13px 8px;
-           " aria-expanded="false">
-            <span class="icon-bg">
+        <li class="dropdown toolbar-icon-bg" style="">
+
+        <a href="" class="hasnotifications dropdown-toggle" data-toggle="dropdown" style="" aria-expanded="false">
+            <span class="icon-bg" style="margin-top: -3px;">
                 <i class="material-icons">notifications</i>
             </span>
             <span class="badge badge-info"></span>
-            <div class="ripple-container"></div>
+            <!--<span class="badge badge-teal">2</span>
+                <div class="ripple-container"></div>-->
         </a>
-        <notifications></notifications>
-      
+       <notifications></notifications>
+
         </li>
         <li>
-            <div class="widget" id="widget-profileinfo">
-  <div class="widget-body">
-                    <div class="userinfo panel-controls dropdown" style="padding-top:6px">
-                        <div class="avatar pull-left">
-                            <img src="assets/demo/avatar/avatar_15.png" class="img-responsive img-circle" style="margin-top:-6px">
-                        </div>
-                        <!--<div>-->
-                        <span class="username" style="font-size: 13px;">Sandru Paro</span>
-                        <!--<span class="useremail">online</span>-->
-                        <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <span class="material-icons inverted" style="color: #e1e7f1">arrow_drop_down</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="index.html">settings</a></li>
-                            <li><a href="index.html">profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="index.html">logout</a></li>
-                        </ul>
-                    <!--</div>-->
-                    </div>
-                </div>
-            </div>
+            <user-profile></user-profile>
         </li>
 
 
@@ -97,13 +77,13 @@
                     <nav role="navigation" class="widget-body">
                         <ul class="acc-menu">
                             <li class="nav-separator">
-                                <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">
+                                <!--<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">
                                     <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
                                         <span class="icon-bg">
                                             <i class="material-icons">menu</i>
                                         </span>
                                     </a>
-                                </span>
+                                </span>-->
                             </li>
 
                             <li>
@@ -126,7 +106,10 @@
                         <div class="page-content">
                             <ol class="breadcrumb" *ngIf="isAuthorized">
                                 <li><a href="index.html">Home</a></li>
-                                <li><a href="layout-static-leftbar.html#">Dashboard</a></li>
+                                <li *ngIf="isActiveRoute('/dashboard')"><a [routerLink]="['/dashboard']" title="Dashboard"> Dashboard  </a></li>
+                                <li *ngIf="isActiveRoute('/addnote')"><a [routerLink]="['/addnote']" title="Add Note"> Add Note  </a></li>
+                                <li *ngIf="isActiveRoute('/timeline')"><a [routerLink]="['/timeline']" title="TimeLine">  TimeLine  </a></li>
+                                <li *ngIf="isActiveRoute('/tags')"><a [routerLink]="['/tags']" title="Tags">  Tags  </a></li>
                             </ol>
                             <div class="page-heading">
                                 <!-- <h1>Static Leftbar</h1> -->
