@@ -16,7 +16,7 @@
         
         
     </div>
-    <div class="panel-body no-padding table-responsive" style= "height: 783px;overflow-y: scroll;"  infinite-scroll
+    <div class="panel-body no-padding table-responsive" style= "height: 660px;overflow-y: scroll;"  infinite-scroll
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="500"
      (scrolled)="onScroll()"
@@ -80,11 +80,9 @@
                         </div>
                         <a class="btn btn-xs btn-info btn-label ml-md" (click)="parentModal.open(); setCurrentTimeline(timeline)">
                             <i class="material-icons" style="font-size: 13px;">share</i> Share
-
                         </a>
-                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                        <a class="btn btn-xs btn-info btn-label ml-md" (click)="cleanSelectedTimeline(timeline)">
                             <i class="material-icons" style="font-size: 13px;">delete_sweep</i> Clean
-
                         </a>
                     </div>
                 <div class="ripple-container"></div>

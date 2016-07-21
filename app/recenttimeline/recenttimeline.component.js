@@ -164,6 +164,14 @@ System.register(['@angular/core', '../services/recenttimeline.service', '../serv
                     this.currentTimeline_id = _selectedTimeline.id;
                     this.current_id = _selectedTimeline.timelineId;
                 };
+                RecentTimeLineComponent.prototype.cleanSelectedTimeline = function (selectedTimeline) {
+                    var index = this.recentTimelines.indexOf(selectedTimeline, 0);
+                    if (index > -1) {
+                        this.recentTimelines.splice(index, 1);
+                        //Make object reference change in order to re-execute transform pipe using js 'spread/rest'
+                        this.recentTimelines = this.recentTimelines.slice();
+                    }
+                };
                 RecentTimeLineComponent.prototype.onSelectedUsersChanged = function (_users) {
                     this.users = _users.map(function (d) { return d['userName']; });
                 };

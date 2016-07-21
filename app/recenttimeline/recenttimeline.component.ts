@@ -167,6 +167,16 @@ export class RecentTimeLineComponent implements OnInit {
 		this.current_id = _selectedTimeline.timelineId;
     }
 
+    cleanSelectedTimeline(selectedTimeline: any) {
+        var index = this.recentTimelines.indexOf(selectedTimeline, 0);
+
+        if (index > -1) {
+            this.recentTimelines.splice(index, 1);
+            //Make object reference change in order to re-execute transform pipe using js 'spread/rest'
+            this.recentTimelines = [...this.recentTimelines]
+        }
+    }
+
     onSelectedUsersChanged(_users: any[]): void {
         this.users = _users.map(function (d) { return d['userName']; });
     }
