@@ -33,19 +33,48 @@
             </a>
         </li>
 
-        <li class="active">
+        <li class="active" *ngIf="isActiveRoute('/dashboard')">
             <a class="withripple" [routerLink]="['/dashboard']">
                 <span class="icon">
                     <i class="material-icons">home</i>
                 </span>
-                <!--<span class="badge badge-teal">2</span>
-                <div class="ripple-container"></div>-->
             </a>
         </li>
-        <li class="open">
-            <a class="withripple" [routerLink]="['/timeline']"><span class="icon"><i class="material-icons">access_time</i></span><div class="ripple-container"></div></a>
+        <li class="open" *ngIf="!isActiveRoute('/dashboard')">
+            <a class="withripple" [routerLink]="['/dashboard']">
+                <span class="icon">
+                    <i class="material-icons">home</i>
+                </span>
+            </a>
         </li>
-        <li><a class="withripple" [routerLink]="['/addnote']"><span class="icon"><i class="material-icons">create</i></span><div class="ripple-container"></div></a></li>
+        <li class="active" *ngIf="isActiveRoute('/timeline')">
+            <a class="withripple" [routerLink]="['/timeline']">
+                <span class="icon">
+                    <i class="material-icons">access_time</i>
+                </span>
+            </a>
+        </li>
+        <li class="open" *ngIf="!isActiveRoute('/timeline')">
+            <a class="withripple" [routerLink]="['/timeline']">
+                <span class="icon">
+                    <i class="material-icons">access_time</i>
+                </span>
+            </a>
+        </li>
+        <li class="active" *ngIf="isActiveRoute('/addnote')">
+            <a class="withripple" [routerLink]="['/addnote']">
+                <span class="icon">
+                    <i class="material-icons">create</i>
+                </span>
+            </a>
+        </li>
+        <li class="open" *ngIf="!isActiveRoute('/addnote')">
+            <a class="withripple" [routerLink]="['/addnote']">
+                <span class="icon">
+                    <i class="material-icons">create</i>
+                </span>
+            </a>
+        </li>
 
         <li class="dropdown toolbar-icon-bg" style="">
 
@@ -132,7 +161,7 @@
 
                 </div> <!-- #page-content -->
             </div>
-            <footer role="contentinfo">
+            <footer role="contentinfo" *ngIf="isAuthorized">
                 <div class="clearfix">
                     <ul class="list-unstyled list-inline pull-left">
                         <li><h6 style="margin: 0;">© 2016 Exilesoft</h6></li>
@@ -150,13 +179,13 @@
         </div> <!-- .container-fluid -->
     </div> <!-- #page-content -->
 </div>
-<footer role="contentinfo">
+<!--<footer role="contentinfo">
     <div class="clearfix">
         <ul class="list-unstyled list-inline pull-left">
             <li><h6 style="margin: 0;">© 2016 Exilesoft</h6></li>
         </ul>
     </div>
-</footer>
+</footer>-->
 <div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div><div class="extrabar-underlay"></div></div>
 
 
@@ -354,9 +383,9 @@
 <!--<button *ngIf="isAuthorized" class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click for Settings">
     <i class="material-icons" style="font-size 38px;">add</i><div class="ripple-container"></div>
 </button>-->
-<button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="Click for Settings">
+<!--<button class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="Click for Settings">
     <i class="material-icons">settings</i>
-    </button>
+    </button>-->
 <!-- Switcher -->
     <div class="demo-options">
         <div class="demo-body">

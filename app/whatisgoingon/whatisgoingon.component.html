@@ -36,9 +36,9 @@
                                 <span class="date" *ngIf="activity.dateFormat != 'TODAY'">{{activity.date}}</span>
                                 <span class="date" *ngIf="activity.dateFormat == 'TODAY'">{{activity.time}}</span>
                                 <span>
-                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:4; let last = last; let j = index">
+                                    <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:3; let last = last; let j = index">
                                         <a class="btn" style="color:white;" (click)="select(activity)">{{tag.name}}</a>
-                                        <span *ngIf="last && j==3">...</span>
+                                        <span *ngIf="last && j==2">...</span>
                                     </ul>
                                 </span>
                             </div>

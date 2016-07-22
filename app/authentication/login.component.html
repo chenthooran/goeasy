@@ -1,70 +1,85 @@
-﻿<body class="focused-form animated-content" style="background: #30559f !important;">
-<div class="container" id="login-form" *ngIf="showLoginHtml" >
-	<a href="index.html" class="login-logo"><img src="img/profile-pics/logo.png"></a>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color: #e3e9f1;padding: 10px;">
-						<h2 style="letter-spacing: 2px;font-size: 17px;padding-left: 40%">Login</h2>
-					</div>
-					<div class="panel-body">
-						
-						<form action="extras-login.html" class="form-horizontal" id="validate-form">
-							<div class="form-group mb-md">
-		                        <div class="col-xs-12">
-		                        	<div class="input-group">							
-										<span class="input-group-addon">
-											<i class="ti ti-user"></i>
-										</span>
-										<input type="text" style="text-align:Center;" [(ngModel)]="userDetails.username" class="form-control" 
-										placeholder="Type your email" (keyup.enter)="login()" data-parsley-minlength="6" placeholder="Type your username" required>
-									</div>
-		                        </div>
-							</div>
-
-							<div class="form-group mb-md">
-		                        <div class="col-xs-12">
-		                        	<div class="input-group">
-										<span class="input-group-addon">
-											<i class="ti ti-key"></i>
-										</span>
-										<input type="password" style="text-align:Center;" [(ngModel)]="userDetails.password" class="form-control" id="exampleInputPassword1" 
-										placeholder="Type your password" (keyup.enter)="login()"> 
-									      <div class="fg-line">
-                    <span style="color:red">{{errorMsg}}</span>
-                </div>
-                                    </div>
-		                        </div>
-							</div>
-
-							<div class="form-group mb-n">
-								<div class="col-xs-12">
-									<a href="#" class="pull-left">Forgot password?</a>
-									<div class="checkbox-inline icheck pull-right p-n">
-										<div class="checkbox">
-											<label for=""><input id="remember-me" type="checkbox" class="filled-in" [(ngModel)]="userDetails.rememberMe" value=""/> Remeber me</label>
+﻿
+<div class="wrapper">
+	<div class="container" id="login-form" *ngIf="showLoginHtml" >
+		<a href="index.html" class="login-logo"><img src="img/profile-pics/logo.png"></a>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: #e3e9f1;padding: 10px;">
+							<h2 style="letter-spacing: 2px;font-size: 17px;padding-left: 40%">Login</h2>
+						</div>
+						<div class="panel-body">
+							
+							<form action="extras-login.html" class="form-horizontal" id="validate-form">
+								<div class="form-group mb-md">
+									<div class="col-xs-12">
+										<div class="input-group">							
+											<span class="input-group-addon">
+												<i class="ti ti-user"></i>
+											</span>
+											<input type="text" style="text-align:Center;" [(ngModel)]="userDetails.username" class="form-control" 
+											placeholder="Type your email" (keyup.enter)="login()" data-parsley-minlength="6" placeholder="Type your username" required>
 										</div>
 									</div>
 								</div>
+
+								<div class="form-group mb-md">
+									<div class="col-xs-12">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="ti ti-key"></i>
+											</span>
+											<input type="password" style="text-align:Center;" [(ngModel)]="userDetails.password" class="form-control" id="exampleInputPassword1" 
+											placeholder="Type your password" (keyup.enter)="login()"> 
+											<div class="fg-line">
+						<span style="color:red">{{errorMsg}}</span>
+								</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group mb-n">
+									<div class="col-xs-12">
+										<a href="#" class="pull-left">Forgot password?</a>
+										<div class="checkbox-inline icheck pull-right p-n">
+											<div class="checkbox">
+												<label for=""><input id="remember-me" type="checkbox" class="filled-in" [(ngModel)]="userDetails.rememberMe" value=""/> Remeber me</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="panel-footer" style="background-color: #e3e9f1;">
+							<div class="clearfix">
+								<!--<a href="extras-registration.html" class="btn btn-default pull-left">Register</a>-->
+								<a type="button" value='Login' (click)="login()" class="btn btn-primary btn-raised pull-right" autofocus  style="padding-left: 42%;text-align: center;padding-right: 42%;">Login</a>
 							</div>
-						</form>
-					</div>
-					<div class="panel-footer" style="background-color: #e3e9f1;">
-						<div class="clearfix">
-							<!--<a href="extras-registration.html" class="btn btn-default pull-left">Register</a>-->
-							<a type="button" value='Login' (click)="login()" class="btn btn-primary btn-raised pull-right" autofocus  style="padding-left: 42%;text-align: center;padding-right: 42%;">Login</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
+	<!--<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>-->
 </div>
-
 
 <input type="hidden" value="2" id="application-view-id" />
 
 
-    </body>
+
+
+
 
 
 
