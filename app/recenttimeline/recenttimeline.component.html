@@ -3,12 +3,12 @@
     <div class="panel-heading">
         <h2>RECENT TIMELINE</h2>
 
-        <button class="btn btn-sm btn-info btn-label ml-md" style="padding-left: 12px;padding-right: 12px;margin-left: 72%;float: right;padding-top: 7px;font-size: 10px;margin-top: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;" (click)="watchFilter(isWatchedFilter)">
+        <button class="btn btn-sm btn-info btn-label ml-md" style="    width: 144px;padding-left: 12px;padding-right: 12px;margin-left: 72%;float: right;padding-top: 7px;font-size: 10px;margin-top: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;" (click)="watchFilter(isWatchedFilter)">
             <span *ngIf="!isWatchedFilter" class="" title="" style="display:inline-block; cursor:pointer;">
                 <i class="material-icons" style="font-size: 13px;">favorite</i> View Watching
             </span>
             <span *ngIf="isWatchedFilter" class="" title="Watched" style="display:inline-block; cursor:pointer;">
-                <i class="material-icons" style="font-size: 13px;">favorite</i> View All
+                <i class="material-icons" style="font-size: 13px;color:blue">favorite</i> View All
             </span>          
             <div class="ripple-container"></div>
         </button>

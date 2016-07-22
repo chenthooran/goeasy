@@ -30,10 +30,10 @@
 
     <!-- Timeline Heading and Add Note -->
     <h1>
-        {{title}}
-        <button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" id="chat-trigger" data-trigger="#chat">
+        <!--{{title}}-->
+        <!--<button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" id="chat-trigger" data-trigger="#chat">
             <i class="material-icons">playlist_add</i> <span>add note</span>
-        </button>
+        </button>-->
     </h1>
     <!-- Tag search -->
     <div class="fluid-autocomplete">
@@ -99,7 +99,12 @@
                                                                                     <!-- BEGIN TIMELINE 8-->
                                                                                     <section class="flik-container">
                                                                                         <!-- BEGIN TIMELINE CONTENT -->
+                                                                                         
                                                                                         <ul class="flik-timeline flik-timeline-10 flik-accordion" data-scroll-effect="bounce-effect">
+                                                                                        <button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" style="top: -54px;" id="chat-trigger" data-trigger="#chat">
+                                                                                            <i class="material-icons">playlist_add</i> <span>add note</span>
+                                                                                        </button>
+                                                                                        
                                                                                             <li class="active">
                                                                                                 <div class="relative">
                                                                                                     <label class="show-title">Facebook is a social networking service</label>
