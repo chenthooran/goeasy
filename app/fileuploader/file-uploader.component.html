@@ -1,13 +1,15 @@
 ﻿
 
  <!-- file drop zone -->
+
 <div class="area">
     <div id="dropZone">
-        <i class="material-icons font-54">insert_drive_file</i>
+        <!--<i class="material-icons font-54">insert_drive_file</i>-->
         <!--<div>Drag and drop your files here or</div>-->
         <div class="input-group">
             <label class="input-group-btn">
-                <span class="btn file-upload">
+                
+                <span class="btn btn-success btn-raised btn-label file-upload" style="background-color: #f8f8f8;color: #2d3e4f;padding-left: 30px;padding-right: 30px;">
                     Browse to attach<input type="file" multiple (change)="fileChangeEvent($event)" #input style="display:none;" />
                 </span>
             </label>

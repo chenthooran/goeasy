@@ -30,23 +30,9 @@
 
     <!-- Timeline Heading and Add Note -->
     <h1>
-        <!--{{title}}-->
-        <!--<button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" id="chat-trigger" data-trigger="#chat">
-            <i class="material-icons">playlist_add</i> <span>add note</span>
-        </button>-->
     </h1>
-    <!-- Tag search -->
-    <div class="fluid-autocomplete">
-        <prime-app [isAllowedNewInput]="false" [inputValues]="timeLineRequest.data" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
-    </div>
-
     <timelineinfo close-others="true">
-        <div class="search-results"
-             infinite-scroll
-             [infiniteScrollDistance]="2"
-             [infiniteScrollThrottle]="500"
-             (scrolled)="onScroll()"
-             [scrollWindow]="true">
+        <div class="search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500" (scrolled)="onScroll()" [scrollWindow]="true">
         </div>
         <div id="wrapper">
             <div id="layout-static">
@@ -56,32 +42,38 @@
                             <div class="container-fluid">
                                 <div data-widget-group="group1" class="ui-sortable">
                                     <div class="row" style="margin-top: 11px;">
-                                        <div class="col-md-12 pl-n pr-n">
-
-                                        </div>
+                                        
 
                                         <!--Timeline STARTS-->
                                         <div class="col-md-9" style="padding-left: 13px;">
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="tab-8-2">
-
+                                                    <div class="col-md-12 pl-n pr-n">
+                                                      
+                                                    </div>
                                                     <!-- BEGIN TIMELINE -->
                                                     <div class="panel panel-white" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
                                                         <div class="panel-controls dropdown">
-                                                            <button class="btn btn-icon-rounded dropdown-toggle" data-toggle="dropdown"><span class="material-icons inverted">more_vert</span></button>
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li><a href="index.html">Action</a></li>
-                                                                <li><a href="index.html">Another action</a></li>
-                                                                <li><a href="index.html">Something else here</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="index.html">Separated link</a></li>
-                                                            </ul>
+                                                            <!--ADD A NOTE BUTTON-->
+                                                             <button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" 
+                                                             class="btn btn-sm btn-info btn-label ml-md" style="width: 144px;padding-left: 12px;padding-right: 12px;margin-left: 72%;float: right;padding-top: 7px;
+                                                             font-size: 10px;box-shadow: 0px 0px 4px 0px #e3e9f1;margin-right: 15%;BACKGROUND-COLOR: #30559f;color: #dee4f0;" 
+                                                             (click)="watchFilter(isWatchedFilter)" id="chat-trigger" data-trigger="#chat">
+                                                                    <div class="ripple-container"></div>
+                                                                    <i class="material-icons" style="font-size: 13px;color: #dee4f0;">note_add</i>   add note
+                                                            </button>
+                                                            <!--ADD A TASK BUTTON-->
+                                                            
+                                                            
                                                         </div>
                                                         <div class="panel-heading">
                                                             <h2 style="letter-spacing: 1px;">Timeline</h2>
                                                         </div>
                                                         <div class="panel-body" style="padding-top: 0;">
-
+                                                            <!--STARTS TAG SEARCH-->
+                                                            <div class="fluid-autocomplete" style="padding-left: 15px;padding-right: 15px;">
+                                                                <prime-app [isAllowedNewInput]="false" [inputValues]="timeLineRequest.data" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
+                                                            </div>
                                                             <!-- START TIMELINE -->
                                                             <div class="col-md-12" style="padding-top:16px;">
                                                                 <div class="panel-group panel-default" id="accordionA">
@@ -101,10 +93,6 @@
                                                                                         <!-- BEGIN TIMELINE CONTENT -->
                                                                                          
                                                                                         <ul class="flik-timeline flik-timeline-10 flik-accordion" data-scroll-effect="bounce-effect">
-                                                                                        <button (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0" class="btn-secondary btn" style="top: -54px;" id="chat-trigger" data-trigger="#chat">
-                                                                                            <i class="material-icons">playlist_add</i> <span>add note</span>
-                                                                                        </button>
-                                                                                        
                                                                                             <li class="active">
                                                                                                 <div class="relative">
                                                                                                     <label class="show-title">Facebook is a social networking service</label>

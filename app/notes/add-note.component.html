@@ -1,120 +1,148 @@
-﻿<div class="container">   
+﻿
 
-
-
+<div class="container-fluid" style="padding-top: 14px;margin-left: 0px;">
+    <div class="back" style="background: white;">
+        <div class="row" style="padding:5px">
             <div class="col-md-8 add-note-form">
-                <h1>
-                    {{heading}}
-                    <!--<button *ngIf="showCloseButton==false" class="btn-secondary  btn" (click)="modal.open()">
-                        <i class="material-icons">share</i> <span>share</span>
-                    </button>-->
-                </h1>
-                <!-- -------------share------------- -->
-                <modal #modal>
-                    <modal-header [show-close]="true">
-                        <p>Share</p>
-                    </modal-header>
-                    <modal-body>
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <label for="user-app" class="col-sm-pull-4 control-label">Whom would you like to share with ?</label>
+                <div class="panel panel-inbox" style="box-shadow:none"> 
+                    <div class="panel-body">
+                        <div class="panel-heading" style="padding-right: 0px;margin-right: 12px; margin-left: 12px;">
+                            <h2>Add Note</h2>
+                        </div>
+                        <!-- -------------share------------- -->
+                        <modal #modal>
+                            <modal-header [show-close]="true">
+                                <p>Share</p>
+                            </modal-header>
+                            <modal-body>
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-10">
+                                            <label for="user-app" class="col-sm-pull-4 control-label">Whom would you like to share with ?</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <user-app [isAllowedNewInput]="false" (usersadded)='onSelectedUsersChanged($event)' (usersremoved)="onSelectedUsersChanged($event)">Loading...</user-app>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-sm-10">
-                                    <user-app [isAllowedNewInput]="false" (usersadded)='onSelectedUsersChanged($event)' (usersremoved)="onSelectedUsersChanged($event)">Loading...</user-app>
+                            </modal-body>
+                            <modal-footer>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+                                    </div>
+                                </div>
+                            </modal-footer>
+
+                        </modal>
+                        <!-- ---------------end share----------- -->
+                        <!-- -------------Add Note Form------------- -->
+                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md">
+                            <div *ngIf="showCloseButton" class="form-group">
+                                <label class="float-left">Tags</label>
+                                <div id="tagInput1"></div>
+                                <div id="tagInput" class="hidden"></div>
+                                <br />
+                            </div>
+                            <div class="form-group mb-sm form-group-lg is-empty">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Title" required [(ngModel)]="noteRequest.title" ngControl="title" #title="ngForm">
+                                    <div [hidden]="title.valid || title.pristine" class="reqire-field">
+                                        Oops! Seems you have forgotten to enter title.
+                                    </div>
+                                </div>
+                                <span class="material-input"></span>
+                            </div>
+
+                            <div class="form-group mb-n">
+                                <div class="col-xs-12">
+                                    <div class="composer" style=" box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 0px rgba(0,0,0,0.24); height: 430px;">
+                                        <prime-editor (tagsAddedEditor)="TagsAdded($event)" (tagsAddedDescription)="TagsAddedDesc($event)"></prime-editor>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </modal-body>
-                    <modal-footer>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+
+                            <div class="inbox-mail-footer">
+                                <div class="clearfix">
+                                    <div class="">
+                                        <button type="button" class="btn btn-success btn-raised btn-label"
+                                                [disabled]="!noteForm.form.valid" (click)="Save()" data-trigger="#chat" id="noteSave-trigger" 
+                                                style="float: right;width: 102px;padding-left: 12px;padding-right: 12px;float: right;padding-top: 4px;font-size: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;BACKGROUND-COLOR: #30559f;color: #dee4f0;padding-bottom: 4px;margin-top: -2px;margin-bottom: 0px">
+                                            <!--<i class="material-icons">save</i>-->
+                                                <i class="material-icons hidden-xs" style="font-size: 13px;color: #dee4f0;">save</i>   save
+                                                <!--<span class="">Save</span>-->
+                                        </button>
+
+                                        <input *ngIf="showCloseButton" type="button" value='Close' class="btn-secondary btn " id="noteClose-trigger" data-trigger="#chat" (click)="Close()" />
+                                        <!--<a href="#" class="btn btn-lg btn-primary btn-raised"><i class="fa fa-arrow-right visible-xs"></i><span class="hidden-xs">Add Note</span></a>-->
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </modal-footer>
-
-                </modal>
-                <!-- ---------------end share----------- -->
-
-                <!-- -------------Add Note Form------------- -->
-                <form *ngIf="active"  #noteForm="ngForm">
-                    <div *ngIf="showCloseButton" class="form-group">
-                        <label class="float-left">Tags</label>
-						<div id="tagInput1"></div>
-						<div id="tagInput" class="hidden"></div>
-                        <br />
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label class="float-left">Title</label>
-                        <!-- <input [(ngModel)]="noteRequest.title" class="form-control" required ngControl="title"/>-->
-                        <input type="text" class="form-control" required [(ngModel)]="noteRequest.title" ngControl="title" #title="ngForm">
-                        <div [hidden]="title.valid || title.pristine" class="reqire-field">
-                            Oops! Seems you have forgotten to enter title. 
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <!--<textarea rows="10" cols="50" [(ngModel)]="noteRequest.description" class="form-control"></textarea>-->
-                        <!--<p-editor [(ngModel)]="noteRequest.description">
-                        </p-editor>-->
-                        <prime-editor (tagsAddedEditor) ="TagsAdded($event)" (tagsAddedDescription) ="TagsAddedDesc($event)"></prime-editor>
-                    </div>
-                    <div *ngIf="showCloseButton==false" class="form-group">
-                        <label class="col-md-12 no-padding">Tags</label>
-                        <div class="col-md-12 no-padding">
-                            <prime-app [isAllowedNewInput]="true" [inputValues]="noteRequest.tags" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
-                            <div *ngIf="!istagSelectionValidated" class="reqire-field">
-                                Oops! Seems you have forgotten to select any tag for this note.
-                            </div>
-                        </div>
-                    </div>
-                    <!--<input type="button" value='Save' (click)="Save()" class="btn btn-success" />-->
-                    <!--<input type="button" value='Share' (click)="modal.open()" class="btn btn-primary"/>-->
-                    <!--<div class="form-group">
-            <file-uploader [filesToUpload]="noteRequest.filesToUpload"></file-uploader>
-        </div>-->
-
-                    <button type="button" class="btn btn-success" [disabled]="!noteForm.form.valid" (click)="Save()" data-trigger="#chat" id="noteSave-trigger">Save</button>
-
-                    <input *ngIf="showCloseButton" type="button" value='Close' class="btn-secondary btn " id="noteClose-trigger" data-trigger="#chat" (click)="Close()" />
-
-                    </form>
+                </div>
 
 
-</div>
+              
+            </div>
 
             <!-- ------------- Tags suggestions and file upload------------- -->
-            <div class="col-md-4 p-t-20">
-                <div class="col-md-12 add-note-widget">
+            <div class="col-md-4 p-t-20" style="padding-left: 0;">
+                <!--Tag Suggestions-->
 
-                    <!-- file upload -->
-                    <!--<div class="input-group">
-                        <label class="input-group-btn">
-                            <span class="btn btn-primary">
-                                Browse&hellip; <input type="file" style="display: none;" multiple>
-                            </span>
-                        </label>
-                        <input type="text" class="form-control file-upload" readonly>
-                    </div>-->
-
+                  <div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" 
+                style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);box-shadow: none;">
+                <!--<div class="panel-heading">
+                    <h2>File Upload</h2>
+                   
+                </div>-->
+                <div class="panel-body add-note-widget" style="background: rgb(250, 250, 250) !important;padding-top: 46px;border: 3px dashed #f1f1f1 !important;border-radius: 2px;padding-bottom: 46px;padding-left: 106px;">
                     <file-uploader [filesToUpload]="noteRequest.filesToUpload"></file-uploader>
                    
-                    
                 </div>
-
-                <div class="col-md-12 tags-widget ">
-                  TAG SUGGESTIONS
-
-                    <div  class="water-mark-text"> Tag suggestions come here</div>
-                </div>
-
             </div>
-       
 
+
+
+                <div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="box-shadow: none;visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
+                    <div class="panel-heading">
+                        <h2 style="font-size 16px;">
+                            Tag Suggestions
+                        </h2>
+                    </div>
+                    <div class="panel-body" style="padding: 0px;">
+                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md" style="padding: 0 !important;">
+                            <div *ngIf="showCloseButton==false" class="form-group" style="margin-top: 5px;"> 
+                                <!--<label class="col-md-12 no-padding">Tags</label>-->
+                                <div class="col-md-12 no-padding">
+                                    <prime-app [isAllowedNewInput]="true" [inputValues]="noteRequest.tags" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
+                                    <div *ngIf="!istagSelectionValidated" class="reqire-field">
+                                        Oops! Seems you have forgotten to select any tag for this note.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Recently Added Notes-->
+                <div class="panel panel-default add-note-widget" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="box-shadow:none;visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
+                    <div class="panel-heading">
+                        <h2 style="font-size 16px;">
+                            Recently Added Notes
+                        </h2>
+                    </div>
+                    <div class="panel-body" style="padding:0">
+                       <img src="img/recently_added_notes.jpg" style="width:100%;height: 288px;">
+                    </div>
+                </div>
+
+
+            
+            </div>
+        </div>
+    </div>
 </div>
 
-<!--<timeline></timeline>-->
 <input type="hidden" value="0" id="application-view-id" />
 
 <div style="position:absolute; width:100%; height:100vh; z-index:999999999999; background-color:rgba(0,0,0,0.7); top:0; left:0;" *ngIf="showLoading">
