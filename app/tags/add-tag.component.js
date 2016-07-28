@@ -114,6 +114,7 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                     //employeeRanges = [{ label: 'less than 100', value: 0 }, { label: '100 - 500', value: 1 }, { label: '500 - 1000', value: 2 }, { label: '1000 - 5000', value: 3 }, { label: 'more than 5000', value: 4 }];
                     this.tagIdentityType = "Customer";
                     this.candidateChecked = false;
+                    this.tagExpired = false;
                 }
                 TagIdentityComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -177,6 +178,8 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                                 _this.planToMigrate = t.planToMigrate;
                                 _this.expiryDate = t.expiryDate;
                                 _this.expiryStatus = t.expiryStatus;
+                                _this.expiryDate = new Date().toISOString();
+                                console.log('this.expiryDate =' + t.expiryDate + ' ' + _this.expiryDate);
                                 if (_this.tagIdentityType == 'Person' && _this.subType == 'Candidate') {
                                     _this.candidateChecked = true;
                                     console.log('this.candidateChecked=' + _this.candidateChecked);
@@ -243,7 +246,11 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                     this.tagIdentityRequest.expectedSalary = this.expectedSalary;
                     this.tagIdentityRequest.planToMigrate = this.planToMigrate;
                     this.tagIdentityRequest.expiryDate = this.expiryDate;
+                    console.log('this.tagIdentityRequest.expiryDate : ' + this.tagIdentityRequest.expiryDate);
                     this.tagIdentityRequest.expiryStatus = this.expiryStatus;
+                    if (!this.expiryDate && this.tagExpired) {
+                        this.tagIdentityRequest.expiryDate = new Date().toISOString();
+                    }
                     this._tagIdentityService.addTag(this.tagIdentityRequest)
                         .subscribe(function (tag) {
                         console.log('Tag Saved');

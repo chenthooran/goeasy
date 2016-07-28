@@ -383,7 +383,9 @@
 <!--<button *ngIf="isAuthorized" class="btn btn-primary btn-fab demo-switcher-fab" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click for Settings">
     <i class="material-icons" style="font-size 38px;">add</i><div class="ripple-container"></div>
 </button>-->
-
+<aside id="chat" *ngIf="isAuthorized">
+    <add-note [showCloseButton]="true"></add-note>
+</aside>
 
 <nav class="item-menu">
     <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>

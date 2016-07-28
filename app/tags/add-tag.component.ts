@@ -104,6 +104,7 @@ export class TagIdentityComponent implements OnInit {
     //employeeRanges = [{ label: 'less than 100', value: 0 }, { label: '100 - 500', value: 1 }, { label: '500 - 1000', value: 2 }, { label: '1000 - 5000', value: 3 }, { label: 'more than 5000', value: 4 }];
     tagIdentityType: string = "Customer";
     candidateChecked: boolean = false;
+    tagExpired: boolean = false;
 
 	ngOnInit() {
 		if(this.routeSegment){
@@ -167,6 +168,8 @@ export class TagIdentityComponent implements OnInit {
                     this.planToMigrate = t.planToMigrate;
                     this.expiryDate = t.expiryDate;
                     this.expiryStatus = t.expiryStatus;
+                    this.expiryDate = new Date().toISOString();
+                    console.log('this.expiryDate =' + t.expiryDate + ' ' + this.expiryDate);
 
                     if (this.tagIdentityType == 'Person' && this.subType == 'Candidate') {
                         this.candidateChecked = true;
@@ -244,8 +247,18 @@ export class TagIdentityComponent implements OnInit {
         this.tagIdentityRequest.expectedSalary = this.expectedSalary;
         this.tagIdentityRequest.planToMigrate = this.planToMigrate;
         this.tagIdentityRequest.expiryDate = this.expiryDate;
+
+        console.log('this.tagIdentityRequest.expiryDate : ' + this.tagIdentityRequest.expiryDate);
+
         this.tagIdentityRequest.expiryStatus = this.expiryStatus;
-		
+
+        if (!this.expiryDate && this.tagExpired) {
+            this.tagIdentityRequest.expiryDate = new Date().toISOString();
+            //this.expiryDate.toISOString()
+            //var fd = new Date().toISOString();
+            //this.tagIdentityRequest.expiryDate = fd.getFullYear() + "-" + fd.getMonth() + "-" + fd.getDate();
+        }
+                
 		this._tagIdentityService.addTag(this.tagIdentityRequest)
 		.subscribe(tag => {
                 console.log('Tag Saved');

@@ -139,7 +139,16 @@
             <input type="text" class="form-control" required [(ngModel)]="planToMigrate" ngControl="planToMigrate" #title="ngForm">
         </div>
 
-
+		<div class="form-group">
+            <label class="float-left">Do not show this tag in Search</label>
+            <input type="checkbox" class="" required [(ngModel)]="tagExpired" ngControl="tagExpired" #title="ngForm">
+        </div>
+		
+		<div *ngIf="tagExpired==false" class="form-group">
+            <label class="float-left">Expire the tag on this date</label>
+            <input type="date" class="" required [(ngModel)]="expiryDate" ngControl="expiryDate" #title="ngForm">
+        </div>
+		
 		<div class="form-group">
 			<button type="button" class="btn btn-success" [disabled]="false" (click)="save()">Save</button>
 		</div>
