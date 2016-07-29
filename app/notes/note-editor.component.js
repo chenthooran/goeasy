@@ -174,7 +174,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/tags.service']
                         this.tags = uniqueArray;
                         this.isFocus = true;
                         this.tagsAddedEditor.emit(uniqueArray);
-                        this.tagsAddedDescription.emit(event.htmlValue);
+                        this.tagsAddedDescription.emit(event.textValue);
                     }
                 };
                 NoteEditorComponent.prototype.OnSelectionChange = function (event) {

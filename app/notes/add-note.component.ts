@@ -95,6 +95,10 @@ export class AddNoteComponent implements OnInit {
     }
 
     Save() {
+
+        if (!this.showCloseButton)
+            $('#tagInput').text('');
+
         let inputTagStr = $('#tagInput').text();
 
         if (inputTagStr.trim() == '') {

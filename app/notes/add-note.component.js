@@ -117,6 +117,8 @@ System.register(['@angular/core', './note-request', '../services/notes.service',
                 };
                 AddNoteComponent.prototype.Save = function () {
                     var _this = this;
+                    if (!this.showCloseButton)
+                        $('#tagInput').text('');
                     var inputTagStr = $('#tagInput').text();
                     if (inputTagStr.trim() == '') {
                         if (this.noteRequest.tags.length == 0) {

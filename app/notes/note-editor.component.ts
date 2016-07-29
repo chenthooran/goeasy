@@ -174,7 +174,7 @@ export class NoteEditorComponent implements OnInit {
             this.tags = uniqueArray;
             this.isFocus = true;
             this.tagsAddedEditor.emit(uniqueArray);
-            this.tagsAddedDescription.emit(event.htmlValue);
+            this.tagsAddedDescription.emit(event.textValue);
         }
     }
 

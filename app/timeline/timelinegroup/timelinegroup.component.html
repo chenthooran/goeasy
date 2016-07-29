@@ -14,22 +14,37 @@
     <p>No records to display...</p>
 </div>-->
 
-<div class="col-md-12 timeline-wrapper no-padding" [class.panel-open]="isOpen">
-    <div class="col-md-12 no-padding" style="background:#eceff1;margin-bottom:20px;">
-        <div class="pull-right timeline-group-heading-count" (click)="toggleOpen($event)"> 
-            <a href="#" tabindex="0">
-                        {{availableCountText}}
-                    <span class="show-content zmdi zmdi-chevron-up" ></span>
-                    <span class="hide-content zmdi zmdi-chevron-down" ></span>
-            </a>
+
+<div class="panel panel-default" >
+    <a (click)="toggleOpen($event)">
+
+        <div class="panel-heading">
+            <h2 style="padding-left: 8%;color: #2d3e4f;font-weight: 500;">{{heading}}</h2>
+            <h2 style="padding-left: 37%;color: #2d3e4f;font-weight: 500;">{{availableCountText}} </h2>
         </div>
-        <div class="timeline-group-heading clickable" (click)="toggleOpen($event)">
-            <a href="#" tabindex="0">
-                <span [class.text-muted]="isDisabled" (click)="toggleOpen($event)"> {{heading}}</span>
-            </a>
-        </div>
-    </div>
+    </a>
     <div class="panel-collapse" [hidden]="!isOpen">
-            <ng-content></ng-content>
+        <ng-content></ng-content>
     </div>
-</div>
+
+    </div>
+
+    <!--<div class="col-md-12 timeline-wrapper no-padding" >
+        <div class="col-md-12 no-padding" style="background:#eceff1;margin-bottom:20px;">
+            <div class="pull-right timeline-group-heading-count" (click)="toggleOpen($event)">
+                <a href="#" tabindex="0">
+                    {{availableCountText}}
+                    <span class="show-content zmdi zmdi-chevron-up"></span>
+                    <span class="hide-content zmdi zmdi-chevron-down"></span>
+                </a>
+            </div>
+            <div class="timeline-group-heading clickable" (click)="toggleOpen($event)">
+                <a href="#" tabindex="0">
+                    <span [class.text-muted]="isDisabled" (click)="toggleOpen($event)"> {{heading}}</span>
+                </a>
+            </div>
+        </div>
+        <div class="panel-collapse" [hidden]="!isOpen">
+            <ng-content></ng-content>
+        </div>
+    </div>-->
