@@ -29,7 +29,7 @@
             $('#chat-trigger').removeClass('open');
 
             if (!$('#chat').hasClass('toggled')) {
-                $('#header').toggleClass('sidebar-toggled');
+                $('#topnav').toggleClass('sidebar-toggled');
             }
             else {
                 $('#chat').removeClass('toggled');
@@ -43,7 +43,7 @@
             $('#menu-trigger').removeClass('open');
 
             if (!$('#sidebar').hasClass('toggled')) {
-                $('#header').toggleClass('sidebar-toggled');
+                $('#topnav').toggleClass('sidebar-toggled');
             }
             else {
                 $('#sidebar').removeClass('toggled');
@@ -51,13 +51,13 @@
         }
 
         //When clicking outside
-        if ($('#header').hasClass('sidebar-toggled')) {
+        if ($('#topnav').hasClass('sidebar-toggled')) {
             $(document).on('click', function (e) {
                 if (($(e.target).closest($elem).length === 0) && ($(e.target).closest($elem2).length === 0)) {
                     setTimeout(function () {
                         $('body').removeClass('modal-open');
                         $($elem).removeClass('toggled');
-                        $('#header').removeClass('sidebar-toggled');
+                        $('#topnav').removeClass('sidebar-toggled');
                         $($elem2).removeClass('open');
                     });
                 }
