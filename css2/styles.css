@@ -20904,11 +20904,14 @@ span.date {}
   float: right;
 }
 .timeline > li .timeline-header span.author {
-  font-size: 13px;
+  font-size: 14px;
   display: inline-block;
   color: rgba(0, 0, 0, 0.87);
   font-weight: 400;
   padding-right: 10px;
+  font-family: ‘Merriweather’, Georgia, serif !important;
+  font-weight: 500;
+  padding-bottom: 2px;
 }
 .timeline > li .timeline-header + p {
   padding-top: 10px;
@@ -27936,7 +27939,7 @@ time.icon:hover, time.icon:focus
     }
 
     .tag a {
-      margin-left: 11px;
+      /* margin-left: 11px; */
       padding: 0 10px 0 12px;
       background: rgb(232, 234, 246);
       /*background: #0089e0;*/
@@ -27948,6 +27951,8 @@ time.icon:hover, time.icon:focus
       -moz-border-radius-topright: 4px;
       -webkit-border-top-right-radius: 4px;
       border-top-right-radius: 4px;
+      font-family: ‘Merriweather’, Georgia, serif !important;
+      font-weight: 700;
     }
 
     .tag a:before {
@@ -28698,142 +28703,7 @@ p-autocomplete .ui-autocomplete.ui-widget ul li.ui-autocomplete-token {
 
 
 
-/*========== ADD-ADS BUTTON =========*/
-.add-btn-warpper .one-catg{
-  position: fixed;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ff8040;
-  text-align: center;
-  line-height: 50px;
-  color: #FFF;
-  font-size: 20px
-}
-.add-btn-warpper .add-car       {top: 35%; right: -5%;}
-.add-btn-warpper .add-proprty   {top: 42%; right: -5%;}
-.add-btn-warpper .add-job       {top: 49%; right: -5%;}
-.add-btn-warpper .add-dalel     {top: 56%; right: -5%;}
-.add-btn-warpper .add-ads       {top: 63%; right: -5%;}
-.add-btn-warpper .add-offer     {top: 70%; right: -5%;}
 
-.add-btn-warpper .add-btn{
-  position: fixed;
-  top: 50%;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ff8040;
-  text-align: center;
-  line-height: 50px;
-  color: #FFF;
-  font-size: 20px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  cursor: pointer
-}
-/* Tooltip override */
-/* Cars */
-#addCarBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 36%;
-  right: 59px;
-  width: 100px;
-}
-#addCarBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 37.3%;
-  right: 55px;
-}
-/* Proprty */
-#addProprtyBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 43%;
-  right: 59px;
-  width: 100px;
-}
-#addProprtyBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 44.3%;
-  right: 55px;
-}
-/* Job */
-#addJobBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 50%;
-  right: 59px;
-  width: 100px;
-}
-#addJobBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 51.3%;
-  right: 55px;
-}
-/* Dalel */
-#addDalelBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 57%;
-  right: 59px;
-}
-#addDalelBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 58.3%;
-  right: 55px;
-}
-/* Ads */
-#addAdsBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 64%;
-  right: 59px;
-  width: 100px;
-}
-#addAdsBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 65.3%;
-  right: 55px;
-}
-/* Offer */
-#addOfferBtn + .tooltip > .tooltip-inner {
-  position: fixed;
-  top: 71%;
-  right: 59px;
-  width: 100px;
-}
-#addOfferBtn + .tooltip > .tooltip-arrow {
-  position: fixed;
-  top: 72.3%;
-  right: 55px;
-}
-/* Fixes Classes */
-.fix-pos{
-  right: 0 !important;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.unfix-pos{
-  right: -5% !important;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.fix-add-btn{
-  top: 25% !important;
-  -webkit-transition: all 1.7s ease-in-out;
-  -moz-transition: all 1.7s ease-in-out;
-  -ms-transition: all 1.7s ease-in-out;
-  -o-transition: all 1.7s ease-in-out;
-  transition: all 1.7s ease-in-out;
-}
 
 /* HTML5 display definitions
    ========================================================================== */

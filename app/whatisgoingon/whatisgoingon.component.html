@@ -43,8 +43,15 @@
                                 </span>
                             </div>
                             <div id=i{{i}} class="panel-collapse collapse custom-panel-collapse">
-                                <div class="panel-body">
+                                <div class="panel-body" style="box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15)">
                                     <div [innerHTML]="activity.description"></div>
+                                    <div style="    padding-top: 10px;float: right;">
+                                         <button  class="btn btn-xs btn-danger btn-raised btn-label" style="background-color: rgb(48, 85, 159);;">
+                                            <i style="font-size: 16px;" class="material-icons">access_time</i>  Go to Timeline
+                                            <!--<i  class="fa fa-times"></i>  -->
+                                            <div class="ripple-container"></div>
+                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -10,31 +10,27 @@
                             <h2>Add Note</h2>
                         </div>
                         <!-- -------------share------------- -->
-                        <modal #modal>
-                            <modal-header [show-close]="true">
-                                <p>Share</p>
-                            </modal-header>
-                            <modal-body>
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <div class="col-sm-10">
-                                            <label for="user-app" class="col-sm-pull-4 control-label">Whom would you like to share with ?</label>
+                            <modal  #modal class="modal visiblemodal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: #fafafa;;">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h2 class="modal-title">Share</h2>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="modal-body">
+                                            <form class="form-horizontal">
+                                            <p style="font-size: 14px;font-family: ‘Merriweather’, Georgia, serif !important;font-weight: 500;padding-bottom: 0px;">Whom would you like to share with ?</p>
                                             <user-app [isAllowedNewInput]="false" (usersadded)='onSelectedUsersChanged($event)' (usersremoved)="onSelectedUsersChanged($event)">Loading...</user-app>
+                                            </form>
                                         </div>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <!--<button type="button" class="btn btn-raised btn-default" data-dismiss="modal" (click)="parentModal.dismiss()">Close</button>-->
+                                            <button type="button" class="btn btn-raised btn-primary" (click)="modal.close()">Ok</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
                                 </div>
-                            </modal-body>
-                            <modal-footer>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
-                                    </div>
-                                </div>
-                            </modal-footer>
+                            </modal>
 
-                        </modal>
                         <!-- ---------------end share----------- -->
                         <!-- -------------Add Note Form------------- -->
                         <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md">
@@ -71,7 +67,15 @@
                                             <!--<i class="material-icons">save</i>-->
                                                 <i class="material-icons hidden-xs" style="font-size: 13px;color: #dee4f0;">save</i>   save
                                                 <!--<span class="">Save</span>-->
-                                        </button>
+                                            </button>
+
+                                                <li class="toolbar-icon-bg" id="trigger-infobar">
+                                                    <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                                                        <span class="icon-bg">
+                                                            <i class="material-icons">more_vert</i>
+                                                        </span>
+                                                    </a>
+                                                </li>
 
                                         <button *ngIf="showCloseButton" type="button" class="btn btn-success btn-raised btn-label"
                                                 (click)="Close()" data-trigger="#chat" id="noteClose-trigger"
@@ -154,7 +158,18 @@
     <div style="width:200px; height:130px; position:absolute;  top:35%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.01); background-color:#fff; border-radius:10px;   margin: 0 auto;left: 0;right: 0; overflow:hidden;">
         <div style="text-align:center; margin-top:14%; color:#2383bc;">
             <p style="position:absolute; left: 0; right:0; top:25%;">Loading</p>
-            <img src="../../img/spinner.gif" style="max-width: 100%; width: 120px;" />
+           <img src="../../img/spinner.gif" style="max-width: 100%; width: 120px;" />
         </div>
     </div>
+</div>
+
+      <div class="infobar-wrapper scroll-pane">
+            <div class="infobar scroll-content">
+
+    
+        lol
+   
+
+    </div>
+
 </div>
