@@ -9,6 +9,7 @@ import {BrowserPlatformLocation} from '@angular/platform-browser';
 import {AuthService} from './services/auth.service';
 import {TokenService} from './services/token.service';
 import {AddNoteComponent} from './notes/add-note.component';
+import {AddTaskComponent} from './tasks/add-task.component';
 import {TimeLineComponent} from './timeline/timeline.component';
 import {LoginComponent} from './authentication/login.component';
 import {NgIf} from '@angular/common';
@@ -52,6 +53,10 @@ import {LoadingComponent} from './loader/loading.component';
         {
             path: '/addnote',
             component: AddNoteComponent
+        },
+        {
+            path: '/addTask',
+            component: AddTaskComponent
         },
         {
             path: '/timeline',

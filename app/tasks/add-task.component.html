@@ -1,0 +1,131 @@
+﻿
+
+<div class="container-fluid" style="padding-top: 14px;margin-left: 0px;">
+    <div class="back" style="background: white;">
+        <div class="row" style="padding:5px">
+            <div class="col-md-8 add-note-form">
+                <div class="panel panel-inbox" style="box-shadow:none"> 
+                    <div class="panel-body">
+                        <div class="panel-heading" style="padding-right: 0px;margin-right: 12px; margin-left: 12px;">
+                            <h2>Add Task</h2>
+                        </div>
+   
+                        <!-- -------------Add Task Form------------- -->
+                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md">
+                            <div *ngIf="showCloseButton" class="form-group">
+                                <label class="float-left">Tags</label>
+                                <div id="tagInput1"></div>
+                                <div id="tagInput" class="hidden"></div>
+                                <br />
+                            </div>
+                            <div class="form-group mb-sm form-group-lg is-empty">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Title" required [(ngModel)]="taskRequest.title" ngControl="title" #title="ngForm">
+                                    <div [hidden]="title.valid || title.pristine" class="reqire-field">
+                                        Oops! Seems you have forgotten to enter title.
+                                    </div>
+                                </div>
+                                <span class="material-input"></span>
+                            </div>
+                            <div class="form-group mb-sm form-group-lg is-empty">
+                                <div class="col-md-12">
+                                    <p-calendar [(ngModel)]="taskRequest.dueDate" dateFormat="dd/mm/yy" placeholder="Due Date" showAnim="slideDown" minDate="0d" [readonlyInput]="true" ngControl="dueDate" #dateValue="ngForm"></p-calendar>
+                                </div>
+                                <span class="material-input"></span>
+                            </div>
+                            <div class="form-group mb-sm form-group-lg is-empty">
+                                <div class="col-md-12">
+                                    <p-autoComplete [(ngModel)]="taskRequest.user" [suggestions]="filteredUsersSingle" (completeMethod)="filterUserSingle($event)" field="userName" placeholder="Assignee" [minLength]="1"></p-autoComplete>
+                                </div>
+                                <span class="material-input"></span>
+                            </div>
+                            <div class="form-group mb-n">
+                                <div class="col-xs-12">
+                                    <div class="composer" style="box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 0px rgba(0,0,0,0.24); height: 430px;">
+                                        <prime-editor (tagsAddedEditor)="TagsAdded($event)" (tagsAddedDescription)="TagsAddedDesc($event)"></prime-editor>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="inbox-mail-footer">
+                                <div class="clearfix">
+                                    <div class="">
+                                        <button type="button" class="btn btn-success btn-raised btn-label"
+                                                [disabled]="!noteForm.form.valid" (click)="Save()" data-trigger="#chat" id="noteSave-trigger" 
+                                                style="float: right;width: 102px;padding-left: 12px;padding-right: 12px;float: right;padding-top: 4px;font-size: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;BACKGROUND-COLOR: #30559f;color: #dee4f0;padding-bottom: 4px;margin-top: -2px;margin-bottom: 0px">
+                                            <!--<i class="material-icons">save</i>-->
+                                                <i class="material-icons hidden-xs" style="font-size: 13px;color: #dee4f0;">save</i>   save
+                                                <!--<span class="">Save</span>-->
+                                        </button>
+                                        <li class="toolbar-icon-bg" id="trigger-infobar">
+                                            <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
+                                                <span class="icon-bg">
+                                                    <i class="material-icons">more_vert</i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <button *ngIf="showCloseButton" type="button" class="btn btn-success btn-raised btn-label"
+                                                (click)="Close()" data-trigger="#chat" id="noteClose-trigger"
+                                                style="float:right;width: 102px;padding-left: 12px;padding-right: 12px;float: right;padding-top: 4px;font-size: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;BACKGROUND-COLOR: #30559f;color: #dee4f0;padding-bottom: 4px;margin-top: -2px;margin-bottom: 0px">
+                                            <!--<i class="material-icons">save</i>-->
+                                            <i class="material-icons hidden-xs" style="font-size: 13px;color: #dee4f0;"></i>   close
+                                            <!--<span class="">Save</span>-->
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+              
+            </div>
+
+            <!-- ------------- Tags suggestions and file upload------------- -->
+            <div class="col-md-4 p-t-20" style="padding-left: 0;">
+                <!--Tag Suggestions-->
+                <div class="panel panel-default" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="box-shadow: none;visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
+                    <div class="panel-heading">
+                        <h2 style="font-size 16px;">
+                            Tag Suggestions
+                        </h2>
+                    </div>
+                    <div class="panel-body" style="padding: 0px;">
+                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md" style="padding: 0 !important;">
+                            <div *ngIf="showCloseButton==false" class="form-group" style="margin-top: 5px;"> 
+                                <!--<label class="col-md-12 no-padding">Tags</label>-->
+                                <div class="col-md-12 no-padding">
+                                    <prime-app [isAllowedNewInput]="true" [inputValues]="taskRequest.tags" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
+                                    <div *ngIf="!istagSelectionValidated" class="reqire-field">
+                                        Oops! Seems you have forgotten to select any tag for this note.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="0" id="application-view-id" />
+
+<div style="position:absolute; width:100%; height:100vh; z-index:999999999999; background-color:rgba(0,0,0,0.7); top:0; left:0;" *ngIf="showLoading">
+    <div style="width:200px; height:130px; position:absolute;  top:35%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.01); background-color:#fff; border-radius:10px;   margin: 0 auto;left: 0;right: 0; overflow:hidden;">
+        <div style="text-align:center; margin-top:14%; color:#2383bc;">
+            <p style="position:absolute; left: 0; right:0; top:25%;">Loading</p>
+            <img src="../../img/spinner.gif" style="max-width: 100%; width: 120px;" />
+        </div>
+    </div>
+    <div class="infobar-wrapper scroll-pane">
+        <div class="infobar scroll-content">
+
+
+            lol
+
+
+        </div>
+    </div>
+</div>

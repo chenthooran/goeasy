@@ -149,7 +149,8 @@ export class TagIdentityComponent implements OnInit {
                     this.tagIdentityRequest.id = this.tag.id;
                     this.tagIdentityRequest.name = this.tag.name;
                     this.title = t.title;
-                    this.birthDate = t.birthDate;
+                    this.birthDate = t.birthDate.substr(0,10); //"2016-08-09"
+                    
                     this.name = t.tag.name;
                     this.mobile = t.mobile;
                     this.workPhone = t.workPhone;
@@ -166,10 +167,10 @@ export class TagIdentityComponent implements OnInit {
                     this.highestQualification = t.highestQualification;
                     this.expectedSalary = t.expectedSalary;
                     this.planToMigrate = t.planToMigrate;
-                    this.expiryDate = t.expiryDate;
+                    this.expiryDate = t.expiryDate.substr(0,10);
                     this.expiryStatus = t.expiryStatus;
-                    this.expiryDate = new Date().toISOString();
-                    console.log('this.expiryDate =' + t.expiryDate + ' ' + this.expiryDate);
+                    //this.expiryDate = new Date().toISOString().substr(1,10);
+                    console.log('this.expiryDate =' + t.expiryDate );
 
                     if (this.tagIdentityType == 'Person' && this.subType == 'Candidate') {
                         this.candidateChecked = true;
@@ -204,6 +205,8 @@ export class TagIdentityComponent implements OnInit {
 	}
 	
     save() {
+        console.log('this.birthDate = ' + this.birthDate);
+        //return ;
         if (this.tag) {
             this.tagIdentityRequest.id = this.tag.id;
             this.tagIdentityRequest.name = this.tag.name;

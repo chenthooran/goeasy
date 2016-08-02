@@ -159,7 +159,7 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                                 _this.tagIdentityRequest.id = _this.tag.id;
                                 _this.tagIdentityRequest.name = _this.tag.name;
                                 _this.title = t.title;
-                                _this.birthDate = t.birthDate;
+                                _this.birthDate = t.birthDate.substr(0, 10); //"2016-08-09"
                                 _this.name = t.tag.name;
                                 _this.mobile = t.mobile;
                                 _this.workPhone = t.workPhone;
@@ -176,10 +176,10 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                                 _this.highestQualification = t.highestQualification;
                                 _this.expectedSalary = t.expectedSalary;
                                 _this.planToMigrate = t.planToMigrate;
-                                _this.expiryDate = t.expiryDate;
+                                _this.expiryDate = t.expiryDate.substr(0, 10);
                                 _this.expiryStatus = t.expiryStatus;
-                                _this.expiryDate = new Date().toISOString();
-                                console.log('this.expiryDate =' + t.expiryDate + ' ' + _this.expiryDate);
+                                //this.expiryDate = new Date().toISOString().substr(1,10);
+                                console.log('this.expiryDate =' + t.expiryDate);
                                 if (_this.tagIdentityType == 'Person' && _this.subType == 'Candidate') {
                                     _this.candidateChecked = true;
                                     console.log('this.candidateChecked=' + _this.candidateChecked);
@@ -205,6 +205,8 @@ System.register(['@angular/core', '@angular/router', '../services/tags.service',
                 };
                 TagIdentityComponent.prototype.save = function () {
                     var _this = this;
+                    console.log('this.birthDate = ' + this.birthDate);
+                    //return ;
                     if (this.tag) {
                         this.tagIdentityRequest.id = this.tag.id;
                         this.tagIdentityRequest.name = this.tag.name;

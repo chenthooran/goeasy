@@ -76,6 +76,21 @@
             </a>
         </li>
 
+        <li class="active" *ngIf="isActiveRoute('/addTask')">
+            <a class="withripple" [routerLink]="['/addTask']">
+                <span class="icon">
+                    <i class="material-icons">create</i>
+                </span>
+            </a>
+        </li>
+        <li class="open" *ngIf="!isActiveRoute('/addTask')">
+            <a class="withripple" [routerLink]="['/addTask']">
+                <span class="icon">
+                    <i class="material-icons">create</i>
+                </span>
+            </a>
+        </li>
+
         <li class="dropdown toolbar-icon-bg" style="">
 
         <a href="" class="hasnotifications dropdown-toggle" data-toggle="dropdown" style="" aria-expanded="false">
@@ -137,6 +152,7 @@
                                 <li><a href="index.html">Home</a></li>
                                 <li *ngIf="isActiveRoute('/dashboard')"><a [routerLink]="['/dashboard']" title="Dashboard"> Dashboard  </a></li>
                                 <li *ngIf="isActiveRoute('/addnote')"><a [routerLink]="['/addnote']" title="Add Note"> Add Note  </a></li>
+                                <li *ngIf="isActiveRoute('/addTask')"><a [routerLink]="['/addTask']" title="Add Task"> Add Task  </a></li>
                                 <li *ngIf="isActiveRoute('/timeline')"><a [routerLink]="['/timeline']" title="TimeLine">  TimeLine  </a></li>
                                 <li *ngIf="isActiveRoute('/tags')"><a [routerLink]="['/tags']" title="Tags">  Tags  </a></li>
                             </ol>

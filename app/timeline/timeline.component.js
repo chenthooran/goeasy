@@ -211,10 +211,10 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                 };
                 TimeLineComponent.prototype.getSelectedTags = function () {
                     this.selectedTagStr = '';
-                    if (this.initialTags && this.initialTags.length > 0)
-                        this.selectedTagStr = this.initialTags.join();
-                    if (this.initialTags.length > 0 && this.timeLineRequest.data.length > 0)
-                        this.selectedTagStr += ',';
+                    /*if(this.initialTags && this.initialTags.length > 0)
+                        this.selectedTagStr = this.initialTags.join();*/
+                    /*if(this.initialTags.length > 0 && this.timeLineRequest.data.length > 0)
+                        this.selectedTagStr += ',';*/
                     for (var i = 0; i < this.timeLineRequest.data.length; i++) {
                         this.selectedTagStr = this.selectedTagStr + (this.timeLineRequest.data[i] + (this.timeLineRequest.data.length != i + 1 ? ',' : ''));
                     }

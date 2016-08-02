@@ -46,6 +46,7 @@
     <Content Include="app\resources\icons\fonts\fontawesome-webfont.svg" />
     <Content Include="app\sharetimeline\sharetimeline.component.html" />
     <Content Include="app\tags\add-tag.component.html" />
+    <Content Include="app\tasks\add-task.component.html" />
     <Content Include="app\timeline\timelinegroup\timelinegroup.component.html" />
     <Content Include="app\timeline\timelinegroup\timelinedetail.component.html" />
     <Content Include="app\notifications\notifications.component.html" />
@@ -3699,6 +3700,7 @@
     <TypeScriptCompile Include="app\notifications\notificationUpdate.ts" />
     <TypeScriptCompile Include="app\recenttimeline\recenttimeline-request.ts" />
     <TypeScriptCompile Include="app\recenttimeline\recenttimeline.watchfilter.component.ts" />
+    <TypeScriptCompile Include="app\services\tasks.service.ts" />
     <TypeScriptCompile Include="app\services\passtag.service.ts" />
     <TypeScriptCompile Include="app\services\tag.identity.service.ts" />
     <TypeScriptCompile Include="app\services\timeline-watch.service.ts" />
@@ -3708,6 +3710,8 @@
     <TypeScriptCompile Include="app\services\user_profile.service.ts" />
     <TypeScriptCompile Include="app\sharetimeline\sharetimeline.component.ts" />
     <TypeScriptCompile Include="app\tags\add-tag.component.ts" />
+    <TypeScriptCompile Include="app\tasks\add-task.component.ts" />
+    <TypeScriptCompile Include="app\tasks\task-request.ts" />
     <TypeScriptCompile Include="app\timeline\angular2-infinite-scroll.ts" />
     <TypeScriptCompile Include="app\timeline\infinite-scroll.ts" />
     <TypeScriptCompile Include="app\timeline\scroller.ts" />
