@@ -16,7 +16,7 @@
         </div>
     </div>
     <div *ngFor="let fileToUpload of filesToUpload" class="col-md-12 no-padding m-t-10">
-        <img src='{{ fileToUpload.previwSrc }}' alt=""  width="40" class="float-left" />
+        <!--<img src='{{ fileToUpload.previwSrc }}' alt=""  width="40" class="float-left" />-->
         <div class="upload-file-name">{{fileToUpload.file.name}}</div>
         <a href="javascript:void(0)" (click)="removeFile(fileToUpload)" title="Delete this attachment" class="upload-file-delete">
             <span class="glyphicon glyphicon-trash"></span>

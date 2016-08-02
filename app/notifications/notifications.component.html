@@ -6,7 +6,7 @@
     <div class="topnav-dropdown-header">
         <span>{{notificationCount}} new notifications</span>
         <span>
-            <li style="float: right;">
+            <li style="float:right;padding-top:8px !important;">
                 <button class="btn btn-xs btn-danger btn-raised btn-label" (click)="dismissAllClicked()" style="background-color: #e51c23;">
                     <i class="fa fa-times"></i>  CLEAR ALL
                     <div class="ripple-container"></div>
@@ -39,7 +39,7 @@
                         <!--<span class="notification-time"  *ngIf="Item.dateFormat != 'TODAY'">{{Item.date}}</small>
                         <span class="notification-time"  *ngIf="Item.dateFormat == 'TODAY'">{{Item.time}}</small>-->
                         <!--<span class="notification-time">8 mins ago</span>-->
-            <li style="float: right;">
+            <li style="float: right;padding-top:8px !important;">
                 <button class="btn btn-xs btn-danger" (click)="dismissClicked(Item)">
                     <i class="fa fa-times"></i>  REMOVE<div class="ripple-container"></div>
                 </button>

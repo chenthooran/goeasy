@@ -211,6 +211,11 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                 };
                 TimeLineComponent.prototype.getSelectedTags = function () {
                     this.selectedTagStr = '';
+                    $('#chat-trigger').on('click', function () {
+                        //alert("sss");
+                        $('#chat').addClass('animated slideInRight');
+                        //return false;
+                    });
                     /*if(this.initialTags && this.initialTags.length > 0)
                         this.selectedTagStr = this.initialTags.join();*/
                     /*if(this.initialTags.length > 0 && this.timeLineRequest.data.length > 0)
