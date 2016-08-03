@@ -2,6 +2,7 @@
 import {Editor} from 'primeng/primeng';
 import {Header} from 'primeng/primeng';
 import {NotesService} from '../services/notes.service';
+import {NoteEditorComponent} from '../notes/note-editor.component';
 
 export class EditNoteRequest {
     ID: number;
@@ -16,7 +17,7 @@ export class EditNoteRequest {
     providers: [
         NotesService
     ],
-    directives: [Editor, Header]
+    directives: [Editor, Header, NoteEditorComponent]
 })
 
     export class EditNoteComponent implements OnInit {
@@ -54,5 +55,12 @@ export class EditNoteRequest {
             });
     }
     Close() {
+    }
+
+    TagsAddedDesc(event: string): void {
+        this.editNoteRequest.Description = event;
+    }
+    TagsAdded(tags: any[]): void {
+        var stringTags: any[] = [];
     }
 }

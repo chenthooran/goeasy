@@ -1,4 +1,4 @@
-System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'], function(exports_1, context_1) {
+System.register(['@angular/core', 'primeng/primeng', '../services/notes.service', '../notes/note-editor.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, primeng_1, primeng_2, notes_service_1;
+    var core_1, primeng_1, primeng_2, notes_service_1, note_editor_component_1;
     var EditNoteRequest, EditNoteComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
             },
             function (notes_service_1_1) {
                 notes_service_1 = notes_service_1_1;
+            },
+            function (note_editor_component_1_1) {
+                note_editor_component_1 = note_editor_component_1_1;
             }],
         execute: function() {
             EditNoteRequest = (function () {
@@ -63,6 +66,12 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                 };
                 EditNoteComponent.prototype.Close = function () {
                 };
+                EditNoteComponent.prototype.TagsAddedDesc = function (event) {
+                    this.editNoteRequest.Description = event;
+                };
+                EditNoteComponent.prototype.TagsAdded = function (tags) {
+                    var stringTags = [];
+                };
                 EditNoteComponent = __decorate([
                     core_1.Component({
                         selector: 'edit-note',
@@ -71,7 +80,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                         providers: [
                             notes_service_1.NotesService
                         ],
-                        directives: [primeng_1.Editor, primeng_2.Header]
+                        directives: [primeng_1.Editor, primeng_2.Header, note_editor_component_1.NoteEditorComponent]
                     }), 
                     __metadata('design:paramtypes', [notes_service_1.NotesService, core_1.NgZone])
                 ], EditNoteComponent);

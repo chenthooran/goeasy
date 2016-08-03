@@ -174,7 +174,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/tags.service']
                         this.tags = uniqueArray;
                         this.isFocus = true;
                         this.tagsAddedEditor.emit(uniqueArray);
-                        this.tagsAddedDescription.emit(event.textValue);
+                        this.tagsAddedDescription.emit(event.htmlValue);
                     }
                 };
                 NoteEditorComponent.prototype.OnSelectionChange = function (event) {
@@ -238,6 +238,10 @@ System.register(['@angular/core', 'primeng/primeng', '../services/tags.service']
                     return out;
                 };
                 __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String)
+                ], NoteEditorComponent.prototype, "description", void 0);
+                __decorate([
                     core_1.Output(), 
                     __metadata('design:type', core_1.EventEmitter)
                 ], NoteEditorComponent.prototype, "tagsAddedEditor", void 0);
@@ -248,7 +252,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/tags.service']
                 NoteEditorComponent = __decorate([
                     core_1.Component({
                         selector: 'prime-editor',
-                        template: "\n        <p-editor (onTextChange)=\"OnTextChange($event)\" [isFocus]=\"isFocus\" [existingTag]=\"existingTag\" [indexValue]=\"indexValue\"> \n        </p-editor>\n    ",
+                        template: "\n        <p-editor [value]=\"description\" (onTextChange)=\"OnTextChange($event)\" [isFocus]=\"isFocus\" [existingTag]=\"existingTag\" [indexValue]=\"indexValue\"> \n        </p-editor>\n    ",
                         directives: [primeng_1.Editor],
                         providers: [tags_service_1.TagsService]
                     }), 

@@ -124,7 +124,7 @@
                                                                                                     <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
                                                                                                 </div>
                                                                                                 <div class="content-main">
-                                                                                                    {{Item.description}}
+                                                                                                    <div [innerHTML]="Item.description"></div>
 
                                                                                                     <ul class="contacts tag" style="display: flex;padding-top: 14px;padding-bottom: 6px;">
                                                                                                         <a *ngFor="let tag of Item.tags; let last = last" class="btn" style=" background:rgb(232, 234, 246); color #607d8b;">{{tag.name}}<div class="ripple-container" *ngIf="!last"></div></a>

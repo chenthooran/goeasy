@@ -6,7 +6,7 @@ import { TagsResponse } from '../tags/tags-response';
     selector: 'prime-editor',
 
     template: `
-        <p-editor (onTextChange)="OnTextChange($event)" [isFocus]="isFocus" [existingTag]="existingTag" [indexValue]="indexValue"> 
+        <p-editor [value]="description" (onTextChange)="OnTextChange($event)" [isFocus]="isFocus" [existingTag]="existingTag" [indexValue]="indexValue"> 
         </p-editor>
     `,
     directives: [Editor],
@@ -24,6 +24,7 @@ export class NoteEditorComponent implements OnInit {
     isFocus: boolean;
     existingTag: string;
     indexValue: number;
+    @Input() description: string;
 
     @Output() tagsAddedEditor: EventEmitter<any> = new EventEmitter<any>();
     @Output() tagsAddedDescription: EventEmitter<string> = new EventEmitter<string>();
@@ -174,7 +175,7 @@ export class NoteEditorComponent implements OnInit {
             this.tags = uniqueArray;
             this.isFocus = true;
             this.tagsAddedEditor.emit(uniqueArray);
-            this.tagsAddedDescription.emit(event.textValue);
+            this.tagsAddedDescription.emit(event.htmlValue);
         }
     }
 

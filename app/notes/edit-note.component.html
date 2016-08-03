@@ -28,8 +28,9 @@
                     <div class="form-group">
                         <label>Description</label>
                         <!--<textarea rows="10" cols="50" [(ngModel)]="noteRequest.description" class="form-control"></textarea>-->
-                        <p-editor [(ngModel)]="editNoteRequest.Description">
-                        </p-editor>
+                        <!--<p-editor [(ngModel)]="editNoteRequest.Description">
+                        </p-editor>-->
+                        <prime-editor [description] = "editNoteRequest.Description" (tagsAddedEditor)="TagsAdded($event)" (tagsAddedDescription)="TagsAddedDesc($event)"></prime-editor>
                     </div>
                     <button type="button" class="btn btn-success" [disabled]="!noteForm.form.valid" (click)="Save()" id="noteSave-trigger">Save</button>
 
