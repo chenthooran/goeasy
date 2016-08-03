@@ -6,12 +6,13 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             TaskRequest = (function () {
-                function TaskRequest(title, description, tags, user, dueDate) {
+                function TaskRequest(title, description, tags, user, dueDate, issCompleted) {
                     this.title = title;
                     this.description = description;
                     this.tags = tags;
                     this.user = user;
                     this.dueDate = dueDate;
+                    this.issCompleted = issCompleted;
                 }
                 return TaskRequest;
             }());

@@ -41,12 +41,11 @@
                     <div class="least-contents">
                         <span *ngIf="timeline.contributedBy.length > 0" class="date" style="padding-right:10px;color:#bdbdbd;">contributors</span>
                         <span *ngFor="let image of timeline.contributedBy">
-                        <img class="img-circle" src="{{image.imageUrl}}" width="16" alt="{{image.userName}}" title="{{image.userName}}" >
-                    </span>
+                            <img *ngIf="image.imageUrl.length > 0" class="img-circle" src="{{image.imageUrl}}" width="16" title="{{image.userName}}" >
+                            <img *ngIf="image.imageUrl.length == 0" class="img-circle" src="img\profile-pics\avatar.png" width="16" title="{{image.userName}}">
+                        </span>
                     </div>
 
-                    <!--<div class="least-contents">15m</div>-->
-                    
                     <h4 class="list-group-item-heading" style="float: left;" *ngFor="let tag of timeline.tags; let last = last">
                         <span (click)="select(timeline)">{{tag.name}}</span>
                         <span *ngIf="!last" (click)="select(timeline)">&nbsp; +  &nbsp;</span>
@@ -56,15 +55,7 @@
                         <p class="list-group-item-text" *ngIf="timeline.noOfEntries" (click)="select(timeline)">
                         <span>{{timeline.noOfEntries}}</span>
                         </p>
-
-                     
-
-
                     </div>
-                    
-                    
-
-                   
                 </div>
 
                 <div class="like-info">

@@ -5,7 +5,8 @@ export class TaskRequest {
         public description: string,
         public tags: Tag[],
         public user: string,
-        public dueDate: string
+        public dueDate: string,
+        public issCompleted: boolean
     ){}
     
 }

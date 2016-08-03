@@ -53,7 +53,7 @@
                                                             <button class="sliderightbtn btn btn-sm btn-info btn-label ml-md" (click)="getSelectedTags()" [disabled]="timeLineRequest.data.length == 0"
                                                                     style="width: 144px;padding-left: 12px;padding-right: 12px;margin-left: 72%;float: right;padding-top: 7px;
                                                                     font-size: 10px;box-shadow: 0px 0px 4px 0px #e3e9f1;margin-right: 15%;BACKGROUND-COLOR: #30559f;color: #dee4f0;" 
-                                                                    id="chat-trigger" data-trigger="#chat" >
+                                                                    id="chat-trigger" data-trigger="#chat" data- >
                                                                     <!-- data-trigger="#chat" -->
                                                                 <div class="ripple-container"></div>
                                                                 <i class="material-icons" style="font-size: 13px;color: #dee4f0;">note_add</i>   add note
@@ -88,14 +88,15 @@
                                                                                     <ul class="flik-timeline flik-timeline-10 flik-accordion" data-scroll-effect="bounce-effect">
                                                                                         <li class="" *ngFor="let Item of timeline.items">
                                                                                             <div class="relative">
-                                                                                                <label class="show-title">{{Item.title}}</label>
+                                                                                                <label *ngIf="Item.activityType == 'Task'" style="color:blueviolet" class="show-title">{{Item.title}}</label>
+                                                                                                <label *ngIf="Item.activityType != 'Task'" class="show-title">{{Item.title}}</label>
                                                                                                 <!-- date time view -->
                                                                                                 <div class="date">
-                                                                                                    <div class="timediv" style="padding-top 0px;padding-left 59px;">
-                                                                                                        <time class="icon">
-                                                                                                            <span class="" style="padding-top: 40px;" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
+                                                                                                    <div class="timelinediv" style="padding-top 0px;padding-left 59px;">
+                                                                                                        <time class="timelineicon">
+                                                                                                            <span class="" style="padding-top: 40px;px;font-size: 21px;" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
                                                                                                             <strong><span class="" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateMonth}}</span></strong>
-                                                                                                            <span class="" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
+                                                                                                            <span style="padding-top: 17px !important;" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
                                                                                                             <span class="" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeAMPM}}</span>
                                                                                                         </time>
                                                                                                     </div>
@@ -105,14 +106,21 @@
                                                                                                 <span class='circle'></span>
                                                                                             </div>
                                                                                             <div class='flik-timeline-content'>
-
+                                                                                                   <!--<a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                        <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
+                                                                                                   </a>-->
 
                                                                                                 <div class="content-title">
-                                                                                                    {{Item.title}}
+                                                                                                    <span *ngIf="Item.activityType == 'Task'" style="color:blueviolet">{{Item.title}}</span>
+                                                                                                    <span *ngIf="Item.activityType != 'Task'">{{Item.title}}</span>
                                                                                                     <!--<a class="btn btn-xs btn-info btn-label ml-md" href="#">
                                                                                                         <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
                                                                                                         Watching
                                                                                                     </a>-->
+                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md" (click)="Item.isTaskCompleted = !Item.isTaskCompleted; updateTaskStatus(Item.id)">
+                                                                                                        <input style="pointer-events:none" type="checkbox" [ngModel]="Item.isTaskCompleted" />
+                                                                                                        {{Item.activityType}} completed
+                                                                                                    </div>
                                                                                                     <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
                                                                                                 </div>
                                                                                                 <div class="content-main">
@@ -157,6 +165,7 @@
                                                                                                                 </h4>
                                                                                                             </div>
                                                                                                         </div>
+                                                                                                       
                                                                                                     </div>
 
                                                                                                     <!--comment-->

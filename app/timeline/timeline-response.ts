@@ -12,4 +12,5 @@ export class TimeLineSingleResponse {
     ImageUrl: string;
     Date: string;
     Tags: any[];
+    IsTaskCompleted: boolean;
 }

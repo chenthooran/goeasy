@@ -1,6 +1,7 @@
 ﻿import { Router} from '@angular/router';
 import {Component, OnInit, Input, NgZone} from '@angular/core';
 import {NotesService} from '../services/notes.service';
+import {TasksService} from '../services/tasks.service';
 import {UserProfileService} from '../services/user_profile.service';
 import {UserProfileData} from '../userprofile/userprofile.component';
 import {TimeLineService} from '../services/timeline.service';
@@ -27,7 +28,7 @@ declare var ip_country;
     selector: 'timeline',
     templateUrl: './app/timeline/timeline.component.html',
     providers: [
-        TimeLineService ,NotesService,UserProfileService
+        TimeLineService, NotesService, UserProfileService, TasksService
     ],
     directives: [TagsSelectorComponent, TimelineInfo, TimelineGroup, TimelineDetail, TimelineDetailGroup, InfiniteScroll, MODAL_DIRECTIVES, ShareTimelineComponent, UsersSelectorComponent, EditNoteComponent]
 })
@@ -47,7 +48,7 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
 		userTags:[]
     };
 	
-    constructor(private _timeLineService: TimeLineService, private _noteService: NotesService, private _userProfileService: UserProfileService , routeSegment: RouteSegment,
+    constructor(private _timeLineService: TimeLineService, private _noteService: NotesService, private _taskService: TasksService, private _userProfileService: UserProfileService , routeSegment: RouteSegment,
         private _router: Router, private passTagService: PassTagService, private _configuration: Configuration, private zone: NgZone) {
         this.tagsStr = routeSegment.getParam('tags');
         this.fileApiUrl = _configuration.ServerWithApiUrl + 'FileContent';
@@ -94,7 +95,11 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
     }
 
     ngOnInit() {
-		
+        $('#chat-trigger').on('click', function () {
+            //alert("sss");
+            $('#chat').addClass('animated slideInRight');
+            //return false;
+        });
         this._userProfileService.getUserProfile()
 		.subscribe(data => {
 			this.userProfileData = JSON.parse(JSON.stringify(data));
@@ -208,11 +213,7 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
 	
     getSelectedTags() {
         this.selectedTagStr = '';
-		 $('#chat-trigger').on('click', function(){
-            //alert("sss");
-		    $('#chat').addClass('animated slideInRight');
-            //return false;
-        });
+	
 		/*if(this.initialTags && this.initialTags.length > 0)
 			this.selectedTagStr = this.initialTags.join();*/
 			
@@ -419,6 +420,13 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
 
     public set selectedId(value: number) {
         this._selectedId = value;
+    }
+
+    updateTaskStatus(taskId: string) {
+        if (!taskId) { return; }
+        this._taskService.updateTaskStatus(taskId)
+            .subscribe(response => { },
+            error => this.errorMessage = <any>error);
     }
 }
 

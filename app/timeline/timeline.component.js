@@ -1,4 +1,4 @@
-System.register(['@angular/router', '@angular/core', '../services/notes.service', '../services/user_profile.service', '../services/timeline.service', '../tags/tags-selector.component', './timelinegroup/timelinegroup.component', './timelinegroup/timelinedetail.component', 'rxjs/Observable', '../services/passtag.service', '../timeline/angular2-infinite-scroll', '../app.constants', '../sharetimeline/sharetimeline.component', '../noteshareusers/users-selector.component', '../modal/modaldialog', '../notes/edit-note.component'], function(exports_1, context_1) {
+System.register(['@angular/router', '@angular/core', '../services/notes.service', '../services/tasks.service', '../services/user_profile.service', '../services/timeline.service', '../tags/tags-selector.component', './timelinegroup/timelinegroup.component', './timelinegroup/timelinedetail.component', 'rxjs/Observable', '../services/passtag.service', '../timeline/angular2-infinite-scroll', '../app.constants', '../sharetimeline/sharetimeline.component', '../noteshareusers/users-selector.component', '../modal/modaldialog', '../notes/edit-note.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var router_1, core_1, notes_service_1, user_profile_service_1, timeline_service_1, tags_selector_component_1, timelinegroup_component_1, timelinedetail_component_1, router_2, Observable_1, passtag_service_1, angular2_infinite_scroll_1, app_constants_1, sharetimeline_component_1, users_selector_component_1, modaldialog_1, edit_note_component_1;
+    var router_1, core_1, notes_service_1, tasks_service_1, user_profile_service_1, timeline_service_1, tags_selector_component_1, timelinegroup_component_1, timelinedetail_component_1, router_2, Observable_1, passtag_service_1, angular2_infinite_scroll_1, app_constants_1, sharetimeline_component_1, users_selector_component_1, modaldialog_1, edit_note_component_1;
     var TimeLineComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
             },
             function (notes_service_1_1) {
                 notes_service_1 = notes_service_1_1;
+            },
+            function (tasks_service_1_1) {
+                tasks_service_1 = tasks_service_1_1;
             },
             function (user_profile_service_1_1) {
                 user_profile_service_1 = user_profile_service_1_1;
@@ -65,9 +68,10 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
             }],
         execute: function() {
             TimeLineComponent = (function () {
-                function TimeLineComponent(_timeLineService, _noteService, _userProfileService, routeSegment, _router, passTagService, _configuration, zone) {
+                function TimeLineComponent(_timeLineService, _noteService, _taskService, _userProfileService, routeSegment, _router, passTagService, _configuration, zone) {
                     this._timeLineService = _timeLineService;
                     this._noteService = _noteService;
+                    this._taskService = _taskService;
                     this._userProfileService = _userProfileService;
                     this._router = _router;
                     this.passTagService = passTagService;
@@ -115,6 +119,11 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                 }
                 TimeLineComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    $('#chat-trigger').on('click', function () {
+                        //alert("sss");
+                        $('#chat').addClass('animated slideInRight');
+                        //return false;
+                    });
                     this._userProfileService.getUserProfile()
                         .subscribe(function (data) {
                         _this.userProfileData = JSON.parse(JSON.stringify(data));
@@ -211,11 +220,6 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                 };
                 TimeLineComponent.prototype.getSelectedTags = function () {
                     this.selectedTagStr = '';
-                    $('#chat-trigger').on('click', function () {
-                        //alert("sss");
-                        $('#chat').addClass('animated slideInRight');
-                        //return false;
-                    });
                     /*if(this.initialTags && this.initialTags.length > 0)
                         this.selectedTagStr = this.initialTags.join();*/
                     /*if(this.initialTags.length > 0 && this.timeLineRequest.data.length > 0)
@@ -405,16 +409,24 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                     enumerable: true,
                     configurable: true
                 });
+                TimeLineComponent.prototype.updateTaskStatus = function (taskId) {
+                    var _this = this;
+                    if (!taskId) {
+                        return;
+                    }
+                    this._taskService.updateTaskStatus(taskId)
+                        .subscribe(function (response) { }, function (error) { return _this.errorMessage = error; });
+                };
                 TimeLineComponent = __decorate([
                     core_1.Component({
                         selector: 'timeline',
                         templateUrl: './app/timeline/timeline.component.html',
                         providers: [
-                            timeline_service_1.TimeLineService, notes_service_1.NotesService, user_profile_service_1.UserProfileService
+                            timeline_service_1.TimeLineService, notes_service_1.NotesService, user_profile_service_1.UserProfileService, tasks_service_1.TasksService
                         ],
                         directives: [tags_selector_component_1.TagsSelectorComponent, timelinegroup_component_1.TimelineInfo, timelinegroup_component_1.TimelineGroup, timelinedetail_component_1.TimelineDetail, timelinedetail_component_1.TimelineDetailGroup, angular2_infinite_scroll_1.InfiniteScroll, modaldialog_1.MODAL_DIRECTIVES, sharetimeline_component_1.ShareTimelineComponent, users_selector_component_1.UsersSelectorComponent, edit_note_component_1.EditNoteComponent]
                     }), 
-                    __metadata('design:paramtypes', [timeline_service_1.TimeLineService, notes_service_1.NotesService, user_profile_service_1.UserProfileService, router_2.RouteSegment, router_1.Router, passtag_service_1.PassTagService, app_constants_1.Configuration, core_1.NgZone])
+                    __metadata('design:paramtypes', [timeline_service_1.TimeLineService, notes_service_1.NotesService, tasks_service_1.TasksService, user_profile_service_1.UserProfileService, router_2.RouteSegment, router_1.Router, passtag_service_1.PassTagService, app_constants_1.Configuration, core_1.NgZone])
                 ], TimeLineComponent);
                 return TimeLineComponent;
             }());

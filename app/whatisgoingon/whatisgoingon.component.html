@@ -26,7 +26,10 @@
                 <ul class="timeline" *ngFor="let activity of whatisgoingonTimelines; let i=index">
 
                     <li class="timeline">
-                        <div class="timeline-icon"><img class="img-circle" src={{activity.userImage}} width="16" alt="icon" style="width: 42px;"></div>
+                        <div class="timeline-icon">
+                            <img *ngIf="activity.userImage.length > 0" class="img-circle" src={{activity.userImage}} width="16" alt="icon" style="width: 42px;">
+                            <img *ngIf="activity.userImage.length == 0" class="img-circle" src="img\profile-pics\avatar.png" width="16" style="width: 42px;">
+                        </div>
                         <div class="timeline-body">
                             <div class="timeline-header">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href=#i{{i}} aria-expanded="false" style="padding-left: 0">
@@ -37,7 +40,7 @@
                                 <span class="date" *ngIf="activity.dateFormat == 'TODAY'">{{activity.time}}</span>
                                 <span>
                                     <ul class="contacts tag" style="display: flex;" *ngFor="let tag of activity.tags | slice: 0:3; let last = last; let j = index">
-                                        <a class="btn" style="color:white;" (click)="select(activity)">{{tag.name}}</a>
+                                        <a class="btn" style="color:white;">{{tag.name}}</a>
                                         <span *ngIf="last && j==2">...</span>
                                     </ul>
                                 </span>
@@ -46,7 +49,7 @@
                                 <div class="panel-body" style="box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15)">
                                     <div [innerHTML]="activity.description"></div>
                                     <div style="    padding-top: 10px;float: right;">
-                                         <button  class="btn btn-xs btn-danger btn-raised btn-label" style="background-color: rgb(48, 85, 159);;">
+                                         <button (click)="select(activity)" class="btn btn-xs btn-danger btn-raised btn-label" style="background-color: rgb(48, 85, 159);">
                                             <i style="font-size: 16px;" class="material-icons">access_time</i>  Go to Timeline
                                             <!--<i  class="fa fa-times"></i>  -->
                                             <div class="ripple-container"></div>

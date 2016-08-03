@@ -19,6 +19,16 @@ export class TasksService {
         return this.callApi(apiUrl, taskRequest);
     }
 
+    public updateTaskStatus(taskId: string): Observable<TasksService>{
+        var headers = this._authService.getHeader();
+        headers.append('Content-Type', 'application/json; charset=utf-8');
+        var options = new RequestOptions({ headers: headers });
+
+        return this.http.put(this.webApiUrl + "/" + taskId, "", options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private callApi(url: string, taskRequest): Observable<TasksService> {
 
         var key = this.getAuthToken();
@@ -49,6 +59,11 @@ export class TasksService {
 
             xhr.send(formData);
         });
+    }
+
+    private extractData(res: Response) {
+        let body = res.json();
+        return body.data || {};
     }
 
     private handleError(error: Response) {

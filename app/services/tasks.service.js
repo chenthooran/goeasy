@@ -45,6 +45,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable', '@angular/
                     var apiUrl = this.webApiUrl + '/AddTask';
                     return this.callApi(apiUrl, taskRequest);
                 };
+                TasksService.prototype.updateTaskStatus = function (taskId) {
+                    var headers = this._authService.getHeader();
+                    headers.append('Content-Type', 'application/json; charset=utf-8');
+                    var options = new http_1.RequestOptions({ headers: headers });
+                    return this.http.put(this.webApiUrl + "/" + taskId, "", options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+                };
                 TasksService.prototype.callApi = function (url, taskRequest) {
                     var _this = this;
                     var key = this.getAuthToken();
@@ -70,6 +78,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable', '@angular/
                         xhr.setRequestHeader('Authorization', 'Bearer ' + key);
                         xhr.send(formData);
                     });
+                };
+                TasksService.prototype.extractData = function (res) {
+                    var body = res.json();
+                    return body.data || {};
                 };
                 TasksService.prototype.handleError = function (error) {
                     console.error(error);
