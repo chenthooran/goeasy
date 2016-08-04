@@ -4,8 +4,6 @@
 
 <div class="area">
     <div id="dropZone">
-        <!--<i class="material-icons font-54">insert_drive_file</i>-->
-        <!--<div>Drag and drop your files here or</div>-->
         <div class="input-group">
             <label class="input-group-btn">
                 
@@ -19,7 +17,7 @@
         <!--<img src='{{ fileToUpload.previwSrc }}' alt=""  width="40" class="float-left" />-->
         <div class="upload-file-name">{{fileToUpload.file.name}}</div>
         <a href="javascript:void(0)" (click)="removeFile(fileToUpload)" title="Delete this attachment" class="upload-file-delete">
-            <span class="glyphicon glyphicon-trash"></span>
+            <i class="material-icons" style="color: rgb(45, 62, 79);font-size: 16px;margin-top: 13px;">delete</i>
         </a>
     </div> 
 </div>

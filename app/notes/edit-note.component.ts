@@ -3,7 +3,9 @@ import {Editor} from 'primeng/primeng';
 import {Header} from 'primeng/primeng';
 import {NotesService} from '../services/notes.service';
 import {NoteEditorComponent} from '../notes/note-editor.component';
-
+import { TagsSelectorComponent } from '../tags/tags-selector.component';
+import { Tag } from '../tags/tags-response';
+declare var $;
 export class EditNoteRequest {
     ID: number;
     Title: string;
@@ -17,7 +19,7 @@ export class EditNoteRequest {
     providers: [
         NotesService
     ],
-    directives: [Editor, Header, NoteEditorComponent]
+    directives: [Editor, Header, NoteEditorComponent,TagsSelectorComponent]
 })
 
     export class EditNoteComponent implements OnInit {
@@ -25,6 +27,7 @@ export class EditNoteRequest {
     description: string;
     id: number;
     errorMessage: string = "";
+    tags: any[] = [];
     constructor(private _notesService: NotesService, private zone: NgZone) {
     }
 
@@ -38,6 +41,7 @@ export class EditNoteRequest {
         this.editNoteRequest.Title = this.title;
         this.editNoteRequest.Description = this.description;
         this.editNoteRequest.ID = this.id;
+        //this.tags=$('#tagInput').text();
     }
 
     Save() {
@@ -63,4 +67,8 @@ export class EditNoteRequest {
     TagsAdded(tags: any[]): void {
         var stringTags: any[] = [];
     }
+     onSelectedTagsChanged(tags: any[]): void {
+            console.log('tags>>');
+     };
+
 }

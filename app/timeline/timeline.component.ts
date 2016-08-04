@@ -332,9 +332,9 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
                 console.log(this.timeLinesList);
                 for (var y = 0; y < this.timeLinesList.length; y++) {
                     if (this.timeLinesList[y].items.length > 1)
-                        this.timeLinesList[y].availableThreadsCountText = this.timeLinesList[y].items.length.toString() + " Notes Available";
+                        this.timeLinesList[y].availableThreadsCountText = this.timeLinesList[y].items.length.toString() + " Items Available";
                     else
-                        this.timeLinesList[y].availableThreadsCountText = this.timeLinesList[y].items.length.toString() + " Note Available";
+                        this.timeLinesList[y].availableThreadsCountText = this.timeLinesList[y].items.length.toString() + " Item Available";
                 }
 
                 if (this.timeLineRequest.pageNo < this.totalPages) {

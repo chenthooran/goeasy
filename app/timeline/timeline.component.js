@@ -324,9 +324,9 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                         console.log(_this.timeLinesList);
                         for (var y = 0; y < _this.timeLinesList.length; y++) {
                             if (_this.timeLinesList[y].items.length > 1)
-                                _this.timeLinesList[y].availableThreadsCountText = _this.timeLinesList[y].items.length.toString() + " Notes Available";
+                                _this.timeLinesList[y].availableThreadsCountText = _this.timeLinesList[y].items.length.toString() + " Items Available";
                             else
-                                _this.timeLinesList[y].availableThreadsCountText = _this.timeLinesList[y].items.length.toString() + " Note Available";
+                                _this.timeLinesList[y].availableThreadsCountText = _this.timeLinesList[y].items.length.toString() + " Item Available";
                         }
                         if (_this.timeLineRequest.pageNo < _this.totalPages) {
                             _this.timeLineRequest.pageNo = _this.timeLineRequest.pageNo + 1;

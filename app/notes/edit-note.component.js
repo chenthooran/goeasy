@@ -1,4 +1,4 @@
-System.register(['@angular/core', 'primeng/primeng', '../services/notes.service', '../notes/note-editor.component'], function(exports_1, context_1) {
+System.register(['@angular/core', 'primeng/primeng', '../services/notes.service', '../notes/note-editor.component', '../tags/tags-selector.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, primeng_1, primeng_2, notes_service_1, note_editor_component_1;
+    var core_1, primeng_1, primeng_2, notes_service_1, note_editor_component_1, tags_selector_component_1;
     var EditNoteRequest, EditNoteComponent;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
             },
             function (note_editor_component_1_1) {
                 note_editor_component_1 = note_editor_component_1_1;
+            },
+            function (tags_selector_component_1_1) {
+                tags_selector_component_1 = tags_selector_component_1_1;
             }],
         execute: function() {
             EditNoteRequest = (function () {
@@ -39,6 +42,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                     this._notesService = _notesService;
                     this.zone = zone;
                     this.errorMessage = "";
+                    this.tags = [];
                     this.heading = "EDIT NOTES";
                     this.editNoteRequest = {
                         ID: 0,
@@ -50,6 +54,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                     this.editNoteRequest.Title = this.title;
                     this.editNoteRequest.Description = this.description;
                     this.editNoteRequest.ID = this.id;
+                    //this.tags=$('#tagInput').text();
                 };
                 EditNoteComponent.prototype.Save = function () {
                     var _this = this;
@@ -72,6 +77,10 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                 EditNoteComponent.prototype.TagsAdded = function (tags) {
                     var stringTags = [];
                 };
+                EditNoteComponent.prototype.onSelectedTagsChanged = function (tags) {
+                    console.log('tags>>');
+                };
+                ;
                 EditNoteComponent = __decorate([
                     core_1.Component({
                         selector: 'edit-note',
@@ -80,7 +89,7 @@ System.register(['@angular/core', 'primeng/primeng', '../services/notes.service'
                         providers: [
                             notes_service_1.NotesService
                         ],
-                        directives: [primeng_1.Editor, primeng_2.Header, note_editor_component_1.NoteEditorComponent]
+                        directives: [primeng_1.Editor, primeng_2.Header, note_editor_component_1.NoteEditorComponent, tags_selector_component_1.TagsSelectorComponent]
                     }), 
                     __metadata('design:paramtypes', [notes_service_1.NotesService, core_1.NgZone])
                 ], EditNoteComponent);

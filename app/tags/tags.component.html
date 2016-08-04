@@ -1,8 +1,14 @@
 ﻿<h1>{{title}}</h1>
-<div class='row'>
+<div class="container-fluid" style="padding-top: 14px;margin-left: 0px;">
+    <div class="back" style="background: white;">
+        <div class="row" style="padding:5px">
+            <div class="col-md-8 add-note-form">
+                <div class="panel panel-inbox" style="box-shadow:none"> 
+                    <div class="panel-body">
+<div class="form-group mb-sm is-empty">
 <a style="cursor: pointer" (click)="onTagCreate()">Create Tag</a>
 </div>
-<div class='row'>
+<div class="form-group mb-sm is-empty">
     <div class='col-md-4'><input placeholder="Filter tags" type='text' [(ngModel)]='listFilter' /></div>
     <br />
 </div>
@@ -54,6 +60,13 @@
     </table>
 </div>
 
+	</div>
+    </div>
+    </div>
+    </div>
+    </div>
+	
+</div>
 <!--<ul class="media-list">
     <li *ngFor="#tag of filteredTags" class="media">
         <div class="media-body">

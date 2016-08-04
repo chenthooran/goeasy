@@ -10,7 +10,11 @@
         $(x).toggleClass('toggled');
         $(this).toggleClass('open');
         $('body').toggleClass('modal-open');
-
+        $('#chat').addClass('animated slideInRight');
+        // $('#wrapper').addClass('modal-backdrop');
+        // $('#wrapper').addClass('fade');
+        // $('#wrapper').addClass('in');
+   
         //Close opened sub-menus
         $('.sub-menu.toggled').not('.active').each(function () {
             $(this).removeClass('toggled');
@@ -55,8 +59,12 @@
             $(document).on('click', function (e) {
                 if (($(e.target).closest($elem).length === 0) && ($(e.target).closest($elem2).length === 0)) {
                     setTimeout(function () {
+                        
                         $('body').removeClass('modal-open');
                         $($elem).removeClass('toggled');
+                        // $('#chat').removeClass('animated slideInRight');
+                        // $('#chat').addClass('animated slideOutRight');
+                        
                         $('#topnav').removeClass('sidebar-toggled');
                         $($elem2).removeClass('open');
                     });

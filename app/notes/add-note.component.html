@@ -10,36 +10,53 @@
                             <h2>Add Note</h2>
                         </div>
                         <!-- -------------share------------- -->
-                            <modal  #modal class="modal visiblemodal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="background-color: #fafafa;;">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h2 class="modal-title">Share</h2>
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                    <modal  #modal class="modal visiblemodal modal-backdrop fade in">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color: #fafafa;;">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h2 class="modal-title">Share</h2>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-horizontal">
+                                                    <p style="font-size: 14px;font-family: ‘Merriweather’, Georgia, serif !important;font-weight: 500;padding-bottom: 0px;">Whom would you like to share with ?</p>
+                                                    <user-app [isAllowedNewInput]="false" (usersadded)='onSelectedUsersChanged($event)' (usersremoved)="onSelectedUsersChanged($event)">Loading...</user-app>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!--<button type="button" class="btn btn-raised btn-default" data-dismiss="modal" (click)="parentModal.dismiss()">Close</button>-->
+                                                    <button type="button" class="btn btn-raised btn-primary" (click)="modal.close()">Ok</button>
+                                                </div>
+                                            </div><!-- /.modal-content -->
                                         </div>
-                                        <div class="modal-body">
-                                            <form class="form-horizontal">
-                                            <p style="font-size: 14px;font-family: ‘Merriweather’, Georgia, serif !important;font-weight: 500;padding-bottom: 0px;">Whom would you like to share with ?</p>
-                                            <user-app [isAllowedNewInput]="false" (usersadded)='onSelectedUsersChanged($event)' (usersremoved)="onSelectedUsersChanged($event)">Loading...</user-app>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <!--<button type="button" class="btn btn-raised btn-default" data-dismiss="modal" (click)="parentModal.dismiss()">Close</button>-->
-                                            <button type="button" class="btn btn-raised btn-primary" (click)="modal.close()">Ok</button>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div>
-                            </modal>
+                                    </modal>
+                            </div>
+                            </div>
 
                         <!-- ---------------end share----------- -->
                         <!-- -------------Add Note Form------------- -->
                         <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md">
                             <div *ngIf="showCloseButton" class="form-group">
+                                <div class="col-md-12" style="margin-top: -27px;padding-top: 0;padding-bottom: 0px;">
                                 <label class="float-left">Tags</label>
-                                <div id="tagInput1"></div>
-                                <div id="tagInput" class="hidden"></div>
-                                <br />
+                                 <ul class="media-list contacts tags" style="position: static;">
+                                    <li class="med" style="DISPLAY: inline-block;">
+                                        <div class="media-body">
+                                            <a class="btn" style="color:white;">  
+                                                 <div id="tagInput1">
+                                                 </div>
+                                                <div id="tagInput" class="hidden"></div>
+                                                 <br />
+                                                 <div class="ripple-container"></div></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+                               
                             </div>
+                            
                             <div class="form-group mb-sm form-group-lg is-empty">
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" placeholder="Title" required [(ngModel)]="noteRequest.title" ngControl="title" #title="ngForm">
@@ -126,7 +143,7 @@
                     </div>
                 </div>
                 <!--Recently Added Notes-->
-                <div class="panel panel-default add-note-widget" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="box-shadow:none;visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
+                <div  class="panel panel-default add-note-widget" data-widget="{&quot;draggable&quot;: &quot;true&quot;}" style="box-shadow:none;visibility: visible; opacity: 1; display: block; transform: translateY(0px); position: relative; z-index: 0; left: 0px; top: 0px;">
                     <div class="panel-heading">
                         <h2 style="font-size 16px;">
                             Recently Added Notes

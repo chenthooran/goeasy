@@ -88,11 +88,16 @@
                                                                                     <ul class="flik-timeline flik-timeline-10 flik-accordion" data-scroll-effect="bounce-effect">
                                                                                         <li class="" *ngFor="let Item of timeline.items">
                                                                                             <div class="relative">
-                                                                                                <label *ngIf="Item.activityType == 'Task'" style="color:blueviolet" class="show-title">{{Item.title}}</label>
-                                                                                                <label *ngIf="Item.activityType != 'Task'" class="show-title">{{Item.title}}</label>
+                                                                                                <label class="show-title">{{Item.title}}</label>
                                                                                                 <!-- date time view -->
                                                                                                 <div class="date">
                                                                                                     <div class="timelinediv" style="padding-top 0px;padding-left 59px;">
+                                                                                                            <span *ngIf="Item.activityType != 'Task'" class="">
+                                                                                                                <img src="img/note.jpg" style="width:42px;margin-left: 10px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 8px;z-index: 1;">
+                                                                                                            </span>
+                                                                                                            <span *ngIf="Item.activityType == 'Task'" class="">
+                                                                                                                <img src="img/task.png" style="width:42px;margin-left: 10px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 8px;z-index: 1;">
+                                                                                                            </span>
                                                                                                         <time class="timelineicon">
                                                                                                             <span class="" style="padding-top: 40px;px;font-size: 21px;" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
                                                                                                             <strong><span class="" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateMonth}}</span></strong>
@@ -111,17 +116,23 @@
                                                                                                    </a>-->
 
                                                                                                 <div class="content-title">
-                                                                                                    <span *ngIf="Item.activityType == 'Task'" style="color:blueviolet">{{Item.title}}</span>
-                                                                                                    <span *ngIf="Item.activityType != 'Task'">{{Item.title}}</span>
-                                                                                                    <!--<a class="btn btn-xs btn-info btn-label ml-md" href="#">
-                                                                                                        <i class="material-icons" style="color: #30559f;font-size: 13px;">favorite</i>
-                                                                                                        Watching
-                                                                                                    </a>-->
+                                                                                                    <span>{{Item.title}}</span>
                                                                                                     <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md" (click)="Item.isTaskCompleted = !Item.isTaskCompleted; updateTaskStatus(Item.id)">
                                                                                                         <input style="pointer-events:none" type="checkbox" [ngModel]="Item.isTaskCompleted" />
                                                                                                         {{Item.activityType}} completed
                                                                                                     </div>
-                                                                                                    <img style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="">
+                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md">
+                                                                                                        Due Date:
+                                                                                                        {{Item.dueDate}}
+                                                                                                    </div>
+                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md">
+                                                                                                        User Assigned: 
+                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length != 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="{{Item.assignedUserImageUrl}}" title="{{Item.assignedUser}}">         
+                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length == 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="img\profile-pics\avatar.png" title="{{Item.assignedUser}}">    
+                                                                                                    </div>
+
+                                                                                                    <img *ngIf="Item.userImageUrl.length != 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="{{Item.userImageUrl}}">
+                                                                                                    <img *ngIf="Item.userImageUrl.length == 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="img\profile-pics\avatar.png" width="16">
                                                                                                 </div>
                                                                                                 <div class="content-main">
                                                                                                     <div [innerHTML]="Item.description"></div>

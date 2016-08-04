@@ -18,6 +18,12 @@
                         <br />
                     </div>
                     <div class="form-group">
+                        <label>Tags</label>
+                        <div class="col-md-12 no-padding">
+                            <prime-app [isAllowedNewInput]="true" [inputValues]="tags" (tagsAdded)='onSelectedTagsChanged($event)' (tagsRemoved)="onSelectedTagsChanged($event)">Loading...</prime-app>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="float-left">Title</label>
                         <!-- <input [(ngModel)]="noteRequest.title" class="form-control" required ngControl="title"/>-->
                                                 <input type="text" class="form-control" required [(ngModel)]="editNoteRequest.Title" ngcontrol="title" #title="ngForm">

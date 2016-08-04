@@ -130,12 +130,24 @@
                                 </span>-->
                             </li>
 
-                            <li>
-                                <a class="withripple" href="javascript:;" style="
-                                   padding 12px 8px;
-                                   "><span class="icon"><i class="material-icons">local_offer</i></span><span>Tags</span><div class="ripple-container"></div></a>
+                            <li class="active" *ngIf="isActiveRoute('/tags')">
+                                <a class="withripple" [routerLink]="['/tags']">
+                                    <span class="icon">
+                                        <i class="material-icons">local_offer</i>
+                                    </span>
+                                    <span>Tags</span>
+                                    <div class="ripple-container"></div>
+                                </a>
                             </li>
-
+                            <li class="open" *ngIf="!isActiveRoute('/tags')">
+                                <a class="withripple" [routerLink]="['/tags']">
+                                    <span class="icon">
+                                        <i class="material-icons">local_offer</i>
+                                    </span>
+                                    <span>Tags</span>
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

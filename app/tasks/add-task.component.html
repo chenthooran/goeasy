@@ -29,13 +29,19 @@
                             </div>
                             <div class="form-group mb-sm form-group-lg is-empty">
                                 <div class="col-md-12">
-                                    <p-calendar [(ngModel)]="taskRequest.dueDate" dateFormat="dd/mm/yy" placeholder="Due Date" showAnim="slideDown" minDate="0d" [readonlyInput]="true" ngControl="dueDate" #dateValue="ngForm"></p-calendar>
+                                    <p-calendar  [(ngModel)]="taskRequest.dueDate" required dateFormat="dd/mm/yy" placeholder="Due Date" showAnim="slideDown" minDate="0d" [readonlyInput]="true" ngControl="dueDate"  #dueDate="ngForm"></p-calendar>
+                                </div>
+                                <div [hidden]="dueDate.valid || dueDate.pristine" class="reqire-field">
+                                    Oops! Seems you have forgotten to pick a date.
                                 </div>
                                 <span class="material-input"></span>
                             </div>
                             <div class="form-group mb-sm form-group-lg is-empty">
                                 <div class="col-md-12">
-                                    <p-autoComplete [(ngModel)]="taskRequest.user" [suggestions]="filteredUsersSingle" (completeMethod)="filterUserSingle($event)" field="userName" placeholder="Assignee" [minLength]="1"></p-autoComplete>
+                                    <p-autoComplete [(ngModel)]="taskRequest.user" required [suggestions]="filteredUsersSingle" (completeMethod)="filterUserSingle($event)" field="userName" placeholder="Assignee" [minLength]="1" ngControl="user"  #user="ngForm"></p-autoComplete>
+                                </div>
+                                <div [hidden]="user.valid || user.pristine" class="reqire-field">
+                                    Oops! Seems you have forgotten to enter a assignee.
                                 </div>
                                 <span class="material-input"></span>
                             </div>
