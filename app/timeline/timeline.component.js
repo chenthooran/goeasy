@@ -235,10 +235,14 @@ System.register(['@angular/router', '@angular/core', '../services/notes.service'
                     $('#tagInput').text(this.selectedTagStr);
                     var selectedTagArray = this.selectedTagStr.split(",");
                     var selected = '<span>&nbsp;</span>';
+                    var output = '';
                     for (var i = 0; i < selectedTagArray.length; i++) {
-                        selected += '<span class="common-tag">' + selectedTagArray[i] + '</span>';
+                        if (i == (selectedTagArray.length - 1))
+                            output += '<span class="common-tag">' + selectedTagArray[i] + selected + '</span>';
+                        else
+                            output += '<span class="common-tag">' + selectedTagArray[i] + selected + '+' + selected + '</span>';
                     }
-                    $('#tagInput1').html(selected);
+                    $('#tagInput1').html(output);
                 };
                 TimeLineComponent.prototype.groupBy = function (array, f) {
                     var groups = {};

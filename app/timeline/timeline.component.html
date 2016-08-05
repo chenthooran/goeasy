@@ -93,15 +93,15 @@
                                                                                                 <div class="date">
                                                                                                     <div class="timelinediv" style="padding-top 0px;padding-left 59px;">
                                                                                                             <span *ngIf="Item.activityType != 'Task'" class="">
-                                                                                                                <img src="img/note.jpg" style="width:42px;margin-left: 10px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 8px;z-index: 1;">
+                                                                                                                <img src="img/note.png" style="width: 33px;margin-left: 13px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 21px;z-index: 1;">
                                                                                                             </span>
                                                                                                             <span *ngIf="Item.activityType == 'Task'" class="">
-                                                                                                                <img src="img/task.png" style="width:42px;margin-left: 10px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 8px;z-index: 1;">
+                                                                                                                <img src="img/task.png" style="width: 33px;margin-left: 13px;position: fixed;margin-right: 0px;/* top: 32px; */margin-top: 21px;z-index: 1;">
                                                                                                             </span>
                                                                                                         <time class="timelineicon">
                                                                                                             <span class="" style="padding-top: 40px;px;font-size: 21px;" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateDay}}</span>
                                                                                                             <strong><span class="" *ngIf="timeline.dateFormat != 'TODAY' && timeline.dateFormat != 'YESTERDAY'">{{Item.dateMonth}}</span></strong>
-                                                                                                            <span style="padding-top: 17px !important;" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
+                                                                                                            <span style="padding-top: 21px !important;" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeHourMin}}</span>
                                                                                                             <span class="" *ngIf="timeline.dateFormat == 'TODAY' || timeline.dateFormat == 'YESTERDAY'">{{Item.timeAMPM}}</span>
                                                                                                         </time>
                                                                                                     </div>
@@ -116,39 +116,47 @@
                                                                                                    </a>-->
 
                                                                                                 <div class="content-title">
-                                                                                                    <span>{{Item.title}}</span>
-                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md" (click)="Item.isTaskCompleted = !Item.isTaskCompleted; updateTaskStatus(Item.id)">
-                                                                                                        <input style="pointer-events:none" type="checkbox" [ngModel]="Item.isTaskCompleted" />
-                                                                                                        {{Item.activityType}} completed
-                                                                                                    </div>
-                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md">
-                                                                                                        Due Date:
-                                                                                                        {{Item.dueDate}}
-                                                                                                    </div>
-                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md">
-                                                                                                        User Assigned: 
-                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length != 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="{{Item.assignedUserImageUrl}}" title="{{Item.assignedUser}}">         
-                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length == 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="img\profile-pics\avatar.png" title="{{Item.assignedUser}}">    
+                                                                                                    <span *ngIf="Item.activityType != 'Task'">{{Item.title}}</span>
+                                                                                                    <div style="DISPLAY: -webkit-inline-box;" class="checkbox" *ngIf="Item.activityType == 'Task'" (click)="Item.isTaskCompleted = !Item.isTaskCompleted; updateTaskStatus(Item.id)">
+                                                                                                             <input style="pointer-events:none" type="checkbox" [ngModel]="Item.isTaskCompleted"><span class="checkbox-material"><span class="check"></span></span>
+                                                                                                             <span style="cursor: pointer;">{{Item.title}}</span>
                                                                                                     </div>
 
-                                                                                                    <img *ngIf="Item.userImageUrl.length != 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="{{Item.userImageUrl}}">
-                                                                                                    <img *ngIf="Item.userImageUrl.length == 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="img\profile-pics\avatar.png" width="16">
+                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md" style="font-size: 12PX;"> 
+                                                                                                        Due&nbsp; 
+                                                                                                        {{Item.dueDate}}
+                                                                                                    </div>
+                                                                                                    <div *ngIf="Item.activityType == 'Task'" class="btn btn-xs btn-info btn-label ml-md"  style="font-size: 12PX;">
+                                                                                                         Assigned To&nbsp;
+                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length != 0" style="float: right;width: 26px;height: 22px;position: absolute;margin-left: 4px;margin-top: -4px;border-radius: 0;" class="img-circle avatar" src="{{Item.assignedUserImageUrl}}" title="{{Item.assignedUser}}">         
+                                                                                                        <img *ngIf="Item.assignedUserImageUrl.length == 0" style="float: right;width: 26px;height: 22px;position: absolute;margin-left: 4px;margin-top: -4px;border-radius: 0;" class="img-circle avatar" src="img\profile-pics\avatar.png" title="{{Item.assignedUser}}">    
+                                                                                                    </div>
+
+                                                                                                    <!--<img *ngIf="Item.userImageUrl.length != 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="{{Item.userImageUrl}}">
+                                                                                                    <img *ngIf="Item.userImageUrl.length == 0" style="float: right;width: 44px;height: 41px;" class="img-circle avatar" src="img\profile-pics\avatar.png" width="16">-->
                                                                                                 </div>
+
+
                                                                                                 <div class="content-main">
                                                                                                     <div [innerHTML]="Item.description"></div>
 
                                                                                                     <ul class="contacts tag" style="display: flex;padding-top: 14px;padding-bottom: 6px;">
                                                                                                         <a *ngFor="let tag of Item.tags; let last = last" class="btn" style=" background:rgb(232, 234, 246); color #607d8b;">{{tag.name}}<div class="ripple-container" *ngIf="!last"></div></a>
+                                                                                                       
                                                                                                     </ul>
+                                                                                                      <a class=""> 
+                                                                                                            <img *ngIf="Item.userImageUrl.length != 0" style="float: right;width: 41px;height: 40px;margin-top: -21px;border-radius: none !important;" class="img-circle avatar" src="{{Item.userImageUrl}}">
+                                                                                                            <img *ngIf="Item.userImageUrl.length == 0" style="float: right;width: 41px;height: 40px;margin-top: -21px;border-radius: none !important;" class="img-circle avatar" src="img\profile-pics\avatar.png" width="16">
+                                                                                                        </a>
                                                                                                     <hr class="style-six">
 
                                                                                                     <!-- tool set -->
                                                                                                     <div class="like-info" style="padding-left: 0px;float: initial !important;">
-                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" href="#">
+                                                                                                        <a *ngIf="Item.activityType != 'Task'" class="btn btn-xs btn-info btn-label ml-md" href="#">
                                                                                                             <i class="material-icons" style="font-size: 13px;">thumb_up</i>
                                                                                                             Like
                                                                                                         </a>
-                                                                                                        <a class="btn btn-xs btn-info btn-label ml-md" (click)="parentModal.open(); setCurrentNote(Item);">
+                                                                                                        <a *ngIf="Item.activityType != 'Task'" class="btn btn-xs btn-info btn-label ml-md" (click)="parentModal.open(); setCurrentNote(Item);">
                                                                                                             <i class="material-icons" style="font-size: 13px;">share</i>
                                                                                                             Share
                                                                                                         </a>
@@ -161,16 +169,17 @@
                                                                                                             <i class="material-icons" style="font-size: 13px;">edit</i>
                                                                                                             Edit
                                                                                                         </a>
+                                                                                                       
                                                                                                         <div id="accordion" role="tablist" aria-multiselectable="true">
-                                                                                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                                                                            <div class="panel-heading" role="tab" id="headingOne" style="background-color: white;">
                                                                                                                 <h4 class="panel-title">
-                                                                                                                    <a class="btn btn-xs btn-info btn-label ml-md" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right"><i class="material-icons" style="font-size: 13px;">comment</i> Comment  <div class="ripple-container"></div></a>
+                                                                                                                    <a class="btn btn-xs btn-info btn-label ml-md" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float:right;background-color: #ffffff;"><i class="material-icons" style="font-size: 13px;">comment</i> Comment  <div class="ripple-container"></div></a>
                                                                                                                 </h4>
                                                                                                             </div>
                                                                                                         </div>
 
-                                                                                                        <div id="accordion" role="tablist" aria-multiselectable="true">
-                                                                                                            <div class="panel-heading" role="tab" id="headingTwo">
+                                                                                                        <div *ngIf="Item.activityType != 'Task'" id="accordion" role="tablist" aria-multiselectable="true">
+                                                                                                            <div class="panel-heading" role="tab" id="headingTwo" style="background-color: white;">
                                                                                                                 <h4 class="panel-title">
                                                                                                                     <a class="btn btn-xs btn-info btn-label ml-md" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="float:right"><i class="material-icons">attachment</i> View Attachments  <div class="ripple-container"></div></a>
                                                                                                                 </h4>

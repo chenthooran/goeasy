@@ -18,33 +18,57 @@
                                 <div id="tagInput" class="hidden"></div>
                                 <br />
                             </div>
-                            <div class="form-group mb-sm form-group-lg is-empty">
-                                <div class="col-md-12">
+
+                            <!--title-->
+                            <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Title</label>
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" placeholder="Title" required [(ngModel)]="taskRequest.title" ngControl="title" #title="ngForm">
-                                    <div [hidden]="title.valid || title.pristine" class="reqire-field">
+                                  
+                                </div>
+                                	<div class="col-sm-2">
+                                          <div [hidden]="title.valid || title.pristine" class="reqire-field">
                                         Oops! Seems you have forgotten to enter title.
                                     </div>
-                                </div>
                                 <span class="material-input"></span>
-                            </div>
-                            <div class="form-group mb-sm form-group-lg is-empty">
-                                <div class="col-md-12">
-                                    <p-calendar  [(ngModel)]="taskRequest.dueDate" required dateFormat="dd/mm/yy" placeholder="Due Date" showAnim="slideDown" minDate="0d" [readonlyInput]="true" ngControl="dueDate"  #dueDate="ngForm"></p-calendar>
                                 </div>
-                                <div [hidden]="dueDate.valid || dueDate.pristine" class="reqire-field">
+                            </div>
+
+
+                            <!--calendar-->
+                            <div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">Due Date</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group date" id="datepicker-pastdisabled">
+                                        <span class="input-group-addon"><i class="material-icons">date_range</i></span>
+                                          <p-calendar  [(ngModel)]="taskRequest.dueDate" required dateFormat="dd/mm/yy" placeholder="Due Date" showAnim="slideDown" minDate="0d" [readonlyInput]="true" ngControl="dueDate"  #dueDate="ngForm"></p-calendar>
+                                    </div>
+                                </div>
+                                	<div class="col-sm-2">
+                                        <div [hidden]="dueDate.valid || dueDate.pristine" class="reqire-field">
                                     Oops! Seems you have forgotten to pick a date.
                                 </div>
                                 <span class="material-input"></span>
-                            </div>
-                            <div class="form-group mb-sm form-group-lg is-empty">
-                                <div class="col-md-12">
-                                    <p-autoComplete [(ngModel)]="taskRequest.user" required [suggestions]="filteredUsersSingle" (completeMethod)="filterUserSingle($event)" field="userName" placeholder="Assignee" [minLength]="1" ngControl="user"  #user="ngForm"></p-autoComplete>
                                 </div>
-                                <div [hidden]="user.valid || user.pristine" class="reqire-field">
-                                    Oops! Seems you have forgotten to enter a assignee.
+						    </div>
+
+                            <!--assigned user-->
+                            <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Assign To</label>
+                                <div class="col-sm-8">
+                                     <p-autoComplete class="form-control ng-pristine ng-invalid ng-touched" 
+                                     [(ngModel)]="taskRequest.user" required [suggestions]="filteredUsersSingle" (completeMethod)="filterUserSingle($event)" 
+                                     field="userName" [minLength]="1" ngControl="user"  #user="ngForm"></p-autoComplete>
+                                  
+                                </div>
+                                	<div class="col-sm-2">
+                                       <div [hidden]="user.valid || user.pristine" class="reqire-field">
+                                    Oops! Seems you have forgotten to enter an assignee.
                                 </div>
                                 <span class="material-input"></span>
+                                </div>
                             </div>
+
                             <div class="form-group mb-n">
                                 <div class="col-xs-12">
                                     <div class="composer" style="box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 0px rgba(0,0,0,0.24); height: 430px;">
@@ -63,13 +87,6 @@
                                                 <i class="material-icons hidden-xs" style="font-size: 13px;color: #dee4f0;">save</i>   save
                                                 <!--<span class="">Save</span>-->
                                         </button>
-                                        <li class="toolbar-icon-bg" id="trigger-infobar">
-                                            <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-                                                <span class="icon-bg">
-                                                    <i class="material-icons">more_vert</i>
-                                                </span>
-                                            </a>
-                                        </li>
                                         <button *ngIf="showCloseButton" type="button" class="btn btn-success btn-raised btn-label"
                                                 (click)="Close()" data-trigger="#chat" id="noteClose-trigger"
                                                 style="float:right;width: 102px;padding-left: 12px;padding-right: 12px;float: right;padding-top: 4px;font-size: 12px;box-shadow: 0px 0px 4px 0px #e3e9f1;BACKGROUND-COLOR: #30559f;color: #dee4f0;padding-bottom: 4px;margin-top: -2px;margin-bottom: 0px">

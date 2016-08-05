@@ -213,32 +213,37 @@ export class TimeLineComponent implements OnInit, CanDeactivate {
 	
     getSelectedTags() {
         this.selectedTagStr = '';
-	
+
 		/*if(this.initialTags && this.initialTags.length > 0)
 			this.selectedTagStr = this.initialTags.join();*/
-			
+
 		/*if(this.initialTags.length > 0 && this.timeLineRequest.data.length > 0)
 			this.selectedTagStr += ',';*/
-			
+
         for (var i = 0; i < this.timeLineRequest.data.length; i++) {
             this.selectedTagStr = this.selectedTagStr + (this.timeLineRequest.data[i] + (this.timeLineRequest.data.length != i + 1 ? ',' : ''));
         }
-		
-		var uniqueList=this.selectedTagStr.split(',').filter(function(item,i,allItems){
-			return i==allItems.indexOf(item);
-		}).join(',');
-		
-		this.selectedTagStr = uniqueList;
-		
+
+        var uniqueList = this.selectedTagStr.split(',').filter(function (item, i, allItems) {
+            return i == allItems.indexOf(item);
+        }).join(',');
+
+        this.selectedTagStr = uniqueList;
+
         this.passTagService.setTags(this.selectedTagStr);
         $('#tagInput').text(this.selectedTagStr);
-		
-		 var selectedTagArray = this.selectedTagStr.split(",");
-		 var selected = '<span>&nbsp;</span>';
-		 for (var i = 0; i < selectedTagArray.length; i++) {
-			selected += '<span class="common-tag">' + selectedTagArray[i] + '</span>';
-		 }
-		$('#tagInput1').html(selected);	
+
+        var selectedTagArray = this.selectedTagStr.split(",");
+        var selected = '<span>&nbsp;</span>';
+        var output = '';
+        for (var i = 0; i < selectedTagArray.length; i++) {
+
+            if (i == (selectedTagArray.length -1))
+                output += '<span class="common-tag">' + selectedTagArray[i] + selected + '</span>'
+            else
+                output += '<span class="common-tag">' + selectedTagArray[i] + selected + '+' + selected + '</span>'
+        }
+        $('#tagInput1').html(output);	
 		
     }
 
