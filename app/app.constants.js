@@ -21,8 +21,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
             Configuration = (function () {
                 function Configuration() {
                     //public Server: string = "http://localhost:54736/";
-                    //public Server: string = "http://yayprodapi.azurewebsites.net/";
                     this.Server = "http://yaycollaborationapi.azurewebsites.net/";
+                    //public Server: string = "http://yayprodapi.azurewebsites.net/";
                     this.ApiUrl = "api/";
                     this.ServerWithApiUrl = this.Server + this.ApiUrl;
                 }
