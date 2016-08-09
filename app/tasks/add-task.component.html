@@ -62,7 +62,7 @@
                                   
                                 </div>
                                 <div class="col-sm-2">
-                                    <div *ngIf="taskRequest.user" [hidden]="!user.control.hasError('isValidUser') || user.pristine" class="reqire-field">
+                                    <div *ngIf="taskRequest.user" [hidden]="!(user.control.hasError('isValidUser') && user.touched)" class="reqire-field">
                                         Oops! Seems you have entered an invalid user.
                                     </div>
                                     <div *ngIf="taskRequest.user===''" [hidden]="!user.control.hasError('isValidUser') || user.pristine" class="reqire-field">
