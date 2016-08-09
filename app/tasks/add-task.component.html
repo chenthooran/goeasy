@@ -11,7 +11,7 @@
                         </div>
    
                         <!-- -------------Add Task Form------------- -->
-                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md">
+                        <form *ngIf="active" #noteForm="ngForm" class="form-horizontal p-md" [ngFormModel]="taskForm">
                             <div *ngIf="showCloseButton" class="form-group">
                                 <label class="float-left">Tags</label>
                                 <div id="tagInput1"></div>
@@ -61,10 +61,13 @@
                                      field="userName" [minLength]="1" ngControl="user"  #user="ngForm"></p-autoComplete>
                                   
                                 </div>
-                                	<div class="col-sm-2">
-                                       <div [hidden]="user.valid || user.pristine" class="reqire-field">
-                                    Oops! Seems you have forgotten to enter an assignee.
-                                </div>
+                                <div class="col-sm-2">
+                                    <div *ngIf="taskRequest.user" [hidden]="!user.control.hasError('isValidUser') || user.pristine" class="reqire-field">
+                                        Oops! Seems you have entered an invalid user.
+                                    </div>
+                                    <div *ngIf="taskRequest.user===''" [hidden]="!user.control.hasError('isValidUser') || user.pristine" class="reqire-field">
+                                        Oops! Seems you have forgotten to enter a user.
+                                    </div>
                                 <span class="material-input"></span>
                                 </div>
                             </div>

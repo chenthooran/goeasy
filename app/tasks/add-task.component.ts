@@ -1,5 +1,6 @@
 ﻿import {Component, OnInit, NgZone, Input} from '@angular/core';
 import {Router} from '@angular/router';
+import {ControlGroup, Control, FormBuilder, Validators} from '@angular/common';
 import {TaskRequest} from './task-request';
 import {Calendar, AutoComplete, Editor, Header} from 'primeng/primeng';
 import {TasksService} from '../services/tasks.service';
@@ -14,6 +15,10 @@ import {NoteEditorComponent} from '../notes/note-editor.component';
 declare var $;
 declare var ip_country;
 
+interface ValidationResult {
+    [key: string]: boolean;
+}
+
 @Component({
     selector: 'add-task',
     templateUrl: './app/tasks/add-task.component.html',
@@ -26,11 +31,19 @@ declare var ip_country;
 })
 
 export class AddTaskComponent implements OnInit {
-    constructor(private _tasksService: TasksService, public _router: Router, private _passTagService: PassTagService, private _userProfileService: UserProfileService, private _userService: UsersService, private zone: NgZone) {
+    taskForm: ControlGroup;
+    static users: any[] = [];
+    constructor(fb: FormBuilder, private _tasksService: TasksService, public _router: Router, private _passTagService: PassTagService, private _userProfileService: UserProfileService, private _userService: UsersService, private zone: NgZone) {
         (<any>window).angularComponentRef = {
             zone: this.zone, 
             component: this
         };
+
+        this.taskForm = fb.group({
+            'title': new Control(this.taskRequest.title, Validators.required),
+            'dueDate': new Control(this.taskRequest.dueDate, Validators.required),
+            'user': new Control(this.taskRequest.user, Validators.compose([Validators.required, AddTaskComponent.isValidUser]))
+        });
     }
     public taskRequest: TaskRequest = {
         title: '',
@@ -89,8 +102,10 @@ export class AddTaskComponent implements OnInit {
 			console.log(this.errorMessage);
 		},
 		() => () => console.log("Done"));	
-		
 
+        this._userService.getUsers().then(users => {
+            AddTaskComponent.users = users;
+        });
     }
 
     filterUserSingle(event) {
@@ -110,6 +125,26 @@ export class AddTaskComponent implements OnInit {
             }
         }
         return filtered;
+    }
+
+    static isValidUser(control: Control): ValidationResult {
+        if (control.value && control.value.length > 0) {
+            let filtered: any[] = [];
+            for (let i = 0; i < AddTaskComponent.users.length; i++) {
+                let user = AddTaskComponent.users[i];
+                if (user.userName.toLowerCase() === control.value.toLowerCase()) {
+                    filtered.push(user);
+                }
+            }
+
+            if (filtered.length == 0)
+                return { 'isValidUser': false };
+        }
+        else if (control.value === ''){
+            return { 'isValidUser': false };
+        }
+        
+        return null;
     }
 
     Save() {

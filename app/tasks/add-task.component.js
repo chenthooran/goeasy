@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', './task-request', 'primeng/primeng', '../services/tasks.service', '../tags/tags-selector.component', '../services/passtag.service', '../services/user_profile.service', '../services/users.service', '../notes/note-editor.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', '@angular/common', './task-request', 'primeng/primeng', '../services/tasks.service', '../tags/tags-selector.component', '../services/passtag.service', '../services/user_profile.service', '../services/users.service', '../notes/note-editor.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, task_request_1, primeng_1, tasks_service_1, tags_selector_component_1, passtag_service_1, user_profile_service_1, users_service_1, note_editor_component_1;
+    var core_1, router_1, common_1, task_request_1, primeng_1, tasks_service_1, tags_selector_component_1, passtag_service_1, user_profile_service_1, users_service_1, note_editor_component_1;
     var AddTaskComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             },
             function (task_request_1_1) {
                 task_request_1 = task_request_1_1;
@@ -46,7 +49,7 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
             }],
         execute: function() {
             AddTaskComponent = (function () {
-                function AddTaskComponent(_tasksService, _router, _passTagService, _userProfileService, _userService, zone) {
+                function AddTaskComponent(fb, _tasksService, _router, _passTagService, _userProfileService, _userService, zone) {
                     this._tasksService = _tasksService;
                     this._router = _router;
                     this._passTagService = _passTagService;
@@ -82,6 +85,11 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
                         zone: this.zone,
                         component: this
                     };
+                    this.taskForm = fb.group({
+                        'title': new common_1.Control(this.taskRequest.title, common_1.Validators.required),
+                        'dueDate': new common_1.Control(this.taskRequest.dueDate, common_1.Validators.required),
+                        'user': new common_1.Control(this.taskRequest.user, common_1.Validators.compose([common_1.Validators.required, AddTaskComponent.isValidUser]))
+                    });
                 }
                 AddTaskComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -106,6 +114,9 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
                         _this.errorMessage = error,
                             console.log(_this.errorMessage);
                     }, function () { return function () { return console.log("Done"); }; });
+                    this._userService.getUsers().then(function (users) {
+                        AddTaskComponent.users = users;
+                    });
                 };
                 AddTaskComponent.prototype.filterUserSingle = function (event) {
                     var _this = this;
@@ -123,6 +134,23 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
                         }
                     }
                     return filtered;
+                };
+                AddTaskComponent.isValidUser = function (control) {
+                    if (control.value && control.value.length > 0) {
+                        var filtered = [];
+                        for (var i = 0; i < AddTaskComponent.users.length; i++) {
+                            var user = AddTaskComponent.users[i];
+                            if (user.userName.toLowerCase() === control.value.toLowerCase()) {
+                                filtered.push(user);
+                            }
+                        }
+                        if (filtered.length == 0)
+                            return { 'isValidUser': false };
+                    }
+                    else if (control.value === '') {
+                        return { 'isValidUser': false };
+                    }
+                    return null;
                 };
                 AddTaskComponent.prototype.Save = function () {
                     var _this = this;
@@ -252,6 +280,7 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
                 AddTaskComponent.prototype.Close = function () {
                     this.clear();
                 };
+                AddTaskComponent.users = [];
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Boolean)
@@ -267,7 +296,7 @@ System.register(['@angular/core', '@angular/router', './task-request', 'primeng/
                         ],
                         directives: [tags_selector_component_1.TagsSelectorComponent, primeng_1.Editor, primeng_1.Header, primeng_1.Calendar, primeng_1.AutoComplete, note_editor_component_1.NoteEditorComponent]
                     }), 
-                    __metadata('design:paramtypes', [tasks_service_1.TasksService, router_1.Router, passtag_service_1.PassTagService, user_profile_service_1.UserProfileService, users_service_1.UsersService, core_1.NgZone])
+                    __metadata('design:paramtypes', [common_1.FormBuilder, tasks_service_1.TasksService, router_1.Router, passtag_service_1.PassTagService, user_profile_service_1.UserProfileService, users_service_1.UsersService, core_1.NgZone])
                 ], AddTaskComponent);
                 return AddTaskComponent;
             }());
